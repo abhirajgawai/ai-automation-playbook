@@ -1,0 +1,182 @@
+[
+  {
+    "id": "agent",
+    "term": "Agent",
+    "definition": "A system in which a model chooses steps or tools in a loop based on feedback. Its runtime must still bound authority and resources.",
+    "guideIds": ["harness-engineering"]
+  },
+  {
+    "id": "harness",
+    "term": "Agent harness",
+    "definition": "The runtime around the model: context, tool dispatch, policy, state, budgets and completion checks.",
+    "guideIds": ["harness-engineering"]
+  },
+  {
+    "id": "workflow",
+    "term": "Workflow",
+    "definition": "An explicit sequence or graph of work and state transitions, which may contain model calls.",
+    "guideIds": ["workflow-patterns"]
+  },
+  {
+    "id": "rag",
+    "term": "RAG",
+    "definition": "Retrieval-augmented generation: selecting external evidence and supplying it to a model when forming an answer.",
+    "guideIds": ["retrieval"]
+  },
+  {
+    "id": "groundedness",
+    "term": "Groundedness",
+    "definition": "Whether an answer is supported by the evidence supplied to it. Supplied evidence can still be incomplete or wrong.",
+    "guideIds": ["evaluations"]
+  },
+  {
+    "id": "idempotency",
+    "term": "Idempotency",
+    "definition": "The property that repeating the same logical operation has the same intended effect as doing it once, under a defined contract.",
+    "guideIds": ["durable-execution"]
+  },
+  {
+    "id": "reconciliation",
+    "term": "Reconciliation",
+    "definition": "Comparing local and external records to determine what actually happened after uncertainty or failure.",
+    "guideIds": ["durable-execution"]
+  },
+  {
+    "id": "fencing",
+    "term": "Fencing token",
+    "definition": "An increasing ownership/version value used at a write boundary to reject stale workers.",
+    "guideIds": ["durable-execution"]
+  },
+  {
+    "id": "outbox",
+    "term": "Transactional outbox",
+    "definition": "Recording an outgoing message in the same local database transaction as business state, then delivering it separately with duplicate handling.",
+    "guideIds": ["durable-execution"]
+  },
+  {
+    "id": "backpressure",
+    "term": "Backpressure",
+    "definition": "Slowing or refusing incoming work when the next stage cannot safely keep up.",
+    "guideIds": ["cost-capacity"]
+  },
+  {
+    "id": "compaction",
+    "term": "Compaction",
+    "definition": "Reducing conversation context, often by summarizing, while preserving the facts and constraints needed to continue.",
+    "guideIds": ["context-engineering"]
+  },
+  {
+    "id": "context-window",
+    "term": "Context window",
+    "definition": "The token capacity available to a model call; fitting within it does not guarantee every detail will be used correctly.",
+    "guideIds": ["context-engineering"]
+  },
+  {
+    "id": "semantic-memory",
+    "term": "Semantic memory",
+    "definition": "Stored facts or preferences intended for future recall, with provenance and correction duties.",
+    "guideIds": ["memory"]
+  },
+  {
+    "id": "episodic-memory",
+    "term": "Episodic memory",
+    "definition": "Records of prior events or examples that may help a future task; past success is not current authority.",
+    "guideIds": ["memory"]
+  },
+  {
+    "id": "procedural-memory",
+    "term": "Procedural memory",
+    "definition": "Reusable guidance about how to perform a task, kept separate from enforceable security policy.",
+    "guideIds": ["memory"]
+  },
+  {
+    "id": "embedding",
+    "term": "Embedding",
+    "definition": "A numeric representation used to compare semantic similarity. Similarity is not factual correctness or permission.",
+    "guideIds": ["retrieval"]
+  },
+  {
+    "id": "reranking",
+    "term": "Reranking",
+    "definition": "A second relevance assessment over retrieved candidates, usually adding latency and cost.",
+    "guideIds": ["retrieval"]
+  },
+  {
+    "id": "mcp",
+    "term": "MCP",
+    "definition": "Model Context Protocol: a common interface for connecting applications to tools and context sources.",
+    "guideIds": ["tool-design"]
+  },
+  {
+    "id": "prompt-injection",
+    "term": "Prompt injection",
+    "definition": "Instructions in untrusted input that try to redirect a model or its tools beyond the intended task.",
+    "guideIds": ["security"]
+  },
+  {
+    "id": "least-privilege",
+    "term": "Least privilege",
+    "definition": "Giving an identity only the access required for its current purpose and enforcing it outside model text.",
+    "guideIds": ["security"]
+  },
+  {
+    "id": "approval",
+    "term": "Exact-action approval",
+    "definition": "A decision bound to a specific action, target, parameters, identity and expiry, rechecked before execution.",
+    "guideIds": ["security"]
+  },
+  {
+    "id": "eval",
+    "term": "Evaluation",
+    "definition": "A structured test of AI behavior against defined cases and graders, with explicit limitations.",
+    "guideIds": ["evaluations"]
+  },
+  {
+    "id": "holdout",
+    "term": "Holdout set",
+    "definition": "Cases reserved from tuning to provide a less biased assessment of changes.",
+    "guideIds": ["evaluations"]
+  },
+  {
+    "id": "trajectory",
+    "term": "Trajectory",
+    "definition": "The sequence of model, tool and state events during a run; distinct from the final business outcome.",
+    "guideIds": ["evaluations"]
+  },
+  {
+    "id": "calibration",
+    "term": "Judge calibration",
+    "definition": "Comparing a grader with trusted judgments and investigating disagreement before relying on its scores.",
+    "guideIds": ["evaluations"]
+  },
+  {
+    "id": "tail-latency",
+    "term": "Tail latency",
+    "definition": "The slow end of the latency distribution, often described by percentiles rather than averages.",
+    "guideIds": ["cost-capacity"]
+  },
+  {
+    "id": "saga",
+    "term": "Saga",
+    "definition": "A sequence of local business steps with defined compensating actions for partial failure.",
+    "guideIds": ["workflow-patterns"]
+  },
+  {
+    "id": "shadow-mode",
+    "term": "Shadow execution",
+    "definition": "Running a candidate on representative inputs without allowing its proposed business writes.",
+    "guideIds": ["release-operations"]
+  },
+  {
+    "id": "invariant",
+    "term": "Business invariant",
+    "definition": "A condition that must remain true across all valid operations, such as preventing unauthorized state changes.",
+    "guideIds": ["architecture"]
+  },
+  {
+    "id": "adr",
+    "term": "Architecture decision record",
+    "definition": "A short record of context, alternatives, choice, evidence, assumptions and reasons to revisit.",
+    "guideIds": ["leadership"]
+  }
+]

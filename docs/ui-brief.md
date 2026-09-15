@@ -1,0 +1,13 @@
+# Frontend implementation brief
+
+Build the full static frontend in this fresh repo. Read plan.md sections 4,5,8,9,11 (product journeys, UX, local persistence and acceptance) as requirements. The plan is approved; implement autonomously. No backend, no runtime AI, no paid API, no telemetry.
+
+Content contract: src/content/types.ts already exists (do not change without coordination). Main agent authors content. Import from src/content/index.ts: categories, guides, sources, checklistItems, troubleshootingFlows, comparisonOptions, glossary, coverage, CONTENT_VERSION. All arrays use interfaces from types.ts. To develop before content arrives you may create temporary src/content/index.ts exporting typed empty arrays ONLY if needed, and notify main agent. Do not author substantive content or overwrite content files.
+
+Own: package.json lockfile tsconfig vite config index.html src/app src/components src/features src/lib tests frontend styles. Use React TypeScript Vite @xyflow/react router MiniSearch or equivalent. Node 22 installed. Use apply_patch. Do not commit until asked; other work shares repo. Do not spawn subagents.
+
+Build polished useful engineering workspace with persistent navigation, roomy readable main column and source/detail sidebar where useful; blue/slate/white light palette, deep navy dark palette, locally bundled fonts if installing fontsource. Memorable functional start-page decision-path preview. No fake metrics. All navigation and all plan journeys must work, including search, start problem explainable rules with unknown responses, independent projects, review statuses and evidence/owner/assumptions/N/A/revisit, notes/bookmarks, export/import preview merge/replace and strict validation, corrupt storage handling without silent data loss, settings/reset confirmation, glossary, sources and version changes. Include useful explicit-input cost calculator and transparent weighted comparison with mandatory requirements and unverified capabilities.
+
+Important: every graph has useful labels, selection details, fit/reset and a linear keyboard-accessible alternative. Lazy load React Flow. Deep links / back / forward. Build real usable screens not placeholders. Guide rendering consumes structured content; no markdown viewer. Save reviews content version and flag stale versions. Unknown content IDs in imported state preserve notes. Import size/schema/types/IDs validated; no HTML execution. Storage errors visible and recoverable.
+
+Tests: meaningful unit tests for decisions, persistence/migrations, imports, calculator; build/typecheck. You may use vitest. Main agent will run browser acceptance. Record report docs/ui-report.md with scope, commands/results, concerns. Return brief summary and files only.

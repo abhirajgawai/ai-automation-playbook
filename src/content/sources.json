@@ -1,0 +1,658 @@
+[
+  {
+    "id": "agents",
+    "title": "Building effective agents",
+    "url": "https://www.anthropic.com/engineering/building-effective-agents",
+    "notes": "Pattern definitions and the trade-off of added complexity; historical article with an update notice.",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed"
+  },
+  {
+    "id": "context",
+    "title": "Effective context engineering for AI agents",
+    "url": "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+    "notes": "Context selection and compaction discussion; vendor experience, not a correctness guarantee.",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed"
+  },
+  {
+    "id": "tools",
+    "title": "Writing effective tools for AI agents",
+    "url": "https://www.anthropic.com/engineering/writing-tools-for-agents",
+    "notes": "Tool ergonomics and evaluation as an iterative design practice.",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed"
+  },
+  {
+    "id": "temporal",
+    "title": "Detecting Activity failures",
+    "url": "https://docs.temporal.io/encyclopedia/detecting-activity-failures",
+    "notes": "Reviewed timeout semantics; application must set deadlines deliberately.",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed"
+  },
+  {
+    "id": "multi-agent",
+    "title": "How we built our multi-agent research system",
+    "url": "https://www.anthropic.com/engineering/multi-agent-research-system",
+    "notes": "Scoped case study of delegation failures; no vendor token ratios are generalized.",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed"
+  },
+  {
+    "id": "evals",
+    "title": "Demystifying evals for AI agents",
+    "url": "https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents",
+    "notes": "Distinction between a trace and final environment outcome; grader and trial concepts.",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed"
+  },
+  {
+    "id": "harnesses",
+    "title": "Effective harnesses for long-running agents",
+    "url": "https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents",
+    "notes": "Scoped coding-harness experiment using continuity artifacts.",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed"
+  },
+  {
+    "id": "postmortem",
+    "title": "A postmortem of three recent issues",
+    "url": "https://www.anthropic.com/engineering/a-postmortem-of-three-recent-issues",
+    "notes": "Vendor-specific infrastructure quality incidents; motivates production investigation.",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed"
+  },
+  {
+    "id": "retries",
+    "title": "Control and limit retry calls",
+    "url": "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_mitigate_interaction_failure_limit_retries.html",
+    "notes": "Retry ownership, backoff and idempotency guidance.",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed"
+  },
+  {
+    "id": "nist",
+    "title": "AI Risk Management Framework Core",
+    "url": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/",
+    "notes": "Govern, Map, Measure and Manage used as voluntary guidance, not certification.",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed"
+  },
+  {
+    "id": "owasp",
+    "title": "OWASP Top 10 for Agentic Applications for 2026",
+    "url": "https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/",
+    "notes": "Resource landing page inspected. This release does not claim to implement or certify the full downloaded standard.",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed"
+  },
+  {
+    "id": "finops",
+    "title": "FinOps for AI",
+    "url": "https://www.finops.org/framework/technology-categories/ai/",
+    "notes": "Value and cost measurement reference; the application calculator uses explicit user assumptions, not live prices.",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed"
+  },
+  {
+    "id": "azure-patterns",
+    "title": "AI agent orchestration patterns",
+    "url": "https://learn.microsoft.com/en-us/azure/architecture/ai-ml/guide/ai-agent-design-patterns",
+    "notes": "Pattern comparisons and complexity boundaries; no framework-specific feature guarantee inferred.",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed"
+  },
+  {
+    "id": "rag-evals",
+    "title": "Retrieval-augmented generation evaluators",
+    "url": "https://learn.microsoft.com/en-us/azure/foundry/concepts/evaluation-evaluators/rag-evaluators",
+    "notes": "Separate retrieval and answer evaluation concepts.",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed"
+  },
+  {
+    "id": "mcp",
+    "title": "What is the Model Context Protocol?",
+    "url": "https://modelcontextprotocol.io/docs/2026-07-28/getting-started/intro",
+    "notes": "Protocol scope overview. Authorization requirements need a separate implementation review.",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed"
+  },
+  {
+    "id": "memory",
+    "title": "Memory overview",
+    "url": "https://docs.langchain.com/oss/python/concepts/memory",
+    "notes": "Terminology for short/long-term and semantic, episodic and procedural memory.",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed"
+  },
+  {
+    "id": "framework-langgraph-langchain-1",
+    "title": "LangGraph / LangChain: LangGraph overview",
+    "url": "https://docs.langchain.com/oss/python/langgraph/overview",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed",
+    "notes": "Primary source inspected during framework research. Documentation review, not a production qualification; see specific unverified limitations. Reverify before selection, on a release/license change, or when this snapshot is older than 90 days. This is an editorial review policy, not a vendor guarantee."
+  },
+  {
+    "id": "framework-langgraph-langchain-2",
+    "title": "LangGraph / LangChain: durable execution",
+    "url": "https://docs.langchain.com/oss/python/langgraph/durable-execution",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed",
+    "notes": "Primary source inspected during framework research. Documentation review, not a production qualification; see specific unverified limitations. Reverify before selection, on a release/license change, or when this snapshot is older than 90 days. This is an editorial review policy, not a vendor guarantee."
+  },
+  {
+    "id": "framework-langgraph-langchain-3",
+    "title": "LangGraph / LangChain: LangChain repository",
+    "url": "https://github.com/langchain-ai/langchain",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed",
+    "notes": "Primary source inspected during framework research. Documentation review, not a production qualification; see specific unverified limitations. Reverify before selection, on a release/license change, or when this snapshot is older than 90 days. This is an editorial review policy, not a vendor guarantee."
+  },
+  {
+    "id": "framework-langgraph-langchain-4",
+    "title": "LangGraph / LangChain: LangGraph repository",
+    "url": "https://github.com/langchain-ai/langgraph",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed",
+    "notes": "Primary source inspected during framework research. Documentation review, not a production qualification; see specific unverified limitations. Reverify before selection, on a release/license change, or when this snapshot is older than 90 days. This is an editorial review policy, not a vendor guarantee."
+  },
+  {
+    "id": "framework-microsoft-agent-framework-1",
+    "title": "Microsoft Agent Framework: overview",
+    "url": "https://learn.microsoft.com/en-us/agent-framework/overview/",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed",
+    "notes": "Primary source inspected during framework research. Documentation review, not a production qualification; see specific unverified limitations. Reverify before selection, on a release/license change, or when this snapshot is older than 90 days. This is an editorial review policy, not a vendor guarantee."
+  },
+  {
+    "id": "framework-microsoft-agent-framework-2",
+    "title": "Microsoft Agent Framework: agents",
+    "url": "https://learn.microsoft.com/en-us/agent-framework/concepts/agents/",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed",
+    "notes": "Primary source inspected during framework research. Documentation review, not a production qualification; see specific unverified limitations. Reverify before selection, on a release/license change, or when this snapshot is older than 90 days. This is an editorial review policy, not a vendor guarantee."
+  },
+  {
+    "id": "framework-microsoft-agent-framework-3",
+    "title": "Microsoft Agent Framework: hosting",
+    "url": "https://learn.microsoft.com/en-us/agent-framework/integrations/hosting/",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed",
+    "notes": "Primary source inspected during framework research. Documentation review, not a production qualification; see specific unverified limitations. Reverify before selection, on a release/license change, or when this snapshot is older than 90 days. This is an editorial review policy, not a vendor guarantee."
+  },
+  {
+    "id": "framework-microsoft-agent-framework-4",
+    "title": "Microsoft Agent Framework: official repository",
+    "url": "https://github.com/microsoft/agent-framework",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed",
+    "notes": "Primary source inspected during framework research. Documentation review, not a production qualification; see specific unverified limitations. Reverify before selection, on a release/license change, or when this snapshot is older than 90 days. This is an editorial review policy, not a vendor guarantee."
+  },
+  {
+    "id": "framework-microsoft-agent-framework-5",
+    "title": "Microsoft Agent Framework: Microsoft resource index",
+    "url": "https://microsoft.github.io/agent-resources/develop-agents/",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed",
+    "notes": "Primary source inspected during framework research. Documentation review, not a production qualification; see specific unverified limitations. Reverify before selection, on a release/license change, or when this snapshot is older than 90 days. This is an editorial review policy, not a vendor guarantee."
+  },
+  {
+    "id": "framework-crewai-1",
+    "title": "CrewAI: official repository",
+    "url": "https://github.com/crewAIInc/crewAI",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed",
+    "notes": "Primary source inspected during framework research. Documentation review, not a production qualification; see specific unverified limitations. Reverify before selection, on a release/license change, or when this snapshot is older than 90 days. This is an editorial review policy, not a vendor guarantee."
+  },
+  {
+    "id": "framework-crewai-2",
+    "title": "CrewAI: Flows",
+    "url": "https://docs.crewai.com/en/concepts/flows",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed",
+    "notes": "Primary source inspected during framework research. Documentation review, not a production qualification; see specific unverified limitations. Reverify before selection, on a release/license change, or when this snapshot is older than 90 days. This is an editorial review policy, not a vendor guarantee."
+  },
+  {
+    "id": "framework-crewai-3",
+    "title": "CrewAI: AMP",
+    "url": "https://docs.crewai.com/enterprise/introduction",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed",
+    "notes": "Primary source inspected during framework research. Documentation review, not a production qualification; see specific unverified limitations. Reverify before selection, on a release/license change, or when this snapshot is older than 90 days. This is an editorial review policy, not a vendor guarantee."
+  },
+  {
+    "id": "framework-google-agent-development-kit-adk-1",
+    "title": "Google Agent Development Kit (ADK): ADK documentation",
+    "url": "https://google.github.io/adk-docs/",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed",
+    "notes": "Primary source inspected during framework research. Documentation review, not a production qualification; see specific unverified limitations. Reverify before selection, on a release/license change, or when this snapshot is older than 90 days. This is an editorial review policy, not a vendor guarantee."
+  },
+  {
+    "id": "framework-google-agent-development-kit-adk-2",
+    "title": "Google Agent Development Kit (ADK): deployment",
+    "url": "https://google.github.io/adk-docs/deploy/",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed",
+    "notes": "Primary source inspected during framework research. Documentation review, not a production qualification; see specific unverified limitations. Reverify before selection, on a release/license change, or when this snapshot is older than 90 days. This is an editorial review policy, not a vendor guarantee."
+  },
+  {
+    "id": "framework-google-agent-development-kit-adk-3",
+    "title": "Google Agent Development Kit (ADK): Python repository",
+    "url": "https://github.com/google/adk-python",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed",
+    "notes": "Primary source inspected during framework research. Documentation review, not a production qualification; see specific unverified limitations. Reverify before selection, on a release/license change, or when this snapshot is older than 90 days. This is an editorial review policy, not a vendor guarantee."
+  },
+  {
+    "id": "framework-google-agent-development-kit-adk-4",
+    "title": "Google Agent Development Kit (ADK): Java repository",
+    "url": "https://github.com/google/adk-java",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed",
+    "notes": "Primary source inspected during framework research. Documentation review, not a production qualification; see specific unverified limitations. Reverify before selection, on a release/license change, or when this snapshot is older than 90 days. This is an editorial review policy, not a vendor guarantee."
+  },
+  {
+    "id": "framework-pydanticai-1",
+    "title": "PydanticAI: overview",
+    "url": "https://pydantic.dev/docs/ai/overview/",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed",
+    "notes": "Primary source inspected during framework research. Documentation review, not a production qualification; see specific unverified limitations. Reverify before selection, on a release/license change, or when this snapshot is older than 90 days. This is an editorial review policy, not a vendor guarantee."
+  },
+  {
+    "id": "framework-pydanticai-2",
+    "title": "PydanticAI: durable execution",
+    "url": "https://github.com/pydantic/pydantic-ai/blob/main/docs/durable_execution/overview.md",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed",
+    "notes": "Primary source inspected during framework research. Documentation review, not a production qualification; see specific unverified limitations. Reverify before selection, on a release/license change, or when this snapshot is older than 90 days. This is an editorial review policy, not a vendor guarantee."
+  },
+  {
+    "id": "framework-pydanticai-3",
+    "title": "PydanticAI: retries",
+    "url": "https://pydantic.dev/docs/ai/core-concepts/retries/",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed",
+    "notes": "Primary source inspected during framework research. Documentation review, not a production qualification; see specific unverified limitations. Reverify before selection, on a release/license change, or when this snapshot is older than 90 days. This is an editorial review policy, not a vendor guarantee."
+  },
+  {
+    "id": "framework-pydanticai-4",
+    "title": "PydanticAI: repository",
+    "url": "https://github.com/pydantic/pydantic-ai",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed",
+    "notes": "Primary source inspected during framework research. Documentation review, not a production qualification; see specific unverified limitations. Reverify before selection, on a release/license change, or when this snapshot is older than 90 days. This is an editorial review policy, not a vendor guarantee."
+  },
+  {
+    "id": "framework-autogen-1",
+    "title": "AutoGen: current docs",
+    "url": "https://microsoft.github.io/autogen/dev/",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed",
+    "notes": "Primary source inspected during framework research. Documentation review, not a production qualification; see specific unverified limitations. Reverify before selection, on a release/license change, or when this snapshot is older than 90 days. This is an editorial review policy, not a vendor guarantee."
+  },
+  {
+    "id": "framework-autogen-2",
+    "title": "AutoGen: 0.2 to 0.4 migration",
+    "url": "https://microsoft.github.io/autogen/0.4.4/user-guide/agentchat-user-guide/migration-guide.html",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed",
+    "notes": "Primary source inspected during framework research. Documentation review, not a production qualification; see specific unverified limitations. Reverify before selection, on a release/license change, or when this snapshot is older than 90 days. This is an editorial review policy, not a vendor guarantee."
+  },
+  {
+    "id": "framework-autogen-3",
+    "title": "AutoGen: runtime",
+    "url": "https://microsoft.github.io/autogen/dev/user-guide/core-user-guide/framework/agent-and-agent-runtime.html",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed",
+    "notes": "Primary source inspected during framework research. Documentation review, not a production qualification; see specific unverified limitations. Reverify before selection, on a release/license change, or when this snapshot is older than 90 days. This is an editorial review policy, not a vendor guarantee."
+  },
+  {
+    "id": "framework-autogen-4",
+    "title": "AutoGen: MAF migration",
+    "url": "https://learn.microsoft.com/en-us/agent-framework/migration-guide/from-autogen/",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed",
+    "notes": "Primary source inspected during framework research. Documentation review, not a production qualification; see specific unverified limitations. Reverify before selection, on a release/license change, or when this snapshot is older than 90 days. This is an editorial review policy, not a vendor guarantee."
+  },
+  {
+    "id": "framework-semantic-kernel-1",
+    "title": "Semantic Kernel: Semantic Kernel overview",
+    "url": "https://learn.microsoft.com/en-us/semantic-kernel/overview/",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed",
+    "notes": "Primary source inspected during framework research. Documentation review, not a production qualification; see specific unverified limitations. Reverify before selection, on a release/license change, or when this snapshot is older than 90 days. This is an editorial review policy, not a vendor guarantee."
+  },
+  {
+    "id": "framework-semantic-kernel-2",
+    "title": "Semantic Kernel: agent framework",
+    "url": "https://learn.microsoft.com/en-us/semantic-kernel/frameworks/agent/",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed",
+    "notes": "Primary source inspected during framework research. Documentation review, not a production qualification; see specific unverified limitations. Reverify before selection, on a release/license change, or when this snapshot is older than 90 days. This is an editorial review policy, not a vendor guarantee."
+  },
+  {
+    "id": "framework-semantic-kernel-3",
+    "title": "Semantic Kernel: repository",
+    "url": "https://github.com/microsoft/semantic-kernel",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed",
+    "notes": "Primary source inspected during framework research. Documentation review, not a production qualification; see specific unverified limitations. Reverify before selection, on a release/license change, or when this snapshot is older than 90 days. This is an editorial review policy, not a vendor guarantee."
+  },
+  {
+    "id": "framework-semantic-kernel-4",
+    "title": "Semantic Kernel: MAF migration",
+    "url": "https://learn.microsoft.com/en-us/agent-framework/migration-guide/from-semantic-kernel/",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed",
+    "notes": "Primary source inspected during framework research. Documentation review, not a production qualification; see specific unverified limitations. Reverify before selection, on a release/license change, or when this snapshot is older than 90 days. This is an editorial review policy, not a vendor guarantee."
+  },
+  {
+    "id": "framework-llamaindex-1",
+    "title": "LlamaIndex: official documentation",
+    "url": "https://docs.llamaindex.ai/",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed",
+    "notes": "Primary source inspected during framework research. Documentation review, not a production qualification; see specific unverified limitations. Reverify before selection, on a release/license change, or when this snapshot is older than 90 days. This is an editorial review policy, not a vendor guarantee."
+  },
+  {
+    "id": "framework-llamaindex-2",
+    "title": "LlamaIndex: agents and workflows",
+    "url": "https://docs.llamaindex.ai/en/stable/understanding/agent/",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed",
+    "notes": "Primary source inspected during framework research. Documentation review, not a production qualification; see specific unverified limitations. Reverify before selection, on a release/license change, or when this snapshot is older than 90 days. This is an editorial review policy, not a vendor guarantee."
+  },
+  {
+    "id": "framework-llamaindex-3",
+    "title": "LlamaIndex: Query Pipeline deprecation",
+    "url": "https://docs.llamaindex.ai/en/stable/module_guides/querying/pipeline/",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed",
+    "notes": "Primary source inspected during framework research. Documentation review, not a production qualification; see specific unverified limitations. Reverify before selection, on a release/license change, or when this snapshot is older than 90 days. This is an editorial review policy, not a vendor guarantee."
+  },
+  {
+    "id": "framework-llamaindex-4",
+    "title": "LlamaIndex: repository",
+    "url": "https://github.com/run-llama/llama_index",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed",
+    "notes": "Primary source inspected during framework research. Documentation review, not a production qualification; see specific unverified limitations. Reverify before selection, on a release/license change, or when this snapshot is older than 90 days. This is an editorial review policy, not a vendor guarantee."
+  },
+  {
+    "id": "framework-haystack-1",
+    "title": "Haystack: pipelines",
+    "url": "https://docs.haystack.deepset.ai/docs/pipelines",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed",
+    "notes": "Primary source inspected during framework research. Documentation review, not a production qualification; see specific unverified limitations. Reverify before selection, on a release/license change, or when this snapshot is older than 90 days. This is an editorial review policy, not a vendor guarantee."
+  },
+  {
+    "id": "framework-haystack-2",
+    "title": "Haystack: agents",
+    "url": "https://docs.haystack.deepset.ai/docs/agent",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed",
+    "notes": "Primary source inspected during framework research. Documentation review, not a production qualification; see specific unverified limitations. Reverify before selection, on a release/license change, or when this snapshot is older than 90 days. This is an editorial review policy, not a vendor guarantee."
+  },
+  {
+    "id": "framework-haystack-3",
+    "title": "Haystack: Docker",
+    "url": "https://docs.haystack.deepset.ai/docs/docker",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed",
+    "notes": "Primary source inspected during framework research. Documentation review, not a production qualification; see specific unverified limitations. Reverify before selection, on a release/license change, or when this snapshot is older than 90 days. This is an editorial review policy, not a vendor guarantee."
+  },
+  {
+    "id": "framework-haystack-4",
+    "title": "Haystack: repository",
+    "url": "https://github.com/deepset-ai/haystack",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed",
+    "notes": "Primary source inspected during framework research. Documentation review, not a production qualification; see specific unverified limitations. Reverify before selection, on a release/license change, or when this snapshot is older than 90 days. This is an editorial review policy, not a vendor guarantee."
+  },
+  {
+    "id": "framework-agno-1",
+    "title": "Agno: documentation",
+    "url": "https://docs.agno.com/",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed",
+    "notes": "Primary source inspected during framework research. Documentation review, not a production qualification; see specific unverified limitations. Reverify before selection, on a release/license change, or when this snapshot is older than 90 days. This is an editorial review policy, not a vendor guarantee."
+  },
+  {
+    "id": "framework-agno-2",
+    "title": "Agno: official organization",
+    "url": "https://github.com/agno-agi",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed",
+    "notes": "Primary source inspected during framework research. Documentation review, not a production qualification; see specific unverified limitations. Reverify before selection, on a release/license change, or when this snapshot is older than 90 days. This is an editorial review policy, not a vendor guarantee."
+  },
+  {
+    "id": "framework-agno-3",
+    "title": "Agno: repository",
+    "url": "https://github.com/agno-agi/agno",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed",
+    "notes": "Primary source inspected during framework research. Documentation review, not a production qualification; see specific unverified limitations. Reverify before selection, on a release/license change, or when this snapshot is older than 90 days. This is an editorial review policy, not a vendor guarantee."
+  },
+  {
+    "id": "framework-strands-agents-1",
+    "title": "Strands Agents: documentation",
+    "url": "https://strands-agents.github.io/docs/",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed",
+    "notes": "Primary source inspected during framework research. Documentation review, not a production qualification; see specific unverified limitations. Reverify before selection, on a release/license change, or when this snapshot is older than 90 days. This is an editorial review policy, not a vendor guarantee."
+  },
+  {
+    "id": "framework-strands-agents-2",
+    "title": "Strands Agents: official organization",
+    "url": "https://github.com/strands-agents",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed",
+    "notes": "Primary source inspected during framework research. Documentation review, not a production qualification; see specific unverified limitations. Reverify before selection, on a release/license change, or when this snapshot is older than 90 days. This is an editorial review policy, not a vendor guarantee."
+  },
+  {
+    "id": "framework-strands-agents-3",
+    "title": "Strands Agents: examples",
+    "url": "https://strandsagents.com/docs/examples/",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed",
+    "notes": "Primary source inspected during framework research. Documentation review, not a production qualification; see specific unverified limitations. Reverify before selection, on a release/license change, or when this snapshot is older than 90 days. This is an editorial review policy, not a vendor guarantee."
+  },
+  {
+    "id": "framework-temporal-1",
+    "title": "Temporal: platform docs",
+    "url": "https://docs.temporal.io/",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed",
+    "notes": "Primary source inspected during framework research. Documentation review, not a production qualification; see specific unverified limitations. Reverify before selection, on a release/license change, or when this snapshot is older than 90 days. This is an editorial review policy, not a vendor guarantee."
+  },
+  {
+    "id": "framework-temporal-2",
+    "title": "Temporal: workflow definition",
+    "url": "https://docs.temporal.io/workflows",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed",
+    "notes": "Primary source inspected during framework research. Documentation review, not a production qualification; see specific unverified limitations. Reverify before selection, on a release/license change, or when this snapshot is older than 90 days. This is an editorial review policy, not a vendor guarantee."
+  },
+  {
+    "id": "framework-temporal-3",
+    "title": "Temporal: activity failures",
+    "url": "https://docs.temporal.io/encyclopedia/detecting-activity-failures",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed",
+    "notes": "Primary source inspected during framework research. Documentation review, not a production qualification; see specific unverified limitations. Reverify before selection, on a release/license change, or when this snapshot is older than 90 days. This is an editorial review policy, not a vendor guarantee."
+  },
+  {
+    "id": "framework-temporal-4",
+    "title": "Temporal: server repository",
+    "url": "https://github.com/temporalio/temporal",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed",
+    "notes": "Primary source inspected during framework research. Documentation review, not a production qualification; see specific unverified limitations. Reverify before selection, on a release/license change, or when this snapshot is older than 90 days. This is an editorial review policy, not a vendor guarantee."
+  },
+  {
+    "id": "framework-azure-durable-functions-1",
+    "title": "Azure Durable Functions: Durable Functions overview",
+    "url": "https://learn.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-overview",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed",
+    "notes": "Primary source inspected during framework research. Documentation review, not a production qualification; see specific unverified limitations. Reverify before selection, on a release/license change, or when this snapshot is older than 90 days. This is an editorial review policy, not a vendor guarantee."
+  },
+  {
+    "id": "framework-azure-durable-functions-2",
+    "title": "Azure Durable Functions: Durable Task",
+    "url": "https://learn.microsoft.com/en-us/azure/azure-functions/durable/what-is-durable-task",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed",
+    "notes": "Primary source inspected during framework research. Documentation review, not a production qualification; see specific unverified limitations. Reverify before selection, on a release/license change, or when this snapshot is older than 90 days. This is an editorial review policy, not a vendor guarantee."
+  },
+  {
+    "id": "framework-azure-durable-functions-3",
+    "title": "Azure Durable Functions: code constraints",
+    "url": "https://learn.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-code-constraints",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed",
+    "notes": "Primary source inspected during framework research. Documentation review, not a production qualification; see specific unverified limitations. Reverify before selection, on a release/license change, or when this snapshot is older than 90 days. This is an editorial review policy, not a vendor guarantee."
+  },
+  {
+    "id": "framework-dapr-workflow-1",
+    "title": "Dapr Workflow: overview",
+    "url": "https://docs.dapr.io/developing-applications/building-blocks/workflow/workflow-overview/",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed",
+    "notes": "Primary source inspected during framework research. Documentation review, not a production qualification; see specific unverified limitations. Reverify before selection, on a release/license change, or when this snapshot is older than 90 days. This is an editorial review policy, not a vendor guarantee."
+  },
+  {
+    "id": "framework-dapr-workflow-2",
+    "title": "Dapr Workflow: features and limitations",
+    "url": "https://docs.dapr.io/developing-applications/building-blocks/workflow/workflow-features-concepts/",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed",
+    "notes": "Primary source inspected during framework research. Documentation review, not a production qualification; see specific unverified limitations. Reverify before selection, on a release/license change, or when this snapshot is older than 90 days. This is an editorial review policy, not a vendor guarantee."
+  },
+  {
+    "id": "framework-dapr-workflow-3",
+    "title": "Dapr Workflow: repository",
+    "url": "https://github.com/dapr/dapr",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed",
+    "notes": "Primary source inspected during framework research. Documentation review, not a production qualification; see specific unverified limitations. Reverify before selection, on a release/license change, or when this snapshot is older than 90 days. This is an editorial review policy, not a vendor guarantee."
+  },
+  {
+    "id": "framework-n8n-1",
+    "title": "n8n: hosting",
+    "url": "https://docs.n8n.io/hosting/",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed",
+    "notes": "Primary source inspected during framework research. Documentation review, not a production qualification; see specific unverified limitations. Reverify before selection, on a release/license change, or when this snapshot is older than 90 days. This is an editorial review policy, not a vendor guarantee."
+  },
+  {
+    "id": "framework-n8n-2",
+    "title": "n8n: queue mode",
+    "url": "https://docs.n8n.io/hosting/scaling/queue-mode/",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed",
+    "notes": "Primary source inspected during framework research. Documentation review, not a production qualification; see specific unverified limitations. Reverify before selection, on a release/license change, or when this snapshot is older than 90 days. This is an editorial review policy, not a vendor guarantee."
+  },
+  {
+    "id": "framework-n8n-3",
+    "title": "n8n: license FAQ",
+    "url": "https://docs.n8n.io/privacy-and-security/sustainable-use-license/",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed",
+    "notes": "Primary source inspected during framework research. Documentation review, not a production qualification; see specific unverified limitations. Reverify before selection, on a release/license change, or when this snapshot is older than 90 days. This is an editorial review policy, not a vendor guarantee."
+  },
+  {
+    "id": "framework-n8n-4",
+    "title": "n8n: license text",
+    "url": "https://github.com/n8n-io/n8n/blob/master/LICENSE.md",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed",
+    "notes": "Primary source inspected during framework research. Documentation review, not a production qualification; see specific unverified limitations. Reverify before selection, on a release/license change, or when this snapshot is older than 90 days. This is an editorial review policy, not a vendor guarantee."
+  },
+  {
+    "id": "framework-hindsight-1",
+    "title": "Hindsight: official repository",
+    "url": "https://github.com/vectorize-io/hindsight",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed",
+    "notes": "Primary source inspected during framework research. Documentation review, not a production qualification; see specific unverified limitations. Reverify before selection, on a release/license change, or when this snapshot is older than 90 days. This is an editorial review policy, not a vendor guarantee."
+  },
+  {
+    "id": "framework-hindsight-2",
+    "title": "Hindsight: documentation",
+    "url": "https://hindsight.vectorize.io/",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed",
+    "notes": "Primary source inspected during framework research. Documentation review, not a production qualification; see specific unverified limitations. Reverify before selection, on a release/license change, or when this snapshot is older than 90 days. This is an editorial review policy, not a vendor guarantee."
+  },
+  {
+    "id": "framework-hindsight-3",
+    "title": "Hindsight: ACL demo paper",
+    "url": "https://aclanthology.org/2026.acl-demo.27/",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed",
+    "notes": "Primary source inspected during framework research. Documentation review, not a production qualification; see specific unverified limitations. Reverify before selection, on a release/license change, or when this snapshot is older than 90 days. This is an editorial review policy, not a vendor guarantee."
+  },
+  {
+    "id": "framework-flue-1",
+    "title": "Flue: overview",
+    "url": "https://flueframework.com/",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed",
+    "notes": "Primary source inspected during framework research. Documentation review, not a production qualification; see specific unverified limitations. Reverify before selection, on a release/license change, or when this snapshot is older than 90 days. This is an editorial review policy, not a vendor guarantee."
+  },
+  {
+    "id": "framework-flue-2",
+    "title": "Flue: agents",
+    "url": "https://flueframework.com/docs/guide/building-agents/",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed",
+    "notes": "Primary source inspected during framework research. Documentation review, not a production qualification; see specific unverified limitations. Reverify before selection, on a release/license change, or when this snapshot is older than 90 days. This is an editorial review policy, not a vendor guarantee."
+  },
+  {
+    "id": "framework-flue-3",
+    "title": "Flue: Agent API",
+    "url": "https://flueframework.com/docs/reference/agent-api/",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed",
+    "notes": "Primary source inspected during framework research. Documentation review, not a production qualification; see specific unverified limitations. Reverify before selection, on a release/license change, or when this snapshot is older than 90 days. This is an editorial review policy, not a vendor guarantee."
+  },
+  {
+    "id": "framework-paperclip-1",
+    "title": "Paperclip: documentation",
+    "url": "https://docs.paperclip.ing/",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed",
+    "notes": "Primary source inspected during framework research. Documentation review, not a production qualification; see specific unverified limitations. Reverify before selection, on a release/license change, or when this snapshot is older than 90 days. This is an editorial review policy, not a vendor guarantee."
+  },
+  {
+    "id": "framework-paperclip-2",
+    "title": "Paperclip: agent execution model",
+    "url": "https://paperclip.inc/docs/guides/agent-developer/how-agents-work/",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed",
+    "notes": "Primary source inspected during framework research. Documentation review, not a production qualification; see specific unverified limitations. Reverify before selection, on a release/license change, or when this snapshot is older than 90 days. This is an editorial review policy, not a vendor guarantee."
+  },
+  {
+    "id": "framework-paperclip-3",
+    "title": "Paperclip: repository",
+    "url": "https://github.com/paperclipai/paperclip",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed",
+    "notes": "Primary source inspected during framework research. Documentation review, not a production qualification; see specific unverified limitations. Reverify before selection, on a release/license change, or when this snapshot is older than 90 days. This is an editorial review policy, not a vendor guarantee."
+  },
+  {
+    "id": "nist-proportions",
+    "title": "NIST: confidence intervals for proportions",
+    "url": "https://www.itl.nist.gov/div898/handbook/prc/section2/prc241.htm",
+    "reviewedAt": "2026-09-15",
+    "status": "reviewed",
+    "notes": "Supports the binomial/Wilson interval discussion. The rule-of-three example is an approximate binomial calculation with independence assumptions, not a production risk guarantee."
+  }
+]

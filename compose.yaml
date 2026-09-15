@@ -1,0 +1,25 @@
+name: ai-playbook
+services:
+  web:
+    image: ai-playbook:${PLAYBOOK_VERSION:-local}
+    build: .
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - caddy_data:/data
+      - caddy_config:/config
+    mem_limit: 256m
+    cpus: 0.5
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+    security_opt:
+      - no-new-privileges:true
+volumes:
+  caddy_data:
+  caddy_config:

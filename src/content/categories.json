@@ -1,0 +1,67 @@
+[
+  {
+    "id": "C01",
+    "title": "Business discovery, suitability, and value",
+    "description": "Discover the real problem, compare alternatives and establish value."
+  },
+  {
+    "id": "C02",
+    "title": "System design principles and architecture",
+    "description": "Keep contracts, state, ownership and change boundaries explicit."
+  },
+  {
+    "id": "C03",
+    "title": "Workflow and multi-agent patterns",
+    "description": "Coordinate work with deliberate dependencies, ownership and limits."
+  },
+  {
+    "id": "C04",
+    "title": "Framework, platform, model, and provider selection",
+    "description": "Investigate the right technology layer with evidence."
+  },
+  {
+    "id": "C05",
+    "title": "Prompts, context, data, retrieval, and memory",
+    "description": "Assemble useful context and govern evidence and memory."
+  },
+  {
+    "id": "C06",
+    "title": "Tools, integration, and implementation quality",
+    "description": "Integrate tools with clear contracts and verified effects."
+  },
+  {
+    "id": "C07",
+    "title": "Reliability, durable execution, and recovery",
+    "description": "Recover safely from partial failure and uncertain outcomes."
+  },
+  {
+    "id": "C08",
+    "title": "Security, privacy, governance, and human control",
+    "description": "Control authority, data exposure and human accountability."
+  },
+  {
+    "id": "C09",
+    "title": "Testing, evaluations, and correctness evidence",
+    "description": "Test business outcomes and understand the limits of evidence."
+  },
+  {
+    "id": "C10",
+    "title": "Cost, performance, and capacity",
+    "description": "Measure full costs and enforce resource limits."
+  },
+  {
+    "id": "C11",
+    "title": "Release, operations, and improvement",
+    "description": "Deploy, observe, recover and improve with ownership."
+  },
+  {
+    "id": "C12",
+    "title": "Leadership, adoption, and daily engineering practice",
+    "description": "Communicate decisions and make adoption practical."
+  },
+  {
+    "id": "C13",
+    "title": "Agent harness engineering",
+    "description": "Understand the runtime connecting models to dependable work."
+  }
+]

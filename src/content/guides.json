@@ -1,0 +1,2460 @@
+[
+  {
+    "id": "business-discovery",
+    "categoryId": "C01",
+    "title": "Should this process be automated?",
+    "summary": "Start with the process and its error economics. Decide what evidence would justify automation, a bounded experiment, or keeping the work manual.",
+    "tags": [
+      "should",
+      "this",
+      "process",
+      "automated"
+    ],
+    "stages": [
+      "discovery"
+    ],
+    "applicability": {
+      "required": "You are deciding whether to automate a process or expand an existing automation.",
+      "optional": "Use a short evidence review for a small reversible experiment; deepen it as consequences and uncertainty grow.",
+      "unnecessary": "Do not implement every pattern here. Omit mechanisms that do not address an identified requirement, and record the rationale."
+    },
+    "prerequisites": [
+      "A process owner and representative examples",
+      "A current baseline for time, errors and review"
+    ],
+    "sections": [
+      {
+        "title": "Process mapping, users, stakeholders, goals, process owner, current pain and baseline",
+        "body": [
+          "Observe a real case from request to resolution. Record who initiates it, who owns the outcome, each system touched, waiting time and rework. Ask users which step is painful before accepting a sponsor's solution. A useful baseline includes elapsed time and incorrect outcomes, not only time spent typing."
+        ]
+      },
+      {
+        "title": "Process simplification before automation; stable rules versus judgment and ambiguity",
+        "body": [
+          "Remove redundant approvals and duplicate data entry before introducing a model. Write a decision table for stable rules; if the table handles the meaningful cases, conventional code is easier to test. Reserve probabilistic interpretation for ambiguity that cannot be resolved by improving the process or input form."
+        ]
+      },
+      {
+        "title": "Volume, variability, exceptions, seasonality, data readiness and access feasibility",
+        "body": [
+          "Sample ordinary and exceptional cases across busy and quiet periods. Check whether required data can actually be accessed under the intended identity, with reliable identifiers and sufficient freshness. A demonstration on ten clean documents tells little about scanned tables, missing fields, spikes or permissions in the live process."
+        ]
+      },
+      {
+        "title": "Manual versus conventional automation versus fixed AI workflow versus autonomous agent",
+        "body": [
+          "Compare four credible baselines on the same cases: manual handling, ordinary rules, a fixed sequence containing model calls, and a tool-using agent. Add autonomy only when variable next steps create measurable value. A classification call inside an existing service does not require an agent runtime."
+        ]
+      },
+      {
+        "title": "Error economics: wrong action, missed action, delay, escalation, review and rework",
+        "body": [
+          "Separate the costs of acting incorrectly, failing to act, responding late, escalating and repairing damage. Estimate frequency and consequence separately; a rare irreversible error can dominate many small time savings. Include the human time needed to inspect plausible but incorrect output, which can exceed the time to do the task."
+        ]
+      },
+      {
+        "title": "Success criteria, acceptance thresholds, scope, exclusions, autonomy levels",
+        "body": [
+          "Write observable acceptance thresholds with the process owner: which outcomes count, which inputs are excluded, and what the system may do without approval. Distinguish reading information, preparing drafts, executing an approved action and choosing actions autonomously. Define what happens when the acceptance evidence is missing."
+        ]
+      },
+      {
+        "title": "Reversibility, impact, human capacity, opportunity cost, feasibility, ROI",
+        "body": [
+          "Ask whether an action can be undone in business terms, not just technically. An email can be deleted from a sent folder but cannot be unread. Estimate review demand at peak volume and compare it with staffed capacity. Include integration, maintenance, opportunity cost and residual risk in feasibility."
+        ]
+      },
+      {
+        "title": "Prioritization, small experiments, stop/continue criteria, validating real adoption",
+        "body": [
+          "Run a small experiment with a fixed time and spend limit, representative cases, and a decision date. Specify stop conditions before seeing results. Measure whether users actually adopt the output and whether total turnaround improves. A successful demo is evidence for the next experiment, not permission for unrestricted release."
+        ]
+      },
+      {
+        "title": "How to say \"we need more evidence\" or \"do not automate this.\"",
+        "body": [
+          "Use an evidence request with an owner and deadline: 'We cannot assess automatic approval until we measure exception rates and define who handles disputes.' Recommend no automation when the process lacks ownership, required data is inaccessible, or consequences cannot be contained. Preserve a manual path while uncertainty is investigated."
+        ]
+      }
+    ],
+    "alternatives": [
+      {
+        "name": "Manual handling",
+        "benefits": "Retains expert judgment for rare ambiguous work",
+        "costs": "Labor and queue time",
+        "limitations": "Does not scale without staffing"
+      },
+      {
+        "name": "Conventional rules",
+        "benefits": "Predictable and straightforward to test",
+        "costs": "Rule maintenance",
+        "limitations": "Brittle when exceptions dominate"
+      },
+      {
+        "name": "Fixed AI workflow",
+        "benefits": "Adds interpretation inside explicit steps",
+        "costs": "Evaluation and review",
+        "limitations": "Still needs deterministic boundaries"
+      },
+      {
+        "name": "Autonomous agent",
+        "benefits": "Adapts next steps to evidence",
+        "costs": "Higher operational complexity",
+        "limitations": "Only justified by measured task value"
+      }
+    ],
+    "tradeoffs": [
+      "Manual handling: retains expert judgment for rare ambiguous work; costs include labor and queue time. Does not scale without staffing.",
+      "Conventional rules: predictable and straightforward to test; costs include rule maintenance. Brittle when exceptions dominate.",
+      "Fixed AI workflow: adds interpretation inside explicit steps; costs include evaluation and review. Still needs deterministic boundaries.",
+      "Autonomous agent: adapts next steps to evidence; costs include higher operational complexity. Only justified by measured task value."
+    ],
+    "decisionCriteria": [
+      "Who owns the outcome?",
+      "Can simpler rules solve the meaningful cases?",
+      "Are error consequences reversible?",
+      "Can humans handle peak escalations?"
+    ],
+    "examples": [
+      {
+        "title": "Hypothetical worked example",
+        "body": "A hypothetical invoice intake team spends four minutes copying fields and twenty minutes resolving missing purchase orders. A model that saves copying time may barely change turnaround. First improve purchase-order matching and define who resolves exceptions; then compare extraction against a manual baseline."
+      }
+    ],
+    "failureModes": [
+      {
+        "symptom": "The demo works but nobody adopts it",
+        "cause": "The experiment optimized a visible step rather than the real bottleneck",
+        "diagnostic": "Compare end-to-end turnaround and reviewer effort with the original baseline",
+        "mitigation": "Pause expansion and observe real cases with the process owner"
+      }
+    ],
+    "verification": [
+      "Record evidence for: Who owns the outcome?",
+      "Record evidence for: Can simpler rules solve the meaningful cases?",
+      "Record evidence for: Are error consequences reversible?",
+      "Record evidence for: Can humans handle peak escalations?",
+      "Exercise the failure case: the demo works but nobody adopts it. Preserve the observed outcome and unresolved limitations."
+    ],
+    "owner": "Process owner",
+    "reconsiderWhen": [
+      "Task volume, exception mix or consequence changes"
+    ],
+    "relatedGuideIds": [
+      "architecture",
+      "cost-capacity",
+      "leadership"
+    ],
+    "sourceIds": [
+      "agents",
+      "nist"
+    ],
+    "reviewedAt": "2026-09-15",
+    "contentVersion": "2026.09.15.1"
+  },
+  {
+    "id": "architecture",
+    "categoryId": "C02",
+    "title": "Design boundaries around probabilistic decisions",
+    "summary": "Keep business rules, state and authority explicit while models handle the uncertain parts of a workflow.",
+    "tags": [
+      "design",
+      "boundaries",
+      "around",
+      "probabilistic",
+      "decisions"
+    ],
+    "stages": [
+      "architecture"
+    ],
+    "applicability": {
+      "required": "A model's output influences business state, crosses system boundaries or must be maintained by a team.",
+      "optional": "Use a short evidence review for a small reversible experiment; deepen it as consequences and uncertainty grow.",
+      "unnecessary": "Do not implement every pattern here. Omit mechanisms that do not address an identified requirement, and record the rationale."
+    },
+    "prerequisites": [
+      "Named invariants and authoritative systems",
+      "A deployment and latency constraint"
+    ],
+    "sections": [
+      {
+        "title": "SOLID, separation of concerns, explicit contracts, domain boundaries, dependency inversion",
+        "body": [
+          "Keep business policy separate from model adapters, prompts, storage and transport. Domain code should depend on small interfaces that express business operations. Apply SOLID where it improves change isolation; do not create a class hierarchy for every prompt. A mock model should let you test policy without network calls."
+        ]
+      },
+      {
+        "title": "Typed inputs/outputs plus semantic validation; schema validity is not correctness",
+        "body": [
+          "A valid JSON object can still contain the wrong customer, amount or date. First validate structure and types, then check semantic constraints against authoritative data. Reject identifiers the caller cannot access, impossible values and inconsistent field combinations before any side effect. Return actionable validation errors without leaking other tenants' data."
+        ]
+      },
+      {
+        "title": "Business invariants, explicit state/transitions, authoritative systems, ownership",
+        "body": [
+          "Represent meaningful states explicitly: proposed, awaiting approval, executing, outcome unknown, verified, failed or cancelled. Define permitted transitions and the component authorized to make each transition. The business system owns the transaction outcome; a model's completion message is not an authoritative state update."
+        ]
+      },
+      {
+        "title": "Deterministic rules around probabilistic decisions; bounded autonomy",
+        "body": [
+          "Use models to propose interpretations or plans while deterministic code enforces authorization, budgets and invariants. Bound allowed tools, objects and action sizes. Escalate ambiguous cases to a person. This boundary remains necessary even when model quality improves, because fluent output does not prove intent or permission."
+        ]
+      },
+      {
+        "title": "Synchronous/API, queued, scheduled, event-driven, and long-running execution",
+        "body": [
+          "Choose an API response for work that fits the caller's deadline; return a job identifier for longer work. Queues absorb variation but create operational duties. Schedules suit periodic batches; events suit changes from other systems. Long approvals need persisted state rather than an open HTTP connection."
+        ]
+      },
+      {
+        "title": "Distributed-system fundamentals: consistency, concurrency, transaction boundaries",
+        "body": [
+          "Identify the transaction boundary before distributing work. A database commit and an external API call usually cannot be made atomic together. Plan for stale reads, simultaneous changes and partial failure. Use version checks or locks for invariants, and reconcile external outcomes rather than assuming a network response settles everything."
+        ]
+      },
+      {
+        "title": "Build only necessary abstraction; one step does not imply one agent",
+        "body": [
+          "Begin with one deployable service and explicit functions when that meets the need. Split a component when it needs a distinct scaling, security or ownership boundary. One processing step can be a function, not an agent. Keep abstractions tied to a demonstrated second use or concrete substitution requirement."
+        ]
+      },
+      {
+        "title": "Deployment boundaries, modularity, portability, maintainability, change isolation",
+        "body": [
+          "Put provider-specific request shapes behind adapters and keep persisted state in documented application formats. Test migration and export before lock-in becomes expensive. Separate deployment boundaries only where independent release or isolation pays for the extra operational burden. Document failure behavior at each boundary."
+        ]
+      },
+      {
+        "title": "Risk-proportionate design, uncertainty, architectural decision records",
+        "body": [
+          "Record a short architecture decision: context, alternatives, chosen trade-off, assumptions, evidence and revisit trigger. Match design effort to consequence and uncertainty. A reversible internal draft helper can tolerate a simpler operating model than an action-taking workflow that changes many customers' records."
+        ]
+      }
+    ],
+    "alternatives": [
+      {
+        "name": "Single service",
+        "benefits": "Simple ownership and debugging",
+        "costs": "Shared scaling unit",
+        "limitations": "May need separation as boundaries change"
+      },
+      {
+        "name": "Queued worker",
+        "benefits": "Handles longer tasks and bursts",
+        "costs": "Queue and recovery operations",
+        "limitations": "Acceptance is not completion"
+      },
+      {
+        "name": "Durable workflow",
+        "benefits": "Explicit state across interruptions",
+        "costs": "Replay and versioning constraints",
+        "limitations": "External effects still need reconciliation"
+      }
+    ],
+    "tradeoffs": [
+      "Single service: simple ownership and debugging; costs include shared scaling unit. May need separation as boundaries change.",
+      "Queued worker: handles longer tasks and bursts; costs include queue and recovery operations. Acceptance is not completion.",
+      "Durable workflow: explicit state across interruptions; costs include replay and versioning constraints. External effects still need reconciliation."
+    ],
+    "decisionCriteria": [
+      "Which component owns each invariant?",
+      "Where can partial failure occur?",
+      "How does a caller learn the final outcome?",
+      "Which changes must be independently deployable?"
+    ],
+    "examples": [
+      {
+        "title": "Hypothetical worked example",
+        "body": "In a hypothetical .NET service, a model returns a suggested account classification through an adapter. Domain code checks the account exists, the caller owns it and the transition is allowed. A queue worker commits the approved update with an operation ID, independent of the wording of the model's answer."
+      },
+      {
+        "title": "A concrete state contract",
+        "body": "Hypothetical notification state table: proposed -> awaiting approval only after target validation; awaiting approval -> ready only with an unexpired approval matching the action hash; ready -> dispatched after reserving an operation ID; dispatched -> verified only after provider status confirms the intended recipient; dispatched -> outcome unknown on timeout. Outcome unknown may move to verified, confirmed-not-sent or manual reconciliation. Cancellation stops new dispatch but does not erase an in-flight send. Record transitions with actor, timestamp and expected state version."
+      }
+    ],
+    "failureModes": [
+      {
+        "symptom": "Valid JSON produces an invalid business action",
+        "cause": "Structural validation was mistaken for domain correctness",
+        "diagnostic": "Inspect the entity, caller ownership, expected version and invariant checks",
+        "mitigation": "Reject the action and enforce semantic checks at the domain boundary"
+      }
+    ],
+    "verification": [
+      "Record evidence for: Which component owns each invariant?",
+      "Record evidence for: Where can partial failure occur?",
+      "Record evidence for: How does a caller learn the final outcome?",
+      "Record evidence for: Which changes must be independently deployable?",
+      "Exercise the failure case: valid json produces an invalid business action. Preserve the observed outcome and unresolved limitations."
+    ],
+    "owner": "Engineering owner",
+    "reconsiderWhen": [
+      "New side effects, scale or deployment boundaries"
+    ],
+    "relatedGuideIds": [
+      "workflow-patterns",
+      "durable-execution",
+      "harness-engineering"
+    ],
+    "sourceIds": [
+      "azure-patterns"
+    ],
+    "reviewedAt": "2026-09-15",
+    "contentVersion": "2026.09.15.1"
+  },
+  {
+    "id": "workflow-patterns",
+    "categoryId": "C03",
+    "title": "Choose a workflow and delegation pattern",
+    "summary": "Match coordination to dependencies. Make ownership, stopping and result verification explicit before adding agents.",
+    "tags": [
+      "choose",
+      "workflow",
+      "delegation",
+      "pattern"
+    ],
+    "stages": [
+      "architecture"
+    ],
+    "applicability": {
+      "required": "The task has multiple dependent steps, workers, handoffs or a variable execution path.",
+      "optional": "Use a short evidence review for a small reversible experiment; deepen it as consequences and uncertainty grow.",
+      "unnecessary": "Multi-agent coordination is unnecessary when one function, workflow or restricted agent meets the acceptance criteria."
+    },
+    "prerequisites": [
+      "Task dependency map",
+      "A shared budget and result contract"
+    ],
+    "sections": [
+      {
+        "title": "Sequential pipelines/prompt chaining, routing, fan-out/fan-in, aggregation",
+        "body": [
+          "Use a sequence when each result is an input to the next step; validate between steps to avoid amplifying errors. Route to specialized processing when categories are distinguishable. Fan out independent subtasks and define how fan-in handles missing or late results. Aggregation must preserve disagreements that matter."
+        ]
+      },
+      {
+        "title": "Orchestrator–workers, handoffs, plan/execute, evaluator–optimizer",
+        "body": [
+          "An orchestrator can discover subtasks dynamically, but each worker still needs a bounded contract. A handoff changes responsibility; a plan/execute split separates proposing steps from carrying them out. An evaluator–optimizer loop is useful only with an actionable rubric, a maximum effort and a stopping condition."
+        ]
+      },
+      {
+        "title": "Human interrupt/resume, durable state machines, saga/compensating actions",
+        "body": [
+          "Persist an approval request and release the worker while a person decides. On resume, reload current business state before executing. Model multistep business operations as states with explicit recovery; compensating actions are new business actions with their own failure modes, not a magical transaction rollback."
+        ]
+      },
+      {
+        "title": "Single-agent/multitool versus multi-agent; dependencies and parallelizability",
+        "body": [
+          "Try one agent with a restricted tool set before distributing responsibility. Separate agents when tasks are independently checkable, contexts differ substantially, or policy boundaries require isolation. Parallel execution helps only where inputs are available and shared writes do not create races. Measure total work as well as elapsed time."
+        ]
+      },
+      {
+        "title": "Task boundaries, ownership, delegation contracts, outputs, tools and context",
+        "body": [
+          "Give every delegated task an objective, permitted inputs and tools, output schema, evidence requirement, deadline and owner. State what is out of scope. Return artifact references with version or hash when outputs are large. The parent verifies the result against its contract before including it in the final answer."
+        ]
+      },
+      {
+        "title": "Conflicting results, correlated model errors, shared-state races",
+        "body": [
+          "Two agents agreeing can share the same mistaken source or model bias. Compare evidence and resolve conflicts explicitly; voting is not an independent truth test. For shared writes, partition ownership or use concurrency controls. Never let the final synthesizer silently overwrite a material unresolved disagreement."
+        ]
+      },
+      {
+        "title": "Parent/child lifecycle, shared resource budgets, depth/width limits",
+        "body": [
+          "Allocate the entire task a common time, call and cost budget, then reserve portions for children. Enforce maximum concurrent children and delegation depth in code. Track each child's parent, status and resources. Parent failure must not leave orphaned workers acting indefinitely."
+        ]
+      },
+      {
+        "title": "Repeated handoff, stalled convergence, cancellation propagation, stopping",
+        "body": [
+          "Detect repeated tasks and handoffs with stable task IDs and an explicit progress measure. Stop or escalate when attempts consume budget without producing new evidence. Cancellation must reach queued and running descendants. A child's 'blocked' result should name the missing input so the parent can change the plan."
+        ]
+      },
+      {
+        "title": "Asynchronous versus synchronous coordination trade-offs",
+        "body": [
+          "Synchronous coordination is easier to follow but waits for slow workers. Asynchronous messages improve responsiveness while introducing ordering, stale results and cancellation races. Choose based on dependency structure and operational capacity. Tag results with the task version so an old answer cannot satisfy a revised request."
+        ]
+      },
+      {
+        "title": "Pattern examples and failure modes; avoid multi-agent complexity without evidence",
+        "body": [
+          "In a hypothetical document comparison, independent workers inspect separate documents and return quoted evidence locations; a deterministic merger flags conflicts. In a shared editing task, concurrent workers can corrupt assumptions about the same file. Anthropic's research case reported overdelegation and duplicated work; treat that as a scoped lesson, not a universal performance ratio."
+        ]
+      }
+    ],
+    "alternatives": [
+      {
+        "name": "Sequential pipeline",
+        "benefits": "Clear dependencies and checkpoints",
+        "costs": "Serial latency",
+        "limitations": "Bad early outputs can cascade"
+      },
+      {
+        "name": "Fan-out / fan-in",
+        "benefits": "Concurrent independent work",
+        "costs": "Aggregation and partial failures",
+        "limitations": "Shared writes need coordination"
+      },
+      {
+        "name": "Orchestrator–workers",
+        "benefits": "Discovers subtasks dynamically",
+        "costs": "Delegation overhead",
+        "limitations": "Needs bounded ownership and budgets"
+      },
+      {
+        "name": "Evaluator–optimizer",
+        "benefits": "Targeted refinement",
+        "costs": "More calls and judge errors",
+        "limitations": "Requires measurable stopping criteria"
+      }
+    ],
+    "tradeoffs": [
+      "Sequential pipeline: clear dependencies and checkpoints; costs include serial latency. Bad early outputs can cascade.",
+      "Fan-out / fan-in: concurrent independent work; costs include aggregation and partial failures. Shared writes need coordination.",
+      "Orchestrator–workers: discovers subtasks dynamically; costs include delegation overhead. Needs bounded ownership and budgets.",
+      "Evaluator–optimizer: targeted refinement; costs include more calls and judge errors. Requires measurable stopping criteria."
+    ],
+    "decisionCriteria": [
+      "Are subtasks truly independent?",
+      "What happens when a child is late?",
+      "How are conflicting results handled?",
+      "What stops the loop?"
+    ],
+    "examples": [
+      {
+        "title": "Hypothetical worked example",
+        "body": "A hypothetical release review has independent security and operations evidence gathering, followed by one release decision. Gather those inputs in parallel, but do not parallelize two agents changing the same deployment configuration. Preserve unresolved disagreement for the release owner."
+      },
+      {
+        "title": "Choose a pattern for each dependency",
+        "body": "Hypothetical report pipeline: parse -> extract -> validate is sequential because each step consumes the previous output. Inspect three independent source documents in fan-out workers, then fan-in with an explicit missing-result policy. Route known document types by validated metadata. Use an orchestrator only if the needed subtasks are not known until evidence arrives. An evaluator may request one correction with a concrete failed criterion; after the effort budget, preserve the unresolved issue rather than looping. A person approves the final recipient list before delivery."
+      }
+    ],
+    "failureModes": [
+      {
+        "symptom": "Agent stalls, repeats or delegates endlessly",
+        "cause": "Tasks lack ownership, measurable progress or a shared stopping budget",
+        "diagnostic": "Inspect repeated task IDs, unchanged artifacts and parent/child resource use",
+        "mitigation": "Cancel further delegation, preserve partial evidence and re-scope one bounded task"
+      }
+    ],
+    "verification": [
+      "Record evidence for: Are subtasks truly independent?",
+      "Record evidence for: What happens when a child is late?",
+      "Record evidence for: How are conflicting results handled?",
+      "Record evidence for: What stops the loop?",
+      "Exercise the failure case: agent stalls, repeats or delegates endlessly. Preserve the observed outcome and unresolved limitations."
+    ],
+    "owner": "Workflow owner",
+    "reconsiderWhen": [
+      "Repeated handoffs, conflicts or rising coordination cost"
+    ],
+    "relatedGuideIds": [
+      "harness-engineering",
+      "cost-capacity",
+      "durable-execution"
+    ],
+    "sourceIds": [
+      "agents",
+      "multi-agent",
+      "azure-patterns"
+    ],
+    "reviewedAt": "2026-09-15",
+    "contentVersion": "2026.09.15.1"
+  },
+  {
+    "id": "framework-selection",
+    "categoryId": "C04",
+    "title": "Select a framework without guessing",
+    "summary": "Choose a layer first, enforce mandatory requirements, then compare representative proofs of concept.",
+    "tags": [
+      "select",
+      "framework",
+      "without",
+      "guessing"
+    ],
+    "stages": [
+      "architecture"
+    ],
+    "applicability": {
+      "required": "You are adopting or replacing a runtime, integration platform, model or provider.",
+      "optional": "Use a short evidence review for a small reversible experiment; deepen it as consequences and uncertainty grow.",
+      "unnecessary": "Do not implement every pattern here. Omit mechanisms that do not address an identified requirement, and record the rationale."
+    },
+    "prerequisites": [
+      "Mandatory requirements",
+      "A common proof-of-concept task and failure tests"
+    ],
+    "sections": [
+      {
+        "title": "Discover current ecosystem rather than restrict to names from this discussion",
+        "body": [
+          "Start with required behavior and search maintained official documentation, repositories and release notes across layers. Record the date and the exact product identity. Marketing names can describe an SDK, hosted service or unrelated tool. The comparison catalogue is a research snapshot; repeat checks before committing a production architecture."
+        ]
+      },
+      {
+        "title": "Compare conventional workflow engines, event platforms, agent runtimes, managed cloud platforms, low-code tools, and thin custom implementations",
+        "body": [
+          "Conventional workflow engines primarily manage state and recovery; event platforms move events; agent runtimes manage model/tool loops. Managed platforms supply operations with provider constraints, low-code tools favor visual integration, and thin custom implementations favor direct control. These layers may be composed instead of treated as substitutes."
+        ]
+      },
+      {
+        "title": "Candidates to investigate, not predetermined winners: LangGraph/LangChain, Microsoft Agent Framework, CrewAI, Google ADK, PydanticAI, AutoGen where current, Semantic Kernel where current, LlamaIndex, Haystack, Agno, Strands, provider SDKs, Temporal, Azure Durable Functions, Dapr Workflow, n8n, and other relevant maintained options",
+        "body": [
+          "The catalogue investigates the named libraries as candidates rather than winners. Reduce the shortlist using language, deployment and mandatory behavior, then implement the same small task in two or three plausible options. Check persistence, approval resumption and side-effect recovery in runnable experiments rather than counting advertised features."
+        ]
+      },
+      {
+        "title": "Hindsight, Flue, Paperclip and similar products may occupy complementary layers; verify exact current scope and maturity",
+        "body": [
+          "Memory products such as Hindsight, orchestration products such as Flue and organizational control products such as Paperclip may solve different problems. Verify the exact repository and scope first. A memory service does not automatically replace a durable workflow engine, and a management interface does not establish execution guarantees."
+        ]
+      },
+      {
+        "title": "Treat names as research leads; verify current status, successor/deprecation, version, license, features and production limitations",
+        "body": [
+          "Capture a tested package version, license file, release activity and documented limitations for each shortlisted dependency. A documentation review is not a production qualification. Record successor or migration notices explicitly; do not infer support from a familiar name. Unchecked capabilities remain unverified and require an owner."
+        ]
+      },
+      {
+        "title": "Distinguish model, provider/router, SDK, harness, orchestrator, memory layer, retrieval system, and developer coding subscription",
+        "body": [
+          "A model generates outputs; a provider serves models; a router chooses providers; an SDK wraps APIs; a harness runs a loop; an orchestrator coordinates work; retrieval locates evidence; memory persists selected information. A developer subscription is a purchasing arrangement, not necessarily authorization or capacity for a production API."
+        ]
+      },
+      {
+        "title": "Hard requirements: persistence, approvals, failure semantics, security, deployment, stack fit, operations, budget",
+        "body": [
+          "Write pass/fail requirements before weighted preferences: supported deployment, identity controls, durable resumption, exact-action approval, recovery semantics, operational visibility and hard limits. A high convenience score cannot compensate for a failed mandatory requirement. Unknown evidence should block qualification until verified, not be scored as a proven failure."
+        ]
+      },
+      {
+        "title": "Team skills, maintainability, build/buy, managed/self-hosted, licensing, costs, lock-in, export and migration",
+        "body": [
+          "Include the team's existing language and on-call skills, licensing obligations, managed service commitments, data export and exit cost. Buying reduces some maintenance but does not outsource business accountability. Self-hosting adds patching, recovery and capacity duties. Test moving one representative state artifact out of the chosen platform."
+        ]
+      },
+      {
+        "title": "Comparable POCs using common tasks, failure tests, budgets, and documented weights",
+        "body": [
+          "Run comparable proofs of concept with identical task data, tool contracts, budgets and graders. Include a killed worker, delayed response, duplicated event and expired approval. Publish raw outcomes and weights. Repeat variable model cases; small score differences without uncertainty estimates should not decide an expensive migration."
+        ]
+      },
+      {
+        "title": "Model task quality, tool calling, structured outputs, latency, language/document needs, context and privacy",
+        "body": [
+          "Evaluate models on your task's required languages, document formats, tool argument correctness, structured output and escalation behavior. Measure tail latency and cost per verified outcome. A larger context limit is not evidence of better use of all content. Public benchmarks are screening clues, not task acceptance tests."
+        ]
+      },
+      {
+        "title": "Routing, fallback equivalence, provider outages, model retirement, version pinning where possible",
+        "body": [
+          "Test fallback on the same safety and output requirements as the primary model. A provider outage may change capability, data handling or latency when routed elsewhere. Define when to stop instead of falling back. Pin versions where supported, track retirement announcements and keep a regression suite ready for replacement."
+        ]
+      },
+      {
+        "title": "Prompting versus retrieval versus fine-tuning; choose the intervention matching the failure",
+        "body": [
+          "Improve instructions when the task is unclear, retrieval when evidence is missing or stale, and consider fine-tuning when stable behavior needs many consistent examples. None fixes an unauthorized tool or incorrect source data. Diagnose the failure before purchasing a more elaborate intervention."
+        ]
+      },
+      {
+        "title": "Record assumptions and revisit criteria; never rank models solely on public benchmarks",
+        "body": [
+          "Write why the selected option fits today, which capabilities were actually exercised, and what would reverse the decision. Revisit when task mix, provider terms, operating costs, team capacity or support status changes. Prefer explicit uncertainty to a permanent league table that hides different use cases."
+        ]
+      }
+    ],
+    "alternatives": [
+      {
+        "name": "Thin custom implementation",
+        "benefits": "Direct behavior and few abstractions",
+        "costs": "You own runtime features",
+        "limitations": "Can grow into accidental framework"
+      },
+      {
+        "name": "Agent runtime",
+        "benefits": "Reusable model and tool execution",
+        "costs": "Framework conventions",
+        "limitations": "May not supply durable business effects"
+      },
+      {
+        "name": "Workflow engine",
+        "benefits": "State and recovery semantics",
+        "costs": "Operational and replay model",
+        "limitations": "Does not establish model quality"
+      },
+      {
+        "name": "Managed platform",
+        "benefits": "Reduces some hosting work",
+        "costs": "Provider terms and lock-in",
+        "limitations": "Check export and deployment constraints"
+      }
+    ],
+    "tradeoffs": [
+      "Thin custom implementation: direct behavior and few abstractions; costs include you own runtime features. Can grow into accidental framework.",
+      "Agent runtime: reusable model and tool execution; costs include framework conventions. May not supply durable business effects.",
+      "Workflow engine: state and recovery semantics; costs include operational and replay model. Does not establish model quality.",
+      "Managed platform: reduces some hosting work; costs include provider terms and lock-in. Check export and deployment constraints."
+    ],
+    "decisionCriteria": [
+      "Which layer is actually missing?",
+      "Which requirements are mandatory?",
+      "Which claims have executable evidence?",
+      "What is the exit plan?"
+    ],
+    "examples": [
+      {
+        "title": "Hypothetical worked example",
+        "body": "For a hypothetical approval workflow that must survive a two-day wait, compare a durable engine with an agent runtime plus persistence. Kill the worker after a simulated write, restart it and inspect the business state. A polished chat demo does not answer this requirement."
+      },
+      {
+        "title": "Hard gates before preferences",
+        "body": "Hypothetical selection sheet: durable resume after worker loss=required; approvals bound to exact parameters=required; chosen deployment/language=required; tenant isolation=required; exportable state=required. For each option record pass, fail or unverified with a dated artifact. One failed requirement excludes the option for this scope; one unverified requirement prevents qualification. Only then compare preferences such as team familiarity, implementation effort and operating cost with explicit weights. Repeat the same failure scenario in every candidate. Model/provider sheet: task quality, required tool/schema behavior, data handling, latency, quotas and fallback equivalence each need separate evidence."
+      }
+    ],
+    "failureModes": [
+      {
+        "symptom": "A chosen framework cannot resume an approval safely",
+        "cause": "Selection relied on feature names instead of failure tests",
+        "diagnostic": "Run the same suspended and killed-worker scenario against the shortlisted options",
+        "mitigation": "Keep actions manual until state and recovery semantics are verified"
+      }
+    ],
+    "verification": [
+      "Record evidence for: Which layer is actually missing?",
+      "Record evidence for: Which requirements are mandatory?",
+      "Record evidence for: Which claims have executable evidence?",
+      "Record evidence for: What is the exit plan?",
+      "Exercise the failure case: a chosen framework cannot resume an approval safely. Preserve the observed outcome and unresolved limitations."
+    ],
+    "owner": "Architecture owner",
+    "reconsiderWhen": [
+      "Support, license, provider behavior or team capacity changes"
+    ],
+    "relatedGuideIds": [
+      "architecture",
+      "workflow-patterns",
+      "evaluations"
+    ],
+    "sourceIds": [
+      "agents"
+    ],
+    "reviewedAt": "2026-09-15",
+    "contentVersion": "2026.09.15.1"
+  },
+  {
+    "id": "context-engineering",
+    "categoryId": "C05",
+    "title": "Keep the right context through long tasks",
+    "summary": "Distinguish missing storage, missing retrieval and ignored evidence. Preserve goals and pending actions across compaction.",
+    "tags": [
+      "keep",
+      "right",
+      "context",
+      "through",
+      "long",
+      "tasks"
+    ],
+    "stages": [
+      "implementation",
+      "pre-release"
+    ],
+    "applicability": {
+      "required": "A task uses long histories, retrieved evidence, multiple tools or compaction.",
+      "optional": "Use a short evidence review for a small reversible experiment; deepen it as consequences and uncertainty grow.",
+      "unnecessary": "Do not implement every pattern here. Omit mechanisms that do not address an identified requirement, and record the rationale."
+    },
+    "prerequisites": [
+      "An input budget and representative long traces",
+      "A structured execution-state contract"
+    ],
+    "sections": [
+      {
+        "title": "Clear instructions, examples, instruction hierarchy, structured outputs and grounding",
+        "body": [
+          "Write the task, allowed scope, output contract and abstention behavior in clear language. Include a few varied examples with expected reasoning evidence, including an example that should escalate. Treat system instructions, user requests and retrieved documents as different trust levels; labeling untrusted text helps but cannot itself enforce policy."
+        ]
+      },
+      {
+        "title": "Context assembly: task, instructions, tools, history, state, retrieved evidence",
+        "body": [
+          "Assemble context deliberately for each call: the active goal, constraints, permitted tools, relevant history, current execution state and supporting evidence. Keep authoritative values outside free-form conversation and refresh them when needed. Log which evidence identifiers were included so a wrong answer can be traced to its inputs."
+        ]
+      },
+      {
+        "title": "Token allocation, output/tool-result headroom, just-in-time retrieval",
+        "body": [
+          "Budget for instructions, tool schemas, task data, history and retrieved excerpts, then reserve room for tool results and the final output. A maximum input budget should leave headroom for the next step. Measure real token use and truncation; a byte count or estimated word count is not exact token accounting."
+        ]
+      },
+      {
+        "title": "Sliding window, summarization, compaction, tool-result clearing, external artifacts",
+        "body": [
+          "A sliding window is simple but can remove old constraints. Summaries reduce volume but may distort facts. Clearing bulky tool results works if stable artifacts retain necessary evidence. External references save context at the cost of retrieval latency. Choose by what the next step needs, not by maximizing filled context."
+        ]
+      },
+      {
+        "title": "Test preservation of goals, constraints, pending actions and evidence after compaction",
+        "body": [
+          "Test compaction with cases whose critical constraint appears early and whose pending action is easy to repeat. After compaction, ask for the current goal, authorization, unresolved evidence, completed work and next action. Compare with the pre-compaction record. Preserve exact IDs and external side-effect status in structured state."
+        ]
+      },
+      {
+        "title": "Context isolation between projects, tenants, agents and trust levels",
+        "body": [
+          "Partition context by tenant, project, task and trust boundary. Child agents receive only the inputs they need; shared caches must include authorization scope in their keys. A prompt saying 'do not reveal other users' is not isolation. Test requests with similar document titles across different tenants."
+        ]
+      },
+      {
+        "title": "Distinguish storage loss, retrieval omission, attention failure and stale knowledge",
+        "body": [
+          "First ask whether the information was saved at all. Then check whether retrieval selected it, whether it reached the prompt, and whether the model used it correctly. A stale answer can arise from old source data even when retrieval succeeds. Each failure needs a different fix; increasing context blindly obscures the cause."
+        ]
+      }
+    ],
+    "alternatives": [
+      {
+        "name": "Sliding window",
+        "benefits": "Simple and predictable size",
+        "costs": "Loses early information",
+        "limitations": "Unsafe without durable constraints"
+      },
+      {
+        "name": "Summarization",
+        "benefits": "Condenses history",
+        "costs": "Can distort or omit facts",
+        "limitations": "Needs preservation tests"
+      },
+      {
+        "name": "Artifact references",
+        "benefits": "Keeps exact evidence externally",
+        "costs": "Extra retrieval work",
+        "limitations": "References need availability and authorization"
+      }
+    ],
+    "tradeoffs": [
+      "Sliding window: simple and predictable size; costs include loses early information. Unsafe without durable constraints.",
+      "Summarization: condenses history; costs include can distort or omit facts. Needs preservation tests.",
+      "Artifact references: keeps exact evidence externally; costs include extra retrieval work. References need availability and authorization."
+    ],
+    "decisionCriteria": [
+      "What must remain exact?",
+      "How much tool-result headroom is reserved?",
+      "Can the next call recover pending actions?",
+      "Which evidence actually reached the prompt?"
+    ],
+    "examples": [
+      {
+        "title": "Hypothetical worked example",
+        "body": "A hypothetical research task has already completed three searches when the context is compacted. Keep completed search IDs, unresolved questions and source references in structured state. Test that the resumed worker does not spend its remaining budget repeating the same searches."
+      }
+    ],
+    "failureModes": [
+      {
+        "symptom": "The agent forgets constraints after compaction",
+        "cause": "The summary omitted exact state or early requirements",
+        "diagnostic": "Compare pre/post compaction goal, IDs, approvals and pending actions",
+        "mitigation": "Reload authoritative state and preserve exact constraints outside summaries"
+      }
+    ],
+    "verification": [
+      "Record evidence for: What must remain exact?",
+      "Record evidence for: How much tool-result headroom is reserved?",
+      "Record evidence for: Can the next call recover pending actions?",
+      "Record evidence for: Which evidence actually reached the prompt?",
+      "Exercise the failure case: the agent forgets constraints after compaction. Preserve the observed outcome and unresolved limitations."
+    ],
+    "owner": "Agent runtime owner",
+    "reconsiderWhen": [
+      "Context pressure, repeated work or constraint loss"
+    ],
+    "relatedGuideIds": [
+      "retrieval",
+      "memory",
+      "harness-engineering"
+    ],
+    "sourceIds": [
+      "context",
+      "harnesses"
+    ],
+    "reviewedAt": "2026-09-15",
+    "contentVersion": "2026.09.15.1"
+  },
+  {
+    "id": "retrieval",
+    "categoryId": "C05",
+    "title": "Retrieve evidence that is relevant, current and allowed",
+    "summary": "Choose direct data access or retrieval by the question, then test ingestion, access filtering and answer support separately.",
+    "tags": [
+      "retrieve",
+      "evidence",
+      "that",
+      "relevant",
+      "current",
+      "allowed"
+    ],
+    "stages": [
+      "implementation",
+      "pre-release"
+    ],
+    "applicability": {
+      "required": "The answer depends on locating evidence outside the current input.",
+      "optional": "Use a short evidence review for a small reversible experiment; deepen it as consequences and uncertainty grow.",
+      "unnecessary": "A retrieval pipeline is unnecessary when a direct authorized lookup or the supplied input already answers the question."
+    },
+    "prerequisites": [
+      "Authorized corpus and source ownership",
+      "Representative questions with known evidence"
+    ],
+    "sections": [
+      {
+        "title": "RAG versus direct API/SQL access; RAG versus long context; when neither is required",
+        "body": [
+          "Use authoritative API or SQL access for current structured facts with exact identifiers. Use retrieval for relevant passages across a corpus. Long context can simplify small bounded collections but still needs access control and freshness. If the answer is a deterministic field lookup, neither a vector index nor a model is necessary."
+        ]
+      },
+      {
+        "title": "Ingestion, parsing/OCR, tables, chunking, embeddings, metadata, indexes",
+        "body": [
+          "Inspect extraction before tuning embeddings. Preserve table headers, page locations, units and document structure through parsing and OCR. Chunk at meaningful boundaries and store source version, access scope and lineage as metadata. Test scans, tables, multilingual content and empty extraction instead of only clean text files."
+        ]
+      },
+      {
+        "title": "Keyword/vector/hybrid retrieval, reranking, query transformation and access filtering",
+        "body": [
+          "Keyword search preserves exact identifiers; vector search finds semantic similarity; hybrid search combines signals. Reranking adds a second relevance pass with latency and cost. Query rewriting can change intent. Apply access filtering before unauthorized content reaches the model, and test both relevant-item recall and cross-tenant exclusion."
+        ]
+      },
+      {
+        "title": "Recall/relevance, groundedness, completeness, citation support, conflicting sources",
+        "body": [
+          "Evaluate retrieval and generation separately: did the necessary passages arrive, and did the answer accurately use them? Relevance is not completeness. Check each material claim's citation supports it and flag conflicting sources. Microsoft documents distinct retrieval and answer evaluators; a single groundedness measure cannot prove the entire task is correct."
+        ]
+      },
+      {
+        "title": "Document updates, deletions, freshness, lineage, authoritative source selection",
+        "body": [
+          "Maintain a mapping from source versions to derived chunks and indexes. Updates should replace superseded records; deletions must propagate to replicas and caches under an explicit policy. Prefer the authoritative current source when documents disagree. A recent ingestion timestamp does not prove the underlying document is current."
+        ]
+      }
+    ],
+    "alternatives": [
+      {
+        "name": "Direct API / SQL",
+        "benefits": "Current structured facts and precise filters",
+        "costs": "Integration and query validation",
+        "limitations": "Not suited to broad unstructured discovery"
+      },
+      {
+        "name": "Hybrid retrieval",
+        "benefits": "Combines exact and semantic matching",
+        "costs": "Index and reranking operations",
+        "limitations": "Recall and permissions need testing"
+      },
+      {
+        "name": "Long context",
+        "benefits": "Simple for a bounded collection",
+        "costs": "Latency and attention cost",
+        "limitations": "Not an access-control or freshness solution"
+      }
+    ],
+    "tradeoffs": [
+      "Direct API / SQL: current structured facts and precise filters; costs include integration and query validation. Not suited to broad unstructured discovery.",
+      "Hybrid retrieval: combines exact and semantic matching; costs include index and reranking operations. Recall and permissions need testing.",
+      "Long context: simple for a bounded collection; costs include latency and attention cost. Not an access-control or freshness solution."
+    ],
+    "decisionCriteria": [
+      "Is the data structured and authoritative?",
+      "Was extraction correct?",
+      "Did the required passage reach the model?",
+      "Does each citation support its claim?"
+    ],
+    "examples": [
+      {
+        "title": "Hypothetical worked example",
+        "body": "A hypothetical shipment-status question should use the current order API. A question about the exceptions in a set of manuals may use document retrieval. Test a scanned table where a number is correct but its unit is dropped; a fluent answer can still be wrong."
+      },
+      {
+        "title": "A small retrieval acceptance set",
+        "body": "Hypothetical fixtures: Q1 asks a current order status and must use the order API; Q2 asks a policy exception and needs page 4 of policy v2; Q3 asks for a deleted document and must not retrieve its old chunks; Q4 uses a similar title in another tenant and must return no unauthorized passage; Q5 asks a table value whose unit crosses a page break. For each, record extracted text, expected evidence IDs, retrieved evidence IDs, authorization result and answer citations. Fix extraction before reranking if Q5 lost its unit."
+      }
+    ],
+    "failureModes": [
+      {
+        "symptom": "The answer is plausible but incomplete",
+        "cause": "Extraction or retrieval omitted necessary evidence",
+        "diagnostic": "Inspect parsed source, selected chunks and claim-to-citation support",
+        "mitigation": "Repair the earliest failing stage and re-evaluate final answers"
+      }
+    ],
+    "verification": [
+      "Record evidence for: Is the data structured and authoritative?",
+      "Record evidence for: Was extraction correct?",
+      "Record evidence for: Did the required passage reach the model?",
+      "Record evidence for: Does each citation support its claim?",
+      "Exercise the failure case: the answer is plausible but incomplete. Preserve the observed outcome and unresolved limitations."
+    ],
+    "owner": "Data and retrieval owner",
+    "reconsiderWhen": [
+      "Source changes, missing citations or retrieval drift"
+    ],
+    "relatedGuideIds": [
+      "memory",
+      "evaluations",
+      "security"
+    ],
+    "sourceIds": [
+      "rag-evals"
+    ],
+    "reviewedAt": "2026-09-15",
+    "contentVersion": "2026.09.15.1"
+  },
+  {
+    "id": "memory",
+    "categoryId": "C05",
+    "title": "Memory versus RAG: decide what should persist",
+    "summary": "Separate execution state, conversation, reusable memory and business facts. Give remembered information a correction and deletion path.",
+    "tags": [
+      "memory",
+      "versus",
+      "decide",
+      "what",
+      "should",
+      "persist",
+      "memory versus RAG",
+      "stale memory"
+    ],
+    "stages": [
+      "implementation",
+      "pre-release"
+    ],
+    "applicability": {
+      "required": "Information must be remembered across tasks or sessions for a defined purpose.",
+      "optional": "Use a short evidence review for a small reversible experiment; deepen it as consequences and uncertainty grow.",
+      "unnecessary": "Long-term memory is unnecessary when each task can be completed from its current inputs. Execution state may still be needed."
+    },
+    "prerequisites": [
+      "A purpose for retention",
+      "Identity namespaces and a write policy"
+    ],
+    "sections": [
+      {
+        "title": "Execution state versus conversation versus long-term memory versus business database",
+        "body": [
+          "Execution state tracks what happened in a workflow; conversation stores interaction history; long-term memory stores selected reusable context; the business database owns business facts. Keep these roles explicit. Do not reconstruct whether a payment occurred from a conversation summary when a transaction ledger exists."
+        ]
+      },
+      {
+        "title": "Semantic facts/preferences, episodic examples, procedural guidance",
+        "body": [
+          "Semantic memory represents facts or preferences, episodic memory records prior examples, and procedural memory describes how to do something. Choose the type based on the future query. Keep a preference separate from an instruction granting authority. A past successful action is evidence of history, not permission to repeat it."
+        ]
+      },
+      {
+        "title": "Explicit/inferred memory writes, synchronous/background writes, approval of sensitive changes",
+        "body": [
+          "Require an explicit write policy: which facts can be inferred, who can correct them and which sensitive changes require approval. Synchronous writes offer immediate availability; background writes reduce request latency but may lag or fail. Record provenance and make user-visible corrections possible rather than silently treating an inference as fact."
+        ]
+      },
+      {
+        "title": "Namespaces, provenance, confidence limitations, deduplication, contradictions",
+        "body": [
+          "Namespace memories by the identity and purpose that may use them. Store where a claim came from, when it was observed and what supersedes it. A confidence number is not calibrated truth unless measured. Deduplicate cautiously: two similar statements may concern different entities or different dates."
+        ]
+      },
+      {
+        "title": "TTL, correction, deletion propagation, retention, poisoning, stale assumptions",
+        "body": [
+          "Set retention and expiry according to purpose. Corrections should supersede wrong records and invalidate derived summaries; deletions need a propagation policy. Test poisoned writes from untrusted documents and stale assumptions after a user changes preferences. Critical policy and permissions must be read from their authoritative control system."
+        ]
+      },
+      {
+        "title": "Relational/key-value/vector/graph storage choices, driven by access patterns",
+        "body": [
+          "Use relational storage for constraints and joins, key-value storage for exact lookup, vectors for semantic similarity and graphs for relationship traversal. Combining stores can help but adds consistency work. Start from access patterns and deletion requirements; do not choose a vector database merely because the product uses AI."
+        ]
+      },
+      {
+        "title": "Memory is not automatic learning or truth; critical permissions are not conversational memories",
+        "body": [
+          "Memory changes future context, not the model's learned weights, and can preserve mistakes as easily as useful facts. Validate important recalled information against authoritative data. Memory is optional for stateless tasks; durable execution state is a separate need. Never store a reusable authorization decision as a conversational preference."
+        ]
+      }
+    ],
+    "alternatives": [
+      {
+        "name": "No long-term memory",
+        "benefits": "Simplest retention and isolation",
+        "costs": "Repeated setup by users",
+        "limitations": "Does not provide personalization"
+      },
+      {
+        "name": "Structured key-value facts",
+        "benefits": "Exact retrieval and updates",
+        "costs": "Requires explicit schema",
+        "limitations": "Poor for fuzzy discovery"
+      },
+      {
+        "name": "Vector memory",
+        "benefits": "Semantic lookup",
+        "costs": "Relevance and deletion complexity",
+        "limitations": "Similarity is not truth"
+      },
+      {
+        "name": "Graph memory",
+        "benefits": "Relationship queries",
+        "costs": "Schema and consistency work",
+        "limitations": "Unnecessary without relationship needs"
+      }
+    ],
+    "tradeoffs": [
+      "No long-term memory: simplest retention and isolation; costs include repeated setup by users. Does not provide personalization.",
+      "Structured key-value facts: exact retrieval and updates; costs include requires explicit schema. Poor for fuzzy discovery.",
+      "Vector memory: semantic lookup; costs include relevance and deletion complexity. Similarity is not truth.",
+      "Graph memory: relationship queries; costs include schema and consistency work. Unnecessary without relationship needs."
+    ],
+    "decisionCriteria": [
+      "Is this state, evidence or preference?",
+      "Who may write and correct it?",
+      "When does it expire?",
+      "How do deletions reach derived stores?"
+    ],
+    "examples": [
+      {
+        "title": "Hypothetical worked example",
+        "body": "A hypothetical assistant remembers a preferred report format. That preference can shape a draft, but cannot authorize sending it. Store the preference with provenance and correction controls; load current send permissions from the access-control system."
+      },
+      {
+        "title": "A correction record",
+        "body": "Hypothetical preference: project=A, user=U, key=report_format, value=PDF, provenance=explicit user request, observedAt=t1. At t2 the user requests HTML. Store the correction as superseding the old value, invalidate derived summaries/caches and verify the next retrieval returns HTML under the same namespace. A similar preference in project B is untouched. Retention/deletion policy must describe when both the current and superseded records disappear. This preference cannot grant permission to send a report."
+      }
+    ],
+    "failureModes": [
+      {
+        "symptom": "An old preference overrides a correction",
+        "cause": "Derived memory or caches were not invalidated",
+        "diagnostic": "Trace provenance, supersession and retrieval namespace for the recalled value",
+        "mitigation": "Correct the source record and propagate invalidation; verify future retrieval"
+      }
+    ],
+    "verification": [
+      "Record evidence for: Is this state, evidence or preference?",
+      "Record evidence for: Who may write and correct it?",
+      "Record evidence for: When does it expire?",
+      "Record evidence for: How do deletions reach derived stores?",
+      "Exercise the failure case: an old preference overrides a correction. Preserve the observed outcome and unresolved limitations."
+    ],
+    "owner": "Data owner",
+    "reconsiderWhen": [
+      "Preference correction, retention changes or poisoned memory"
+    ],
+    "relatedGuideIds": [
+      "context-engineering",
+      "retrieval",
+      "security"
+    ],
+    "sourceIds": [
+      "memory"
+    ],
+    "reviewedAt": "2026-09-15",
+    "contentVersion": "2026.09.15.1"
+  },
+  {
+    "id": "tool-design",
+    "categoryId": "C06",
+    "title": "Design tools that are safe to choose and verify",
+    "summary": "Make tool intent clear, validate business arguments and report externally verified outcomes.",
+    "tags": [
+      "design",
+      "tools",
+      "that",
+      "safe",
+      "choose",
+      "verify"
+    ],
+    "stages": [
+      "implementation",
+      "pre-release"
+    ],
+    "applicability": {
+      "required": "A model selects or supplies arguments to an API, database, browser or code tool.",
+      "optional": "Use a short evidence review for a small reversible experiment; deepen it as consequences and uncertainty grow.",
+      "unnecessary": "Do not implement every pattern here. Omit mechanisms that do not address an identified requirement, and record the rationale."
+    },
+    "prerequisites": [
+      "API contracts and identities",
+      "A classification of read and write effects"
+    ],
+    "sections": [
+      {
+        "title": "Names, descriptions, schemas, non-overlap, discovery, restricted tool sets",
+        "body": [
+          "Name tools by the business action they perform and distinguish similar operations with clear scope and examples. Use schemas with precise units and identifiers. Expose a restricted set relevant to the task; dynamic discovery still needs policy filtering. Evaluate selection errors, not just whether the endpoint works when called manually."
+        ]
+      },
+      {
+        "title": "Fine-grained wrappers versus business operations; ergonomics and tool-choice evaluation",
+        "body": [
+          "Fine-grained wrappers are reusable but force the model to coordinate many calls. A business operation can enforce invariants in one place, but may be too broad if its effects are unclear. Offer a preview for compound actions. Test ambiguous requests against competing tools and inspect why the wrong one was selected."
+        ]
+      },
+      {
+        "title": "Argument validation, identifiers, ownership, preconditions and postconditions",
+        "body": [
+          "Validate arguments structurally and semantically, including caller ownership, entity existence, units, limits and current preconditions. Perform authorization at dispatch time, not only when listing tools. Check postconditions against external state. Reject unknown identifiers rather than allowing the model to invent a new target."
+        ]
+      },
+      {
+        "title": "Dispatch, sequential/parallel calls, pagination, bounded results and useful errors",
+        "body": [
+          "Parallelize independent reads; serialize dependent actions unless concurrency semantics are explicit. Bound pagination and response size and return continuation tokens. Errors should distinguish invalid input, denied access, transient failure and unknown outcome. Include enough evidence to recover without leaking secrets or prompting blind retries."
+        ]
+      },
+      {
+        "title": "Read versus write tools, dry-run/preview, approval-bound exact actions",
+        "body": [
+          "Classify tools as read, draft or write and make side effects visible. Bind approval to exact parameters, target, identity, scope and expiry. A dry run must genuinely avoid writes; label limitations if it cannot guarantee the final result. Revalidate the approved action against current state before execution."
+        ]
+      },
+      {
+        "title": "API/database contracts, external outcome verification and reconciliation",
+        "body": [
+          "Design contracts with versioning, idempotency and queryable operation IDs where possible. Treat a timeout after dispatch as an uncertain outcome until reconciled. A successful HTTP code may only mean accepted for processing; verify the business postcondition before saying the work completed."
+        ]
+      },
+      {
+        "title": "MCP suitability versus direct integration; protocols do not replace authorization",
+        "body": [
+          "MCP standardizes an integration interface; it does not decide whether your application should authorize an action. Direct integration may be simpler for one stable API, while MCP can serve multiple clients. Check transport authentication, token audience, server identity and permissions independently of the model's tool instructions."
+        ]
+      },
+      {
+        "title": "Dependency hygiene, testable boundaries, coding standards, reviews",
+        "body": [
+          "Keep dependencies pinned and review lockfile changes, transitive packages and maintenance responsibilities. Isolate provider and tool adapters for contract testing. Require readable errors, bounded resources and safe logging in review. Generated code needs the same scrutiny as human code and should be understandable during an incident."
+        ]
+      },
+      {
+        "title": "Review AI-generated code and claims; avoid unnecessary frameworks, agents and abstractions",
+        "body": [
+          "Inspect AI-generated changes against the actual request and run checks that exercise real behavior. Reject invented test claims and abstraction added without a concrete need. Compare dependency cost with a direct implementation. A passing test that merely repeats the implementation's assumptions does not establish the business requirement."
+        ]
+      },
+      {
+        "title": "Clear documentation and examples; implementation must remain understandable by another engineer",
+        "body": [
+          "Document a successful call, an invalid call, a denied call and recovery from an uncertain result. Include units, identifiers, ownership and expected postconditions. Another engineer should be able to operate the integration without reverse-engineering a prompt. Keep examples hypothetical and free of real credentials or private payloads."
+        ]
+      }
+    ],
+    "alternatives": [
+      {
+        "name": "Fine-grained tools",
+        "benefits": "Composable and reusable",
+        "costs": "More calls and coordination",
+        "limitations": "Can expose invalid intermediate actions"
+      },
+      {
+        "name": "Business operation tool",
+        "benefits": "Centralizes invariants",
+        "costs": "Larger operation contract",
+        "limitations": "Effects must remain understandable"
+      },
+      {
+        "name": "Direct integration",
+        "benefits": "Simple for one API",
+        "costs": "Client-specific adapter",
+        "limitations": "Less reusable across clients"
+      },
+      {
+        "name": "MCP integration",
+        "benefits": "Common discovery and invocation surface",
+        "costs": "Server lifecycle and trust",
+        "limitations": "Does not replace authorization"
+      }
+    ],
+    "tradeoffs": [
+      "Fine-grained tools: composable and reusable; costs include more calls and coordination. Can expose invalid intermediate actions.",
+      "Business operation tool: centralizes invariants; costs include larger operation contract. Effects must remain understandable.",
+      "Direct integration: simple for one api; costs include client-specific adapter. Less reusable across clients.",
+      "MCP integration: common discovery and invocation surface; costs include server lifecycle and trust. Does not replace authorization."
+    ],
+    "decisionCriteria": [
+      "Can a human distinguish competing tools?",
+      "Are IDs and ownership checked?",
+      "What does success actually mean?",
+      "How are uncertain writes reconciled?"
+    ],
+    "examples": [
+      {
+        "title": "Hypothetical worked example",
+        "body": "A hypothetical update-address tool requires customer ID, address, expected record version and operation key. It verifies ownership and the record version before writing. If the network fails after dispatch, the caller queries the operation rather than assuming nothing happened."
+      },
+      {
+        "title": "A tool contract and its approval record",
+        "body": "Hypothetical send_report input: projectId:string, reportId:string, recipientId:string, expectedReportVersion:integer, operationId:string. Domain checks: caller owns project; report belongs to project; recipient is permitted; version matches; operation ID has not been used for different parameters. Approval record: action=send_report, parametersHash=<hash of canonical validated input>, approverId, approvedAt, expiresAt, policyVersion. Dispatch compares the exact hash and current authority. Result is one of rejected, accepted(operationId), verified(providerMessageId), or outcome_unknown(operationId). Never return verified merely because dispatch returned HTTP 202."
+      }
+    ],
+    "failureModes": [
+      {
+        "symptom": "The tool reports success but the task is unfinished",
+        "cause": "Acceptance by an API was confused with the business postcondition",
+        "diagnostic": "Query operation status and inspect the actual target record",
+        "mitigation": "Keep the result pending or outcome unknown until verification completes"
+      }
+    ],
+    "verification": [
+      "Record evidence for: Can a human distinguish competing tools?",
+      "Record evidence for: Are IDs and ownership checked?",
+      "Record evidence for: What does success actually mean?",
+      "Record evidence for: How are uncertain writes reconciled?",
+      "Exercise the failure case: the tool reports success but the task is unfinished. Preserve the observed outcome and unresolved limitations."
+    ],
+    "owner": "Integration owner",
+    "reconsiderWhen": [
+      "New tools, schema changes or selection errors"
+    ],
+    "relatedGuideIds": [
+      "durable-execution",
+      "security",
+      "harness-engineering"
+    ],
+    "sourceIds": [
+      "tools",
+      "mcp"
+    ],
+    "reviewedAt": "2026-09-15",
+    "contentVersion": "2026.09.15.1"
+  },
+  {
+    "id": "durable-execution",
+    "categoryId": "C07",
+    "title": "Recover without duplicating business actions",
+    "summary": "Design for crashes, retries and unknown outcomes. Durable state does not make external effects exactly once.",
+    "tags": [
+      "recover",
+      "without",
+      "duplicating",
+      "business",
+      "actions",
+      "agent stuck",
+      "duplicate action",
+      "agent stalls",
+      "loops",
+      "retries"
+    ],
+    "stages": [
+      "implementation",
+      "pre-release"
+    ],
+    "applicability": {
+      "required": "Work can outlive a request, be retried, recover after a crash or change external state.",
+      "optional": "Use a short evidence review for a small reversible experiment; deepen it as consequences and uncertainty grow.",
+      "unnecessary": "Do not implement every pattern here. Omit mechanisms that do not address an identified requirement, and record the rationale."
+    },
+    "prerequisites": [
+      "Queryable operation IDs or reconciliation plan",
+      "Defined deadlines and worker ownership"
+    ],
+    "sections": [
+      {
+        "title": "Connection/read/overall deadlines; retry classification and retry ownership",
+        "body": [
+          "Set distinct connection, per-attempt and overall deadlines. Classify errors by whether retrying is useful and safe; validation and authorization errors normally need a changed request. Decide which layer owns retries so SDK, worker and orchestrator policies do not multiply attempts without a common limit."
+        ]
+      },
+      {
+        "title": "Backoff/jitter, retry budgets, circuit breakers, dependency isolation",
+        "body": [
+          "Use backoff with jitter for transient retryable failures and bound attempts by the remaining task deadline and budget. Circuit breakers can reduce repeated pressure on unhealthy dependencies. Isolate pools so one stalled service cannot consume all workers. AWS guidance emphasizes choosing the retry layer and checking idempotency."
+        ]
+      },
+      {
+        "title": "Idempotency, unknown outcomes after timeout, outbox/inbox, deduplication",
+        "body": [
+          "Generate a stable operation key before dispatch and persist intent. If the call times out, query its status or reconcile before resending. Use outbox/inbox patterns for coordinating local state and message processing. Deduplication retention must cover the retry horizon; it cannot remove duplicate effects already executed downstream."
+        ]
+      },
+      {
+        "title": "Checkpoints, replay versus fresh rerun, side-effect boundaries",
+        "body": [
+          "Checkpoint durable facts and separate replayable computation from external side effects. A replay reconstructs an execution from recorded history; a fresh rerun can issue new actions. Verify the chosen runtime's behavior with a controlled crash immediately before and after an external call. Persist the operation identity across recovery."
+        ]
+      },
+      {
+        "title": "Queue limits, duplicate/out-of-order events, dead letters, backpressure",
+        "body": [
+          "Bound queue length, age and concurrency. Expect duplicate and out-of-order events; use business keys and version checks. Dead letters need an owner and safe replay instructions, not an unattended pile. Apply backpressure or reject work when accepting more would violate deadlines or available review capacity."
+        ]
+      },
+      {
+        "title": "Heartbeat versus real progress, watchdogs, repeated-action detection",
+        "body": [
+          "A heartbeat proves a worker is alive, not that the task is advancing. Measure progress through verified milestones or new evidence. Detect repeated action signatures and unchanged outputs. A watchdog should first stop further side effects, capture state and escalate; restarting a live but confused loop may simply repeat the problem."
+        ]
+      },
+      {
+        "title": "Worker leases/ownership and fencing stale workers; safe reassignment",
+        "body": [
+          "A lease grants temporary ownership, but a paused worker may resume after its lease expires. Use fencing tokens or version checks at the write boundary to reject stale workers. Safe reassignment requires both a new owner and protection against the old owner's late writes."
+        ]
+      },
+      {
+        "title": "Cancellation, graceful shutdown, resource cleanup, bounded delegation",
+        "body": [
+          "Cancellation needs an explicit state and propagation to child tasks, queued jobs and in-flight operations. Graceful shutdown stops new work and checkpoints safe state. Some external actions cannot be cancelled; reconcile them and report their final outcome. Cleanup should be idempotent and bounded."
+        ]
+      },
+      {
+        "title": "Approval timeouts, stale approvals, revalidation of current business state",
+        "body": [
+          "Approvals expire when their time limit or relevant business assumptions change. On resume, compare the approved parameters and entity version with current state. A person approving a price yesterday does not authorize a different price today. Expired approvals return to review rather than silently being renewed."
+        ]
+      },
+      {
+        "title": "Recovery, compensation, manual fallback, restore/reconciliation procedures",
+        "body": [
+          "Define recovery per state: retry a safe read, reconcile an unknown write, compensate a completed action if valid, or hand off manually. Compensation can fail and needs its own audit trail. Keep a tested restore procedure that includes business reconciliation, not only a successful database restore."
+        ]
+      },
+      {
+        "title": "Fault injection, worker-kill tests, dependency outages and duplicate-action checks",
+        "body": [
+          "Inject failure at meaningful boundaries: kill a worker after remote success but before checkpoint, duplicate an event, delay an API and remove a dependency. Assert business invariants and the absence of duplicate actions. Test recovery with realistic permissions and disposable fixtures, then record actual observed behavior."
+        ]
+      },
+      {
+        "title": "No promise of exactly-once external effects merely because execution is durable",
+        "body": [
+          "Durable execution helps retain state and resume work; it does not make arbitrary external systems execute exactly once. State the guarantee at each boundary and its assumptions. When the downstream service lacks deduplication or status lookup, retain an explicit uncertain state and a manual reconciliation path."
+        ]
+      }
+    ],
+    "alternatives": [
+      {
+        "name": "Fresh rerun",
+        "benefits": "Easy for pure computation",
+        "costs": "Repeats work",
+        "limitations": "Unsafe for untracked side effects"
+      },
+      {
+        "name": "Checkpoint and resume",
+        "benefits": "Retains progress",
+        "costs": "State and versioning work",
+        "limitations": "Needs explicit effect boundaries"
+      },
+      {
+        "name": "Manual reconciliation",
+        "benefits": "Handles ambiguous external outcomes",
+        "costs": "Human time and delay",
+        "limitations": "Requires usable evidence and ownership"
+      }
+    ],
+    "tradeoffs": [
+      "Fresh rerun: easy for pure computation; costs include repeats work. Unsafe for untracked side effects.",
+      "Checkpoint and resume: retains progress; costs include state and versioning work. Needs explicit effect boundaries.",
+      "Manual reconciliation: handles ambiguous external outcomes; costs include human time and delay. Requires usable evidence and ownership."
+    ],
+    "decisionCriteria": [
+      "Who owns retries?",
+      "Can the write be deduplicated?",
+      "Can a stale worker still act?",
+      "What evidence proves progress and completion?"
+    ],
+    "examples": [
+      {
+        "title": "Hypothetical worked example",
+        "body": "A hypothetical notification provider accepts a send, but the response is lost. The worker must retain an outcome-unknown state and query by operation ID. Restarting from the beginning with a new ID may send a second notification. Test this exact boundary in a disposable environment."
+      },
+      {
+        "title": "Ambiguous timeout: failed and corrected recovery",
+        "body": "Hypothetical trace: 10:00:00 persist intent op-42; 10:00:01 provider accepts op-42; 10:00:02 connection drops; 10:00:03 worker dies. Failed recovery creates op-43 and sends again. Corrected recovery reloads op-42 as outcome unknown, queries the provider, records its message ID and verifies the recipient. If status lookup is unavailable, stop automatic retries and assign reconciliation. If confirmed not sent, retry only under the documented same-key semantics. Test both crashes: after remote acceptance and after local confirmation."
+      }
+    ],
+    "failureModes": [
+      {
+        "symptom": "Recovery duplicates a business action",
+        "cause": "A timed-out write was repeated with no stable operation key",
+        "diagnostic": "Correlate operation IDs, provider state and checkpoint timing",
+        "mitigation": "Stop retries, reconcile external state and resume with deduplication or manual handling"
+      }
+    ],
+    "verification": [
+      "Record evidence for: Who owns retries?",
+      "Record evidence for: Can the write be deduplicated?",
+      "Record evidence for: Can a stale worker still act?",
+      "Record evidence for: What evidence proves progress and completion?",
+      "Exercise the failure case: recovery duplicates a business action. Preserve the observed outcome and unresolved limitations."
+    ],
+    "owner": "Reliability owner",
+    "reconsiderWhen": [
+      "Worker crashes, duplicated actions or rising retry rates"
+    ],
+    "relatedGuideIds": [
+      "tool-design",
+      "release-operations",
+      "harness-engineering"
+    ],
+    "sourceIds": [
+      "retries",
+      "temporal"
+    ],
+    "reviewedAt": "2026-09-15",
+    "contentVersion": "2026.09.15.1"
+  },
+  {
+    "id": "security",
+    "categoryId": "C08",
+    "title": "Keep authority outside the model",
+    "summary": "Constrain identity, actions and data access; make approval and incident ownership concrete.",
+    "tags": [
+      "keep",
+      "authority",
+      "outside",
+      "model"
+    ],
+    "stages": [
+      "pre-release"
+    ],
+    "applicability": {
+      "required": "The system handles nonpublic data, reaches external tools or affects other people.",
+      "optional": "Use a short evidence review for a small reversible experiment; deepen it as consequences and uncertainty grow.",
+      "unnecessary": "Do not implement every pattern here. Omit mechanisms that do not address an identified requirement, and record the rationale."
+    },
+    "prerequisites": [
+      "Data and action inventory",
+      "Named security and release owners"
+    ],
+    "sections": [
+      {
+        "title": "Risk assessment, workflow inventory, action boundaries, abuse cases",
+        "body": [
+          "Inventory the workflow's data, tools, actors and potential consequences. Threat-model both accidental misuse and deliberate abuse, including valid credentials used for an invalid purpose. Write an action boundary for each tool. Risk depends on the reachable business effect, not whether the interface looks like a friendly chat."
+        ]
+      },
+      {
+        "title": "Prompt injection, untrusted tools/documents, poisoned memory, exfiltration",
+        "body": [
+          "Treat retrieved text, tool responses and memory as untrusted data that can contain instructions. An attacker may try to redirect the task, poison future context or extract secrets. Enforce permissions and outbound destinations outside the model. Test malicious documents alongside ordinary ones; filtering alone is not a complete defense."
+        ]
+      },
+      {
+        "title": "Identity, delegated authority, least privilege, tenant isolation and secrets",
+        "body": [
+          "Run under a defined identity with narrowly scoped, short-lived credentials where supported. Verify tenant ownership at every resource access and keep secrets out of prompts and logs. Delegating a task does not automatically delegate all of the parent's authority. Test denial across similar IDs in different tenants."
+        ]
+      },
+      {
+        "title": "Connector provenance, MCP authentication/authorization, supply-chain changes",
+        "body": [
+          "Verify connector publisher, package integrity, endpoint identity and update behavior. Review MCP authentication and authorization independently; discoverable tools still need access checks. A changed schema or dependency may broaden reachable actions. Pin or review updates and maintain an inventory of connectors with responsible owners."
+        ]
+      },
+      {
+        "title": "Sandboxing, filesystem/network/egress restrictions for code/browser agents",
+        "body": [
+          "Isolate code and browser execution with filesystem, network and process limits appropriate to the task. Restrict egress and credential availability; an untrusted script should not inherit production secrets. Containers provide useful boundaries but need correct configuration. Do not expose a host Docker socket to agent-controlled code."
+        ]
+      },
+      {
+        "title": "Approval controls bound to exact action; revocation and time-of-check/time-of-use",
+        "body": [
+          "Show the exact proposed effect to the approver and bind approval to immutable action details and an expiry. Check authorization again at execution to handle revocation and changed state. If parameters change after approval, obtain a new decision. Logging 'approved' without the approved object is weak evidence."
+        ]
+      },
+      {
+        "title": "Input/output handling, retention, data minimization, log redaction",
+        "body": [
+          "Minimize collected data and define retention separately for prompts, traces, exports and indexes. Redact sensitive values before logging. Treat generated content as untrusted when rendering HTML, opening URLs or executing commands. An internal interface can still leak data through logs, browser storage or third-party error reporting."
+        ]
+      },
+      {
+        "title": "Fairness, accessibility, explainability, appeals where decisions affect people",
+        "body": [
+          "When outputs affect people, define who can challenge them and how errors are corrected. Test relevant segments and accessibility of review interfaces. Explain the evidence and limitations in language the user understands. Human oversight must have time, authority and information to disagree, rather than merely click approval."
+        ]
+      },
+      {
+        "title": "Applicability of company policy/legal review; no invented compliance certification",
+        "body": [
+          "Identify applicable organizational policy and obtain qualified legal or domain review when the use case requires it. This playbook provides engineering guidance and does not certify compliance. Record unresolved applicability questions and the responsible reviewer; do not turn a generic checklist into a legal conclusion."
+        ]
+      },
+      {
+        "title": "Business/process owner, engineering owner, security/domain reviewer, budget owner, operations owner, release authority",
+        "body": [
+          "Name the process owner for outcomes, engineering owner for implementation, security/domain reviewer for risk, budget owner for spending, operations owner for incidents and release authority for launch. State who can halt the system. A role without a person or escalation path is an unresolved operating requirement."
+        ]
+      },
+      {
+        "title": "One startup employee may hold multiple roles, but responsibilities remain named",
+        "body": [
+          "In a small team one person can hold several roles, but list each responsibility separately to expose conflicts and gaps. Higher-impact changes may warrant an independent reviewer even when staffing is limited. Record accepted residual risk and who accepted it; silence is not approval."
+        ]
+      },
+      {
+        "title": "Governance aligned with Govern/Map/Measure/Manage as guidance, not blanket legal obligation",
+        "body": [
+          "NIST's AI RMF organizes risk work through Govern, Map, Measure and Manage. Use that structure to connect ownership, context, evidence and treatment decisions. Its use here is voluntary guidance rather than a claim that every project has the same legal duties or that completing it confers certification."
+        ]
+      },
+      {
+        "title": "Incident ownership, escalation, release/increased-autonomy approval, shutdown",
+        "body": [
+          "Prepare a named incident path: who receives the alert, who can disable actions, who reconciles effects and who communicates with affected users. Treat increased autonomy as a new release decision. Exercise revocation and shutdown under realistic conditions, including child tasks already running."
+        ]
+      },
+      {
+        "title": "Independent review proportionate to impact and accepted residual risk",
+        "body": [
+          "Match independent review to consequence, uncertainty and reversibility. Give reviewers the actual evidence, exclusions and operating limits. Record accepted residual risks and revisit triggers. Approval of a narrow pilot should not quietly become approval for a broader population, new tools or a larger action budget."
+        ]
+      }
+    ],
+    "alternatives": [
+      {
+        "name": "Read-only assistance",
+        "benefits": "Smaller action surface",
+        "costs": "User performs final work",
+        "limitations": "Still handles sensitive data"
+      },
+      {
+        "name": "Exact-action approval",
+        "benefits": "Human checks a defined effect",
+        "costs": "Review staffing and fatigue",
+        "limitations": "Stale approvals need revalidation"
+      },
+      {
+        "name": "Bounded autonomy",
+        "benefits": "Less routine review",
+        "costs": "Stronger enforcement and monitoring",
+        "limitations": "Requires explicit risk acceptance"
+      }
+    ],
+    "tradeoffs": [
+      "Read-only assistance: smaller action surface; costs include user performs final work. Still handles sensitive data.",
+      "Exact-action approval: human checks a defined effect; costs include review staffing and fatigue. Stale approvals need revalidation.",
+      "Bounded autonomy: less routine review; costs include stronger enforcement and monitoring. Requires explicit risk acceptance."
+    ],
+    "decisionCriteria": [
+      "What can this identity actually do?",
+      "Can untrusted text reach a write path?",
+      "What exactly was approved?",
+      "Who can stop and reconcile the system?"
+    ],
+    "examples": [
+      {
+        "title": "Hypothetical worked example",
+        "body": "A hypothetical retrieved document tells the assistant to upload its credentials. The runtime must prevent secret access and unapproved egress even if the model follows that text. Approval for a report draft does not authorize running commands from the document."
+      },
+      {
+        "title": "Confused deputy: an allowed reader and an allowed sender",
+        "body": "Hypothetical attack: a retrieved ticket tells the assistant to read a confidential file and email it to a new address. The connector is authenticated, but that does not make the document authoritative. Enforce caller-and-object authorization on the read, minimize data exposed to the worker, and apply destination/data policy on the send. The approval screen must display the real recipient and content scope, not a model-written assurance. Record the rejected operation and source ID. If data already left, disable further sends and follow incident reconciliation. Destination allowlists alone do not prevent leaks to an allowed recipient; review information flow and residual risk."
+      }
+    ],
+    "failureModes": [
+      {
+        "symptom": "Untrusted evidence redirects an action",
+        "cause": "Instructions in tool results crossed the policy boundary",
+        "diagnostic": "Inspect the source, proposed action and dispatch authorization decision",
+        "mitigation": "Disable the unsafe action path, revoke scope if needed and enforce policy outside the model"
+      }
+    ],
+    "verification": [
+      "Record evidence for: What can this identity actually do?",
+      "Record evidence for: Can untrusted text reach a write path?",
+      "Record evidence for: What exactly was approved?",
+      "Record evidence for: Who can stop and reconcile the system?",
+      "Exercise the failure case: untrusted evidence redirects an action. Preserve the observed outcome and unresolved limitations."
+    ],
+    "owner": "Security and process owners",
+    "reconsiderWhen": [
+      "New data, tools, autonomy or affected populations"
+    ],
+    "relatedGuideIds": [
+      "tool-design",
+      "evaluations",
+      "release-operations"
+    ],
+    "sourceIds": [
+      "owasp",
+      "nist",
+      "mcp"
+    ],
+    "reviewedAt": "2026-09-15",
+    "contentVersion": "2026.09.15.1"
+  },
+  {
+    "id": "evaluations",
+    "categoryId": "C09",
+    "title": "Build evidence that a task works",
+    "summary": "Measure outcomes and invariants with representative cases, calibrated graders and repeated runs.",
+    "tags": [
+      "build",
+      "evidence",
+      "that",
+      "task",
+      "works"
+    ],
+    "stages": [
+      "pre-release"
+    ],
+    "applicability": {
+      "required": "You need evidence to compare approaches, release a change or investigate quality.",
+      "optional": "Use a short evidence review for a small reversible experiment; deepen it as consequences and uncertainty grow.",
+      "unnecessary": "Do not implement every pattern here. Omit mechanisms that do not address an identified requirement, and record the rationale."
+    },
+    "prerequisites": [
+      "Acceptance criteria with a ground-truth owner",
+      "An isolated test environment"
+    ],
+    "sections": [
+      {
+        "title": "Acceptance criteria, ground-truth owner, uncertainty and disagreement resolution",
+        "body": [
+          "Define success with someone who owns the domain outcome. Record ambiguous cases and the procedure for resolving disagreement instead of forcing an arbitrary label. Acceptance thresholds need a denominator, sampling method and consequence model. Separate facts that can be checked from subjective quality preferences."
+        ]
+      },
+      {
+        "title": "Unit, integration, contract, end-to-end, load, security and failure tests",
+        "body": [
+          "Use unit tests for deterministic policy, contract tests for adapters, integration tests for boundaries and end-to-end tests for outcomes. Add load, security and failure tests where their risks exist. Model evaluations complement these layers; they do not replace authorization tests or a restore drill."
+        ]
+      },
+      {
+        "title": "Representative cases, holdouts, dataset versions, contamination and overfitting",
+        "body": [
+          "Build cases from the intended task distribution, including rare important failures and realistic messy inputs. Version the dataset and reserve a holdout set not used during prompt tuning. Track where examples came from. Repeatedly optimizing against the same visible cases can improve a benchmark while harming general behavior."
+        ]
+      },
+      {
+        "title": "Code graders, model judges, human review, rubric design and judge calibration",
+        "body": [
+          "Use code graders for exact invariants and known answers, human review for nuanced judgments, and model judges when a calibrated rubric makes them useful. Compare judges with independently labeled examples and inspect disagreements. Hide irrelevant presentation cues and test whether verbosity or confident tone biases scores."
+        ]
+      },
+      {
+        "title": "Outcome versus trajectory evaluation; allow valid alternate paths while enforcing invariants",
+        "body": [
+          "Judge the business end state and also enforce required process constraints, such as no unauthorized writes. Allow different valid tool paths when they satisfy the contract. A trace that looks reasonable can end with no completed transaction; a correct answer can still have leaked data while producing it."
+        ]
+      },
+      {
+        "title": "Repeated runs, reliability distributions, sampling uncertainty and rare severe failures",
+        "body": [
+          "Run variable tasks repeatedly and report the distribution of success, latency and cost. A single successful attempt is not a reliability estimate. Confidence intervals and sample size matter, especially for rare severe errors. If no severe failure appears in a small sample, report the limited evidence instead of zero risk."
+        ]
+      },
+      {
+        "title": "Segment results by task difficulty, language, document type and consequence",
+        "body": [
+          "Break results down by task difficulty, language, document quality, customer segment where appropriate, and consequence. An aggregate can hide a harmful weak subgroup. Keep enough cases per segment to avoid overinterpreting noise. Choose release gates that reflect the actual users and risks."
+        ]
+      },
+      {
+        "title": "Component evals for retrieval, memory, routing, tools, context and delegation",
+        "body": [
+          "Test retrieval recall, memory correction, route selection, tool arguments, context preservation and delegation separately. Component checks help locate causes; an integrated outcome test catches interactions. A retrieval improvement that increases irrelevant context may worsen the final answer, so measure both levels."
+        ]
+      },
+      {
+        "title": "Hallucinated facts/IDs/recommendations/completion claims and distinct checks",
+        "body": [
+          "Check factual claims against evidence, IDs against authoritative records, recommendations against constraints and completion claims against external state. These are different error classes. A grounded paragraph can still recommend the wrong action. A valid schema proves the shape of output, not the truth of its contents."
+        ]
+      },
+      {
+        "title": "Abstention and escalation evaluation; false positives versus false negatives",
+        "body": [
+          "Include tasks where the correct behavior is to abstain, request information or escalate. Measure unnecessary escalation as well as unsafe action. False positives and false negatives often have different consequences. Verify that escalation arrives with enough context for a person to resolve it efficiently."
+        ]
+      },
+      {
+        "title": "Low temperature, RAG, valid JSON or another model's agreement are not guarantees",
+        "body": [
+          "Low temperature may reduce variability but does not establish correctness. Retrieval can supply wrong or incomplete evidence. JSON validation cannot check truth, and another model can repeat the same error. Combine independent evidence and deterministic checks with calibrated human judgment according to the task."
+        ]
+      },
+      {
+        "title": "Isolated test environments, resets, safe fixtures, no production side effects",
+        "body": [
+          "Use isolated environments, fake recipients, disposable records and resettable fixtures. Confirm tool credentials cannot reach production writes. Each run should begin from a known state so previous outcomes do not contaminate results. Validate the test harness itself with deliberately incorrect outputs and known-good examples."
+        ]
+      },
+      {
+        "title": "Regression gates, sensitivity to real failures, production sampling",
+        "body": [
+          "Gate changes against representative regressions and severe invariants, then sample production quality with privacy controls. Test that the suite detects a known bad prompt, tool or model version. A test that passes everything cannot protect a release. Add real incident cases after review and de-identification."
+        ]
+      },
+      {
+        "title": "Attribute failures to model, context, tools, runtime, data or test",
+        "body": [
+          "Trace a failure through input data, assembled context, model output, policy decision, tool result and grader. Distinguish model limitations from tool bugs and bad labels. Preserve versions and reproducible fixtures. Fixing the wrong layer often increases cost without addressing the failure users experienced."
+        ]
+      },
+      {
+        "title": "Evaluate full business outcomes including external state and review/rework",
+        "body": [
+          "Measure whether the complete business task succeeded after review, retries and rework. Anthropic distinguishes transcripts from final environment outcomes in its evaluation guidance. For a hypothetical ticket workflow, inspect the correct ticket state and recipient, not only the agent saying 'done'. Keep completion evidence alongside the run."
+        ]
+      }
+    ],
+    "alternatives": [
+      {
+        "name": "Code graders",
+        "benefits": "Exact repeatable assertions",
+        "costs": "Need formal expected properties",
+        "limitations": "Miss nuanced quality"
+      },
+      {
+        "name": "Model judges",
+        "benefits": "Scales rubric-based assessment",
+        "costs": "Judge bias and cost",
+        "limitations": "Must be calibrated"
+      },
+      {
+        "name": "Human review",
+        "benefits": "Domain nuance and discovery",
+        "costs": "Time and disagreement",
+        "limitations": "Sampling and consistency limits"
+      }
+    ],
+    "tradeoffs": [
+      "Code graders: exact repeatable assertions; costs include need formal expected properties. Miss nuanced quality.",
+      "Model judges: scales rubric-based assessment; costs include judge bias and cost. Must be calibrated.",
+      "Human review: domain nuance and discovery; costs include time and disagreement. Sampling and consistency limits."
+    ],
+    "decisionCriteria": [
+      "Does the grader catch a known failure?",
+      "Is the holdout untouched?",
+      "Which segments perform poorly?",
+      "Was external state checked?"
+    ],
+    "examples": [
+      {
+        "title": "Hypothetical worked example",
+        "body": "A hypothetical booking assistant produces a persuasive confirmation, but no booking exists. Grade both the final response and the reservation table, verify the correct user and ensure no duplicate booking. Include cases that should request clarification and cases where tools fail."
+      },
+      {
+        "title": "A usable evaluation report template",
+        "body": "Hypothetical report, not a benchmark: dataset v3 has 200 independently sampled cases; 180 verified outcomes pass, so observed success is 90%. Report a binomial interval with its method (for example Wilson), rather than reporting 90% as exact reliability. If zero severe failures are observed, the rough rule-of-three upper bound is 3/200=1.5% at approximately 95% confidence under independent representative trials; clustered or biased samples weaken that interpretation. Report language/document segments with their own denominators. Compare old and new versions on the same cases, list improved/regressed pairs, and review disagreements. Record human label disagreements and their adjudication. Release depends on consequence-specific thresholds and unresolved severe cases, not this illustrative percentage."
+      }
+    ],
+    "failureModes": [
+      {
+        "symptom": "Offline evaluations pass but users report poor quality",
+        "cause": "Cases, graders or segments miss the production failure",
+        "diagnostic": "Reproduce the report with its configuration and inspect grader sensitivity",
+        "mitigation": "Pause expansion, add a reviewed regression and fix the responsible component"
+      }
+    ],
+    "verification": [
+      "Record evidence for: Does the grader catch a known failure?",
+      "Record evidence for: Is the holdout untouched?",
+      "Record evidence for: Which segments perform poorly?",
+      "Record evidence for: Was external state checked?",
+      "Exercise the failure case: offline evaluations pass but users report poor quality. Preserve the observed outcome and unresolved limitations."
+    ],
+    "owner": "Evaluation and domain owners",
+    "reconsiderWhen": [
+      "New model, prompt, tools, task mix or incidents"
+    ],
+    "relatedGuideIds": [
+      "retrieval",
+      "release-operations",
+      "cost-capacity"
+    ],
+    "sourceIds": [
+      "evals",
+      "rag-evals",
+      "nist-proportions"
+    ],
+    "reviewedAt": "2026-09-15",
+    "contentVersion": "2026.09.15.1"
+  },
+  {
+    "id": "cost-capacity",
+    "categoryId": "C10",
+    "title": "Budget for verified outcomes, not cheap calls",
+    "summary": "Include retries, review, queues and shared agent budgets in cost and capacity decisions.",
+    "tags": [
+      "budget",
+      "verified",
+      "outcomes",
+      "cheap",
+      "calls"
+    ],
+    "stages": [
+      "operations"
+    ],
+    "applicability": {
+      "required": "The workflow consumes metered resources, has capacity limits or needs budget approval.",
+      "optional": "Use a short evidence review for a small reversible experiment; deepen it as consequences and uncertainty grow.",
+      "unnecessary": "Do not implement every pattern here. Omit mechanisms that do not address an identified requirement, and record the rationale."
+    },
+    "prerequisites": [
+      "Observed workload or explicit scenarios",
+      "Unit prices and success definition"
+    ],
+    "sections": [
+      {
+        "title": "Total cost per verified successful task, including failures and human review",
+        "body": [
+          "Use total operating cost divided by verified successful tasks, with a defined reporting period. Include failed attempts and human review in the numerator. If no tasks succeed, cost per success is undefined rather than zero. Compare with the manual or conventional baseline using the same outcome definition."
+        ]
+      },
+      {
+        "title": "Models, input/output tokens, caching, embeddings, retrieval, tools, infrastructure and observability",
+        "body": [
+          "Account for input and output tokens, cached usage, embeddings, retrieval, tool fees, compute, storage and observability. Prices and billing units vary, so enter current contracted values explicitly. A model-only estimate misses integration and labor. Keep forecast assumptions separate from measured bills."
+        ]
+      },
+      {
+        "title": "Latency distribution, throughput, concurrency and queue wait; not averages alone",
+        "body": [
+          "Measure p50, p95 and p99 latency where sample size supports them, plus queue wait and end-to-end completion. Throughput is completed work per time; concurrency is work in progress. More concurrency can increase throttling and tail latency. Test realistic bursts and slow dependencies before sizing capacity."
+        ]
+      },
+      {
+        "title": "Attribution per workflow/project/tenant/model/tool",
+        "body": [
+          "Attach cost and usage to workflow, project, tenant, model, tool and operation IDs. Reconcile estimates with billing records when available. Avoid logging private prompt content merely to attribute costs. Missing attribution should appear as unknown spend rather than being silently allocated to a convenient bucket."
+        ]
+      },
+      {
+        "title": "Concurrency-safe budget reservations and reconciliation with billed usage",
+        "body": [
+          "Reserve budget atomically before starting concurrent work, then reconcile against observed usage and release unused reservations. Otherwise several workers can each see the same remaining balance and overspend. Define how to account for unknown usage after a timeout and maintain a conservative reserve for in-flight work."
+        ]
+      },
+      {
+        "title": "Shared parent/child/retry budgets; limits on calls, output, time and delegation",
+        "body": [
+          "Give the root task a shared budget covering children and retries, plus limits on calls, output size, wall time and delegation. A child limit alone does not constrain total tree cost. Retain enough budget for verification and a useful final handoff rather than exhausting everything on exploration."
+        ]
+      },
+      {
+        "title": "Delayed billing and in-flight requests; alerts are not hard spending caps",
+        "body": [
+          "Billing may arrive late and a cancelled request may still be charged. Alerts notify; they are not necessarily enforceable caps. Apply admission control using estimates and safety margin, and document the residual overshoot risk. Do not promise an exact spending ceiling that the provider cannot enforce."
+        ]
+      },
+      {
+        "title": "Quotas, forecasts, budget exhaustion behaviour, load shedding and escalation",
+        "body": [
+          "Define behavior before capacity or budget is exhausted: queue within a deadline, reject, downgrade through a validated path, or escalate. Forecast using expected and stress scenarios, not only average volume. Rate limits, human-review capacity and downstream quotas can be tighter than model capacity."
+        ]
+      },
+      {
+        "title": "Validated cheaper fallback, batching, cache correctness/freshness/isolation",
+        "body": [
+          "Validate cheaper fallback quality before routing live work. Batch only when latency requirements allow it. Cache keys need task-relevant inputs, configuration versions and authorization scope; expire or invalidate stale answers. A cross-tenant or stale cache hit is a correctness failure, even if it saves tokens."
+        ]
+      },
+      {
+        "title": "Model quality/cost trade-offs; cheap calls may create more retries and rework",
+        "body": [
+          "A cheap model can cost more per outcome if it creates retries, escalations or rework. Compare total task cost and quality under the same workload and constraints. Use a small routing experiment with clear stop conditions. Do not infer the best production choice from price per token alone."
+        ]
+      },
+      {
+        "title": "Avoid buying capacity before value is demonstrated",
+        "body": [
+          "Confirm useful demand and measurable value before buying reserved capacity or adding infrastructure. Optimize the dominant measured cost first. Removing an unnecessary step or improving tool results may outperform a model upgrade. Include the engineering time spent optimizing a low-volume workflow in the decision."
+        ]
+      },
+      {
+        "title": "Estimation calculators with explicit user inputs, units and assumptions; no invented live prices",
+        "body": [
+          "Use calculators as scenario tools with explicit volume, calls, token counts, unit prices, review minutes, labor rate, fixed costs and success rate. State units and whether failed attempts are already included. Show assumptions and undefined cases clearly. Estimates are not live quotes, invoices or guaranteed savings."
+        ]
+      }
+    ],
+    "alternatives": [
+      {
+        "name": "Cheaper model",
+        "benefits": "Lower unit price",
+        "costs": "Potential rework and retries",
+        "limitations": "Must pass the same task gates"
+      },
+      {
+        "name": "Batching",
+        "benefits": "Can reduce scheduling overhead",
+        "costs": "Adds waiting",
+        "limitations": "Unsuitable for tight interactive deadlines"
+      },
+      {
+        "name": "Caching",
+        "benefits": "Avoids repeated work",
+        "costs": "Invalidation and isolation",
+        "limitations": "Stale results can be harmful"
+      },
+      {
+        "name": "Fewer steps",
+        "benefits": "Reduces work directly",
+        "costs": "May reduce quality",
+        "limitations": "Validate outcome before removing checks"
+      }
+    ],
+    "tradeoffs": [
+      "Cheaper model: lower unit price; costs include potential rework and retries. Must pass the same task gates.",
+      "Batching: can reduce scheduling overhead; costs include adds waiting. Unsuitable for tight interactive deadlines.",
+      "Caching: avoids repeated work; costs include invalidation and isolation. Stale results can be harmful.",
+      "Fewer steps: reduces work directly; costs include may reduce quality. Validate outcome before removing checks."
+    ],
+    "decisionCriteria": [
+      "What is the cost per verified success?",
+      "Are retries already included?",
+      "How are concurrent budgets reserved?",
+      "What happens at exhaustion?"
+    ],
+    "examples": [
+      {
+        "title": "Hypothetical worked example",
+        "body": "A hypothetical workflow costs 100 units for 100 attempts, but only 50 pass review. Its automated cost per verified success is 2 units before labor and infrastructure. Reducing per-call price while doubling rework may be a poor trade. Enter your own prices in the calculator."
+      },
+      {
+        "title": "A cost scenario with review labor",
+        "body": "Hypothetical month: 1,000 attempts, 800 verified successes, 80 currency units in model/tool usage, 40 in infrastructure and 10 hours of review at 30/hour. Total cost is 420; cost per verified success is 420/800=0.525 currency units. Include failed attempts in the 1,000 rather than multiplying their cost twice. If no successes occur, the metric is undefined. Compare the same business outcomes and review quality with the baseline. Prices here are invented example inputs, not provider quotes."
+      }
+    ],
+    "failureModes": [
+      {
+        "symptom": "Cost and queue latency rise together",
+        "cause": "Unbounded retries or concurrency amplify a slow dependency",
+        "diagnostic": "Inspect per-task attempts, in-flight work, queue age and verified success",
+        "mitigation": "Limit admission and retries, preserve useful state and escalate exhausted jobs"
+      }
+    ],
+    "verification": [
+      "Record evidence for: What is the cost per verified success?",
+      "Record evidence for: Are retries already included?",
+      "Record evidence for: How are concurrent budgets reserved?",
+      "Record evidence for: What happens at exhaustion?",
+      "Exercise the failure case: cost and queue latency rise together. Preserve the observed outcome and unresolved limitations."
+    ],
+    "owner": "Budget and operations owners",
+    "reconsiderWhen": [
+      "Usage mix, rates, review demand or latency changes"
+    ],
+    "relatedGuideIds": [
+      "workflow-patterns",
+      "evaluations",
+      "business-discovery"
+    ],
+    "sourceIds": [
+      "finops"
+    ],
+    "reviewedAt": "2026-09-15",
+    "contentVersion": "2026.09.15.1"
+  },
+  {
+    "id": "release-operations",
+    "categoryId": "C11",
+    "title": "Release with a recovery path",
+    "summary": "Connect deployment, quality evidence, operating ownership and reversible rollout.",
+    "tags": [
+      "release",
+      "with",
+      "recovery",
+      "path"
+    ],
+    "stages": [
+      "operations"
+    ],
+    "applicability": {
+      "required": "A system is being piloted, deployed, upgraded or operated for real users.",
+      "optional": "Use a short evidence review for a small reversible experiment; deepen it as consequences and uncertainty grow.",
+      "unnecessary": "Do not implement every pattern here. Omit mechanisms that do not address an identified requirement, and record the rationale."
+    },
+    "prerequisites": [
+      "Release manifest and evidence pack",
+      "A tested rollback and manual fallback"
+    ],
+    "sections": [
+      {
+        "title": "Production operating contract: allowed actions, completion evidence, limits, owner",
+        "body": [
+          "Write an operating contract that names allowed actions, completion evidence, maximum resource use, owner and fallback. Include what the system must refuse and when a person takes over. Make the contract visible to developers and operators so reliability is measured against business behavior, not merely server uptime."
+        ]
+      },
+      {
+        "title": "Release evidence pack with risk-appropriate requirements and known gaps",
+        "body": [
+          "Assemble release evidence: acceptance results, representative failures, security review, recovery tests, budget behavior and unresolved risks. The release authority should see exclusions and manual duties. Checklist coverage describes review work; it does not certify a system as production-safe."
+        ]
+      },
+      {
+        "title": "Shadow execution without writes, pilots, staged release and stop conditions",
+        "body": [
+          "Start with shadow execution that cannot write, then a limited pilot and staged expansion. Define eligible traffic, monitoring, review staffing and stop conditions before launch. Compare outcomes with the existing process. A shadow system still handles data, so its access and retention need appropriate controls."
+        ]
+      },
+      {
+        "title": "Version prompts/models/tools/indexes/memory policy/workflow/evaluation datasets",
+        "body": [
+          "Version prompts, models, tool contracts, retrieval indexes, memory policy, workflow code and evaluation datasets together in a release manifest. Record actual configuration per run. Without this, a quality regression may be impossible to attribute. A model alias can change independently, so track provider notices too."
+        ]
+      },
+      {
+        "title": "In-flight upgrades, compatible state migration, old-version drain or parallel versions",
+        "body": [
+          "Decide how in-flight jobs survive upgrades: compatible migration, draining old workers or parallel versions. Test restoring old checkpoints with the intended code. Do not resume a historical action under a new policy silently. Keep rollback artifacts and know which state changes cannot be reversed."
+        ]
+      },
+      {
+        "title": "Traces tied to business IDs with redaction; logs, metrics and decision evidence",
+        "body": [
+          "Connect traces to business operation IDs and configuration versions. Capture important state transitions, validation results, timings and completion evidence with redaction. Limit access and retention. Logging everything may expose private data and still fail to explain which external action actually occurred."
+        ]
+      },
+      {
+        "title": "Quality/progress objectives alongside availability; correct HTTP does not mean correct work",
+        "body": [
+          "Monitor useful progress and verified task outcomes alongside availability, queue age and latency. A service returning HTTP 200 can repeatedly choose the wrong tool. Define quality alerts based on reviewed samples or checked postconditions, and distinguish no work arriving from work silently failing."
+        ]
+      },
+      {
+        "title": "On-call, incident response, rollback, kill switches, fallback and recovery drills",
+        "body": [
+          "Prepare rollback, kill switches, manual fallback and recovery drills before increasing autonomy. Name the on-call owner and escalation path. A kill switch should stop new side effects and handle in-flight work explicitly. Test the procedure during a controlled exercise; a runbook nobody can execute is weak protection."
+        ]
+      },
+      {
+        "title": "Production checks and user feedback can reveal failures offline benchmarks miss",
+        "body": [
+          "Treat user reports as evidence to investigate, even when offline evaluations pass. Anthropic's infrastructure postmortem described quality degradation that required production investigation. The practical lesson is to retain representative quality checks and version context; it does not establish that every complaint has the same cause."
+        ]
+      },
+      {
+        "title": "Root causes into regression cases; reviewed updates rather than uncontrolled self-modification",
+        "body": [
+          "Convert confirmed incidents into reviewed regression cases, then test the targeted fix and related invariants. Improve prompts, tools or policy through a versioned release process. Do not let production feedback automatically rewrite permissions or deploy code. Keep an audit of what changed and why."
+        ]
+      },
+      {
+        "title": "Realized ROI, adoption, revisit architecture, retire unsuccessful automation",
+        "body": [
+          "Revisit whether users adopt the workflow and whether realized value exceeds maintenance, review and failure costs. Compare with the original baseline and changed process needs. Retire or simplify automation that no longer pays for itself. Continuing because substantial effort was already spent is not an outcome metric."
+        ]
+      },
+      {
+        "title": "Backup and restore, disaster recovery scope, dependency changes and deprecation",
+        "body": [
+          "Define what backups cover, recovery time and acceptable data loss, then restore into a test environment. Reconcile business actions after restoration. Track dependency deprecation and renewal responsibilities. For this static playbook, Git recovers published content; personal browser notes require the user's exports."
+        ]
+      }
+    ],
+    "alternatives": [
+      {
+        "name": "Shadow execution",
+        "benefits": "Observes behavior without business writes",
+        "costs": "No full action-path evidence",
+        "limitations": "Still needs data controls"
+      },
+      {
+        "name": "Limited pilot",
+        "benefits": "Real feedback at bounded scope",
+        "costs": "Review and monitoring effort",
+        "limitations": "May not cover all traffic"
+      },
+      {
+        "name": "Staged rollout",
+        "benefits": "Limits initial exposure",
+        "costs": "Parallel version operations",
+        "limitations": "Requires meaningful stop signals"
+      }
+    ],
+    "tradeoffs": [
+      "Shadow execution: observes behavior without business writes; costs include no full action-path evidence. Still needs data controls.",
+      "Limited pilot: real feedback at bounded scope; costs include review and monitoring effort. May not cover all traffic.",
+      "Staged rollout: limits initial exposure; costs include parallel version operations. Requires meaningful stop signals."
+    ],
+    "decisionCriteria": [
+      "Are old jobs compatible?",
+      "Can actions be stopped?",
+      "Who receives quality alerts?",
+      "Can recovery be demonstrated?"
+    ],
+    "examples": [
+      {
+        "title": "Hypothetical worked example",
+        "body": "A hypothetical prompt update passes offline tests but increases unresolved cases in production. Pause expansion, retain the old version and compare traces by configuration and task segment. Roll back if stop conditions are met, then turn the confirmed failure into a regression case."
+      },
+      {
+        "title": "A release and rollback record",
+        "body": "Hypothetical release r17: code commit, prompt hash, model identifier, tool schema v4, index v8, memory policy v2 and eval dataset v3. Eligible traffic: internal draft-only requests, maximum 50/day. Owner: named on-call person. Stop conditions: any unauthorized write, unresolved severe privacy event, or sustained review queue above staffed capacity. Rollback artifact: r16 image and compatible state policy. Drill: stop intake, drain/reconcile in-flight operations, switch version, verify a read-only case and inspect pending jobs. Record actual observations and who accepted remaining gaps."
+      }
+    ],
+    "failureModes": [
+      {
+        "symptom": "A model or prompt release causes a regression",
+        "cause": "A behavior or configuration change escaped representative checks",
+        "diagnostic": "Compare outcomes by release version and affected segment",
+        "mitigation": "Apply the documented stop condition, roll back and retain evidence"
+      }
+    ],
+    "verification": [
+      "Record evidence for: Are old jobs compatible?",
+      "Record evidence for: Can actions be stopped?",
+      "Record evidence for: Who receives quality alerts?",
+      "Record evidence for: Can recovery be demonstrated?",
+      "Exercise the failure case: a model or prompt release causes a regression. Preserve the observed outcome and unresolved limitations."
+    ],
+    "owner": "Release and operations owners",
+    "reconsiderWhen": [
+      "Version changes, quality reports or realized value drift"
+    ],
+    "relatedGuideIds": [
+      "durable-execution",
+      "evaluations",
+      "leadership"
+    ],
+    "sourceIds": [
+      "postmortem",
+      "harnesses"
+    ],
+    "reviewedAt": "2026-09-15",
+    "contentVersion": "2026.09.15.1"
+  },
+  {
+    "id": "leadership",
+    "categoryId": "C12",
+    "title": "Lead with decisions, evidence and ownership",
+    "summary": "Use clear questions and small experiments to guide adoption and engineering practice.",
+    "tags": [
+      "lead",
+      "with",
+      "decisions",
+      "evidence",
+      "ownership"
+    ],
+    "stages": [
+      "discovery"
+    ],
+    "applicability": {
+      "required": "People must decide, approve, adopt, review or own an automation.",
+      "optional": "Use a short evidence review for a small reversible experiment; deepen it as consequences and uncertainty grow.",
+      "unnecessary": "Do not implement every pattern here. Omit mechanisms that do not address an identified requirement, and record the rationale."
+    },
+    "prerequisites": [
+      "A stakeholder map",
+      "An explicit next decision"
+    ],
+    "sections": [
+      {
+        "title": "Discovery questions, design reviews, proposing options, communicating uncertainty",
+        "body": [
+          "Begin discovery with the current problem, affected users, process owner and evidence of pain. In a design review ask what must be true, what remains unknown and how the proposed action can fail. Offer credible alternatives and a next experiment rather than forcing premature certainty."
+        ]
+      },
+      {
+        "title": "Executive framing: outcome, evidence, cost, risks, alternatives and next decision",
+        "body": [
+          "Explain proposals to leaders through outcome, evidence, full cost, risk, alternatives and the decision needed now. Separate a demo result from a production claim. A concise recommendation can say 'approve a two-week read-only pilot' without implying approval for autonomous writes."
+        ]
+      },
+      {
+        "title": "Decision records, assumptions, evidence and revisit triggers",
+        "body": [
+          "Keep decision records short enough to revisit: decision, context, options, evidence, assumptions, owner and trigger. Link to actual artifacts rather than relying on meeting memory. When an assumption changes, reopen the decision instead of treating the old approval as timeless."
+        ]
+      },
+      {
+        "title": "Adoption, user training, approval UX, review fatigue and capacity",
+        "body": [
+          "Plan adoption with the people who will use and review the system. Measure review time, override rate and missed escalations. A long queue of low-value approvals creates fatigue and can weaken control. Train users on limitations and correction paths, then observe real work rather than counting logins."
+        ]
+      },
+      {
+        "title": "Clear action/evidence/consequence presentation, manual takeover and corrections",
+        "body": [
+          "Show the proposed action, supporting evidence and likely consequence together. Let a reviewer correct details or take over manually without losing context. Make approval and rejection equally clear. If the person cannot inspect the relevant evidence in the available time, the oversight design is incomplete."
+        ]
+      },
+      {
+        "title": "Team ownership, handover, documentation, learning-gap assessment",
+        "body": [
+          "Assign ownership for content, code, integrations, evaluation, cost and incidents. Handover includes known gaps, operation commands and recovery evidence. Identify learning gaps through tasks the team must actually perform, such as tracing a failed tool call or designing a representative evaluation."
+        ]
+      },
+      {
+        "title": "General first-day/week/month guidance for joining an automation team",
+        "body": [
+          "In the first day, map the process and owners; in the first week, reproduce one workflow and its tests; in the first month, ship a small measured improvement with an operating contract. Adapt this sequence to the role. Avoid prescribing an employer's internal architecture without evidence."
+        ]
+      },
+      {
+        "title": "Transfer backend skills while learning probabilistic-system evaluation",
+        "body": [
+          "Reuse backend strengths: contracts, state machines, concurrency control, observability and failure testing. Add skills for probabilistic output: representative datasets, rubric design, repeated trials and evidence grounding. Models change which failures occur; they do not remove the need for ordinary software engineering."
+        ]
+      },
+      {
+        "title": "Reusable question-to-guide navigation and daily stage checklists",
+        "body": [
+          "Use stage checklists as questions that lead to evidence and a next action. Start a daily review with unresolved high-consequence items, recent changes and approaching revisit triggers. Link unfamiliar terms to guides. A checklist marked complete without evidence hides uncertainty rather than resolving it."
+        ]
+      },
+      {
+        "title": "No employer-specific internal assumptions",
+        "body": [
+          "Use hypothetical examples and public sources when sharing this playbook. Do not add private emails, employer details, internal identifiers or credentials to published content. Personal notes remain on this browser, but exports should still be handled carefully if they contain project information."
+        ]
+      }
+    ],
+    "alternatives": [
+      {
+        "name": "Small evidence-led pilot",
+        "benefits": "Learning with bounded exposure",
+        "costs": "May delay broad rollout",
+        "limitations": "Needs explicit success criteria"
+      },
+      {
+        "name": "Manual process improvement",
+        "benefits": "Addresses root workflow friction",
+        "costs": "Less visible novelty",
+        "limitations": "May not solve semantic tasks"
+      },
+      {
+        "name": "Broad platform program",
+        "benefits": "Can serve repeated common needs",
+        "costs": "Coordination and investment",
+        "limitations": "Premature before shared needs are proven"
+      }
+    ],
+    "tradeoffs": [
+      "Small evidence-led pilot: learning with bounded exposure; costs include may delay broad rollout. Needs explicit success criteria.",
+      "Manual process improvement: addresses root workflow friction; costs include less visible novelty. May not solve semantic tasks.",
+      "Broad platform program: can serve repeated common needs; costs include coordination and investment. Premature before shared needs are proven."
+    ],
+    "decisionCriteria": [
+      "What decision is needed now?",
+      "Who owns its consequences?",
+      "What would change our recommendation?",
+      "Can users correct and take over?"
+    ],
+    "examples": [
+      {
+        "title": "Hypothetical worked example",
+        "body": "A hypothetical new team member spends the first week reproducing one failed workflow and speaking with its reviewers. The first proposal reduces missing evidence in escalations rather than adding another agent. The result is assessed through resolution time and reviewer feedback."
+      }
+    ],
+    "failureModes": [
+      {
+        "symptom": "Approvals become a rubber stamp",
+        "cause": "Review demand exceeds capacity or evidence is hard to inspect",
+        "diagnostic": "Measure queue age, review time, overrides and missed escalations",
+        "mitigation": "Reduce action scope and redesign the review handoff with users"
+      }
+    ],
+    "verification": [
+      "Record evidence for: What decision is needed now?",
+      "Record evidence for: Who owns its consequences?",
+      "Record evidence for: What would change our recommendation?",
+      "Record evidence for: Can users correct and take over?",
+      "Exercise the failure case: approvals become a rubber stamp. Preserve the observed outcome and unresolved limitations."
+    ],
+    "owner": "Team and process owners",
+    "reconsiderWhen": [
+      "Ownership, adoption or project assumptions change"
+    ],
+    "relatedGuideIds": [
+      "business-discovery",
+      "release-operations",
+      "security"
+    ],
+    "sourceIds": [
+      "nist"
+    ],
+    "reviewedAt": "2026-09-15",
+    "contentVersion": "2026.09.15.1"
+  },
+  {
+    "id": "harness-engineering",
+    "categoryId": "C13",
+    "title": "How an agent harness fits together",
+    "summary": "Trace the runtime from model output to policy checks, tool effects, durable state and verified completion.",
+    "tags": [
+      "agent",
+      "harness",
+      "fits",
+      "together"
+    ],
+    "stages": [
+      "architecture"
+    ],
+    "applicability": {
+      "required": "You are building or configuring a runtime that lets a model use tools over multiple steps.",
+      "optional": "Use a short evidence review for a small reversible experiment; deepen it as consequences and uncertainty grow.",
+      "unnecessary": "Do not implement every pattern here. Omit mechanisms that do not address an identified requirement, and record the rationale."
+    },
+    "prerequisites": [
+      "An operating contract",
+      "Tool, state and verification boundaries"
+    ],
+    "sections": [
+      {
+        "title": "Execution loop: model -> proposed tool calls -> validation -> dispatch -> results -> next step or verified completion",
+        "body": [
+          "An agent harness is the application runtime around a model. Its basic loop assembles context, asks the model, validates proposed tool calls, checks policy, dispatches tools, records results and either continues or verifies completion. Every transition needs explicit failure and stop behavior; the model is only one component."
+        ]
+      },
+      {
+        "title": "Model adapters, structured outputs, streaming and usage accounting",
+        "body": [
+          "Adapters translate provider request and response formats into an application contract. Handle streaming interruption, malformed outputs and partial usage reports. Record actual model/configuration identity and account for calls that fail after dispatch. Validate structured output before handing it to domain logic."
+        ]
+      },
+      {
+        "title": "Tool registry, selection, schemas, policy checks, dispatch and result normalization",
+        "body": [
+          "The tool registry describes capabilities, but a separate policy check decides whether a particular call is allowed now. Dispatchers normalize success, rejection, transient error and unknown outcome. Keep business identifiers and operation keys intact. Tool availability must not be confused with authority to use it."
+        ]
+      },
+      {
+        "title": "Context assembly and compaction; instruction/data trust separation",
+        "body": [
+          "Context assembly selects the active goal, constraints, state and needed evidence. Compaction should preserve pending actions and exact IDs in structured artifacts. Keep untrusted data distinct from instructions and refresh authoritative policy outside the model. See the context guide for preservation and isolation tests."
+        ]
+      },
+      {
+        "title": "State/checkpoint management and restoration",
+        "body": [
+          "Persist enough state to identify the current task, owned operations, approvals, versions and verified milestones. A checkpoint should be recoverable after process loss. Restoring conversation alone may repeat completed effects. See durable execution for replay, fencing and uncertain-outcome reconciliation."
+        ]
+      },
+      {
+        "title": "Memory/retrieval hooks and isolation",
+        "body": [
+          "Retrieve evidence under the caller's access scope and apply an explicit memory-write policy. Keep execution state separate from recalled preferences. Corrections and deletions must reach derived context. Add hooks only when the task needs them; a stateless classifier does not automatically need long-term memory."
+        ]
+      },
+      {
+        "title": "Limits, deadlines, retry/cancellation and progress controls",
+        "body": [
+          "Enforce overall deadlines, call/output limits, shared child budgets, retry ownership and cancellation in the runtime. Track actual progress rather than token activity. Budget enough effort for final verification and handoff. The model can propose more work, but the runtime decides whether resources permit it."
+        ]
+      },
+      {
+        "title": "Authorization, exact-action approvals and sandbox execution",
+        "body": [
+          "Bind approval to exact actions and revalidate before dispatch. Isolate code or browser tools and restrict secrets, filesystem and network access. The harness cannot outsource authorization to a prompt. A tool result containing new instructions remains untrusted evidence, not a policy update."
+        ]
+      },
+      {
+        "title": "Child agents, handoffs, task ownership, shared budgets and aggregation",
+        "body": [
+          "Give each child a task ID, parent, owner, scoped context, permitted tools and resource allocation. Aggregate results against a contract and preserve disagreements. Propagate cancellation and reject stale results after replanning. Use children for independent work, not as a default wrapper around every function."
+        ]
+      },
+      {
+        "title": "Verification hooks, traces, evaluation integration and configuration versions",
+        "body": [
+          "Run deterministic postcondition checks where possible and connect evaluation to real outcome evidence. Trace model, tool and policy versions without leaking secrets. A verified completion hook should distinguish accepted, pending, outcome unknown and completed. Reports must not collapse these into a generic success."
+        ]
+      },
+      {
+        "title": "Worker lifecycle, startup, shutdown, recovery and deployment",
+        "body": [
+          "On startup, recover owned tasks safely; during operation, renew leases and measure progress; on shutdown, stop intake and persist safe state. Handle old workers returning after reassignment. Deployment must preserve checkpoint compatibility or drain old jobs. Use an operating contract and rehearsed recovery procedure."
+        ]
+      },
+      {
+        "title": "What framework provides versus what application must implement/configure",
+        "body": [
+          "Create a responsibility matrix for the chosen framework: which state, retries, approvals, isolation and metrics it supplies, and which require application code or configuration. Exercise each claimed behavior. A built-in feature with defaults that do not match your workflow is still an implementation task."
+        ]
+      },
+      {
+        "title": "Thin custom harness versus framework runtime; avoid unnecessary universal frameworks",
+        "body": [
+          "A thin harness can suit a small controlled tool loop and makes behavior visible. A framework can reduce implementation work for complex state and integration, while adding abstractions and upgrade obligations. Choose the smallest option that passes realistic failure tests; avoid building a universal platform before demonstrating need."
+        ]
+      },
+      {
+        "title": "Teach how components fit together without duplicating entire specialist chapters",
+        "body": [
+          "Follow one hypothetical support request through the loop: retrieve an authorized record, propose a draft, validate recipients, request approval, send with an operation key and verify delivery status. Consult specialist guides for each boundary. This integrated view explains how parts connect without replacing their deeper tests."
+        ]
+      }
+    ],
+    "alternatives": [
+      {
+        "name": "Thin custom harness",
+        "benefits": "Transparent small loop",
+        "costs": "You own control features",
+        "limitations": "Avoid recreating a platform accidentally"
+      },
+      {
+        "name": "Framework runtime",
+        "benefits": "Reusable execution and integrations",
+        "costs": "Conventions and upgrades",
+        "limitations": "Verify defaults and omitted duties"
+      },
+      {
+        "name": "Durable engine plus model adapter",
+        "benefits": "Strong workflow structure",
+        "costs": "More integration work",
+        "limitations": "Model correctness remains separate"
+      }
+    ],
+    "tradeoffs": [
+      "Thin custom harness: transparent small loop; costs include you own control features. Avoid recreating a platform accidentally.",
+      "Framework runtime: reusable execution and integrations; costs include conventions and upgrades. Verify defaults and omitted duties.",
+      "Durable engine plus model adapter: strong workflow structure; costs include more integration work. Model correctness remains separate."
+    ],
+    "decisionCriteria": [
+      "What does the framework supply?",
+      "Where is policy enforced?",
+      "How is state restored?",
+      "Which check proves completion?"
+    ],
+    "examples": [
+      {
+        "title": "Hypothetical worked example",
+        "body": "A hypothetical support harness reads a scoped ticket, drafts a reply, validates the recipient, waits for exact-action approval, sends with an operation ID and verifies the send status. The completion message reflects that status. A timeout preserves uncertainty instead of reporting success."
+      }
+    ],
+    "failureModes": [
+      {
+        "symptom": "The harness announces completion prematurely",
+        "cause": "Completion relies on model text rather than verified state",
+        "diagnostic": "Compare terminal response with operation records and postconditions",
+        "mitigation": "Keep outcome unknown or pending and require a verification hook"
+      }
+    ],
+    "verification": [
+      "Record evidence for: What does the framework supply?",
+      "Record evidence for: Where is policy enforced?",
+      "Record evidence for: How is state restored?",
+      "Record evidence for: Which check proves completion?",
+      "Exercise the failure case: the harness announces completion prematurely. Preserve the observed outcome and unresolved limitations."
+    ],
+    "owner": "Agent runtime owner",
+    "reconsiderWhen": [
+      "New tools, recovery needs or delegation complexity"
+    ],
+    "relatedGuideIds": [
+      "tool-design",
+      "context-engineering",
+      "durable-execution"
+    ],
+    "sourceIds": [
+      "harnesses",
+      "evals",
+      "tools"
+    ],
+    "reviewedAt": "2026-09-15",
+    "contentVersion": "2026.09.15.1"
+  }
+]

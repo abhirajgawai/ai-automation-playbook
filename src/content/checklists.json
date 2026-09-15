@@ -1,0 +1,422 @@
+[
+  {
+    "id": "business-discovery-1",
+    "stage": "discovery",
+    "title": "Who owns the outcome?",
+    "evidence": "Record a concrete answer, supporting artifact or URL, owner and unresolved assumptions. A process owner and representative examples",
+    "guideIds": ["business-discovery"]
+  },
+  {
+    "id": "business-discovery-2",
+    "stage": "discovery",
+    "title": "Can simpler rules solve the meaningful cases?",
+    "evidence": "Record a concrete answer, supporting artifact or URL, owner and unresolved assumptions. Record evidence for: Can simpler rules solve the meaningful cases?",
+    "guideIds": ["business-discovery"]
+  },
+  {
+    "id": "business-discovery-3",
+    "stage": "discovery",
+    "title": "Are error consequences reversible?",
+    "evidence": "Record a concrete answer, supporting artifact or URL, owner and unresolved assumptions. Record evidence for: Are error consequences reversible?",
+    "guideIds": ["business-discovery"]
+  },
+  {
+    "id": "business-discovery-4",
+    "stage": "discovery",
+    "title": "Can humans handle peak escalations?",
+    "evidence": "Record a concrete answer, supporting artifact or URL, owner and unresolved assumptions. Record evidence for: Can humans handle peak escalations?",
+    "guideIds": ["business-discovery"]
+  },
+  {
+    "id": "architecture-1",
+    "stage": "architecture",
+    "title": "Which component owns each invariant?",
+    "evidence": "Record a concrete answer, supporting artifact or URL, owner and unresolved assumptions. Named invariants and authoritative systems",
+    "guideIds": ["architecture"]
+  },
+  {
+    "id": "architecture-2",
+    "stage": "architecture",
+    "title": "Where can partial failure occur?",
+    "evidence": "Record a concrete answer, supporting artifact or URL, owner and unresolved assumptions. Record evidence for: Where can partial failure occur?",
+    "guideIds": ["architecture"]
+  },
+  {
+    "id": "architecture-3",
+    "stage": "architecture",
+    "title": "How does a caller learn the final outcome?",
+    "evidence": "Record a concrete answer, supporting artifact or URL, owner and unresolved assumptions. Record evidence for: How does a caller learn the final outcome?",
+    "guideIds": ["architecture"]
+  },
+  {
+    "id": "architecture-4",
+    "stage": "architecture",
+    "title": "Which changes must be independently deployable?",
+    "evidence": "Record a concrete answer, supporting artifact or URL, owner and unresolved assumptions. Record evidence for: Which changes must be independently deployable?",
+    "guideIds": ["architecture"]
+  },
+  {
+    "id": "workflow-patterns-1",
+    "stage": "architecture",
+    "title": "Are subtasks truly independent?",
+    "evidence": "Record a concrete answer, supporting artifact or URL, owner and unresolved assumptions. Task dependency map",
+    "guideIds": ["workflow-patterns"]
+  },
+  {
+    "id": "workflow-patterns-2",
+    "stage": "architecture",
+    "title": "What happens when a child is late?",
+    "evidence": "Record a concrete answer, supporting artifact or URL, owner and unresolved assumptions. Record evidence for: What happens when a child is late?",
+    "guideIds": ["workflow-patterns"]
+  },
+  {
+    "id": "workflow-patterns-3",
+    "stage": "architecture",
+    "title": "How are conflicting results handled?",
+    "evidence": "Record a concrete answer, supporting artifact or URL, owner and unresolved assumptions. Record evidence for: How are conflicting results handled?",
+    "guideIds": ["workflow-patterns"]
+  },
+  {
+    "id": "workflow-patterns-4",
+    "stage": "architecture",
+    "title": "What stops the loop?",
+    "evidence": "Record a concrete answer, supporting artifact or URL, owner and unresolved assumptions. Record evidence for: What stops the loop?",
+    "guideIds": ["workflow-patterns"]
+  },
+  {
+    "id": "framework-selection-1",
+    "stage": "architecture",
+    "title": "Which layer is actually missing?",
+    "evidence": "Record a concrete answer, supporting artifact or URL, owner and unresolved assumptions. Mandatory requirements",
+    "guideIds": ["framework-selection"]
+  },
+  {
+    "id": "framework-selection-2",
+    "stage": "architecture",
+    "title": "Which requirements are mandatory?",
+    "evidence": "Record a concrete answer, supporting artifact or URL, owner and unresolved assumptions. Record evidence for: Which requirements are mandatory?",
+    "guideIds": ["framework-selection"]
+  },
+  {
+    "id": "framework-selection-3",
+    "stage": "architecture",
+    "title": "Which claims have executable evidence?",
+    "evidence": "Record a concrete answer, supporting artifact or URL, owner and unresolved assumptions. Record evidence for: Which claims have executable evidence?",
+    "guideIds": ["framework-selection"]
+  },
+  {
+    "id": "framework-selection-4",
+    "stage": "architecture",
+    "title": "What is the exit plan?",
+    "evidence": "Record a concrete answer, supporting artifact or URL, owner and unresolved assumptions. Record evidence for: What is the exit plan?",
+    "guideIds": ["framework-selection"]
+  },
+  {
+    "id": "context-engineering-1",
+    "stage": "implementation",
+    "title": "What must remain exact?",
+    "evidence": "Record a concrete answer, supporting artifact or URL, owner and unresolved assumptions. An input budget and representative long traces",
+    "guideIds": ["context-engineering"]
+  },
+  {
+    "id": "context-engineering-2",
+    "stage": "implementation",
+    "title": "How much tool-result headroom is reserved?",
+    "evidence": "Record a concrete answer, supporting artifact or URL, owner and unresolved assumptions. Record evidence for: How much tool-result headroom is reserved?",
+    "guideIds": ["context-engineering"]
+  },
+  {
+    "id": "context-engineering-3",
+    "stage": "implementation",
+    "title": "Can the next call recover pending actions?",
+    "evidence": "Record a concrete answer, supporting artifact or URL, owner and unresolved assumptions. Record evidence for: Can the next call recover pending actions?",
+    "guideIds": ["context-engineering"]
+  },
+  {
+    "id": "context-engineering-4",
+    "stage": "implementation",
+    "title": "Which evidence actually reached the prompt?",
+    "evidence": "Record a concrete answer, supporting artifact or URL, owner and unresolved assumptions. Record evidence for: Which evidence actually reached the prompt?",
+    "guideIds": ["context-engineering"]
+  },
+  {
+    "id": "retrieval-1",
+    "stage": "implementation",
+    "title": "Is the data structured and authoritative?",
+    "evidence": "Record a concrete answer, supporting artifact or URL, owner and unresolved assumptions. Authorized corpus and source ownership",
+    "guideIds": ["retrieval"]
+  },
+  {
+    "id": "retrieval-2",
+    "stage": "implementation",
+    "title": "Was extraction correct?",
+    "evidence": "Record a concrete answer, supporting artifact or URL, owner and unresolved assumptions. Record evidence for: Was extraction correct?",
+    "guideIds": ["retrieval"]
+  },
+  {
+    "id": "retrieval-3",
+    "stage": "implementation",
+    "title": "Did the required passage reach the model?",
+    "evidence": "Record a concrete answer, supporting artifact or URL, owner and unresolved assumptions. Record evidence for: Did the required passage reach the model?",
+    "guideIds": ["retrieval"]
+  },
+  {
+    "id": "retrieval-4",
+    "stage": "implementation",
+    "title": "Does each citation support its claim?",
+    "evidence": "Record a concrete answer, supporting artifact or URL, owner and unresolved assumptions. Record evidence for: Does each citation support its claim?",
+    "guideIds": ["retrieval"]
+  },
+  {
+    "id": "memory-1",
+    "stage": "implementation",
+    "title": "Is this state, evidence or preference?",
+    "evidence": "Record a concrete answer, supporting artifact or URL, owner and unresolved assumptions. A purpose for retention",
+    "guideIds": ["memory"]
+  },
+  {
+    "id": "memory-2",
+    "stage": "implementation",
+    "title": "Who may write and correct it?",
+    "evidence": "Record a concrete answer, supporting artifact or URL, owner and unresolved assumptions. Record evidence for: Who may write and correct it?",
+    "guideIds": ["memory"]
+  },
+  {
+    "id": "memory-3",
+    "stage": "implementation",
+    "title": "When does it expire?",
+    "evidence": "Record a concrete answer, supporting artifact or URL, owner and unresolved assumptions. Record evidence for: When does it expire?",
+    "guideIds": ["memory"]
+  },
+  {
+    "id": "memory-4",
+    "stage": "implementation",
+    "title": "How do deletions reach derived stores?",
+    "evidence": "Record a concrete answer, supporting artifact or URL, owner and unresolved assumptions. Record evidence for: How do deletions reach derived stores?",
+    "guideIds": ["memory"]
+  },
+  {
+    "id": "tool-design-1",
+    "stage": "implementation",
+    "title": "Can a human distinguish competing tools?",
+    "evidence": "Record a concrete answer, supporting artifact or URL, owner and unresolved assumptions. API contracts and identities",
+    "guideIds": ["tool-design"]
+  },
+  {
+    "id": "tool-design-2",
+    "stage": "implementation",
+    "title": "Are IDs and ownership checked?",
+    "evidence": "Record a concrete answer, supporting artifact or URL, owner and unresolved assumptions. Record evidence for: Are IDs and ownership checked?",
+    "guideIds": ["tool-design"]
+  },
+  {
+    "id": "tool-design-3",
+    "stage": "implementation",
+    "title": "What does success actually mean?",
+    "evidence": "Record a concrete answer, supporting artifact or URL, owner and unresolved assumptions. Record evidence for: What does success actually mean?",
+    "guideIds": ["tool-design"]
+  },
+  {
+    "id": "tool-design-4",
+    "stage": "implementation",
+    "title": "How are uncertain writes reconciled?",
+    "evidence": "Record a concrete answer, supporting artifact or URL, owner and unresolved assumptions. Record evidence for: How are uncertain writes reconciled?",
+    "guideIds": ["tool-design"]
+  },
+  {
+    "id": "durable-execution-1",
+    "stage": "implementation",
+    "title": "Who owns retries?",
+    "evidence": "Record a concrete answer, supporting artifact or URL, owner and unresolved assumptions. Queryable operation IDs or reconciliation plan",
+    "guideIds": ["durable-execution"]
+  },
+  {
+    "id": "durable-execution-2",
+    "stage": "implementation",
+    "title": "Can the write be deduplicated?",
+    "evidence": "Record a concrete answer, supporting artifact or URL, owner and unresolved assumptions. Record evidence for: Can the write be deduplicated?",
+    "guideIds": ["durable-execution"]
+  },
+  {
+    "id": "durable-execution-3",
+    "stage": "implementation",
+    "title": "Can a stale worker still act?",
+    "evidence": "Record a concrete answer, supporting artifact or URL, owner and unresolved assumptions. Record evidence for: Can a stale worker still act?",
+    "guideIds": ["durable-execution"]
+  },
+  {
+    "id": "durable-execution-4",
+    "stage": "implementation",
+    "title": "What evidence proves progress and completion?",
+    "evidence": "Record a concrete answer, supporting artifact or URL, owner and unresolved assumptions. Record evidence for: What evidence proves progress and completion?",
+    "guideIds": ["durable-execution"]
+  },
+  {
+    "id": "security-1",
+    "stage": "pre-release",
+    "title": "What can this identity actually do?",
+    "evidence": "Record a concrete answer, supporting artifact or URL, owner and unresolved assumptions. Data and action inventory",
+    "guideIds": ["security"]
+  },
+  {
+    "id": "security-2",
+    "stage": "pre-release",
+    "title": "Can untrusted text reach a write path?",
+    "evidence": "Record a concrete answer, supporting artifact or URL, owner and unresolved assumptions. Record evidence for: Can untrusted text reach a write path?",
+    "guideIds": ["security"]
+  },
+  {
+    "id": "security-3",
+    "stage": "pre-release",
+    "title": "What exactly was approved?",
+    "evidence": "Record a concrete answer, supporting artifact or URL, owner and unresolved assumptions. Record evidence for: What exactly was approved?",
+    "guideIds": ["security"]
+  },
+  {
+    "id": "security-4",
+    "stage": "pre-release",
+    "title": "Who can stop and reconcile the system?",
+    "evidence": "Record a concrete answer, supporting artifact or URL, owner and unresolved assumptions. Record evidence for: Who can stop and reconcile the system?",
+    "guideIds": ["security"]
+  },
+  {
+    "id": "evaluations-1",
+    "stage": "pre-release",
+    "title": "Does the grader catch a known failure?",
+    "evidence": "Record a concrete answer, supporting artifact or URL, owner and unresolved assumptions. Acceptance criteria with a ground-truth owner",
+    "guideIds": ["evaluations"]
+  },
+  {
+    "id": "evaluations-2",
+    "stage": "pre-release",
+    "title": "Is the holdout untouched?",
+    "evidence": "Record a concrete answer, supporting artifact or URL, owner and unresolved assumptions. Record evidence for: Is the holdout untouched?",
+    "guideIds": ["evaluations"]
+  },
+  {
+    "id": "evaluations-3",
+    "stage": "pre-release",
+    "title": "Which segments perform poorly?",
+    "evidence": "Record a concrete answer, supporting artifact or URL, owner and unresolved assumptions. Record evidence for: Which segments perform poorly?",
+    "guideIds": ["evaluations"]
+  },
+  {
+    "id": "evaluations-4",
+    "stage": "pre-release",
+    "title": "Was external state checked?",
+    "evidence": "Record a concrete answer, supporting artifact or URL, owner and unresolved assumptions. Record evidence for: Was external state checked?",
+    "guideIds": ["evaluations"]
+  },
+  {
+    "id": "cost-capacity-1",
+    "stage": "operations",
+    "title": "What is the cost per verified success?",
+    "evidence": "Record a concrete answer, supporting artifact or URL, owner and unresolved assumptions. Observed workload or explicit scenarios",
+    "guideIds": ["cost-capacity"]
+  },
+  {
+    "id": "cost-capacity-2",
+    "stage": "operations",
+    "title": "Are retries already included?",
+    "evidence": "Record a concrete answer, supporting artifact or URL, owner and unresolved assumptions. Record evidence for: Are retries already included?",
+    "guideIds": ["cost-capacity"]
+  },
+  {
+    "id": "cost-capacity-3",
+    "stage": "operations",
+    "title": "How are concurrent budgets reserved?",
+    "evidence": "Record a concrete answer, supporting artifact or URL, owner and unresolved assumptions. Record evidence for: How are concurrent budgets reserved?",
+    "guideIds": ["cost-capacity"]
+  },
+  {
+    "id": "cost-capacity-4",
+    "stage": "operations",
+    "title": "What happens at exhaustion?",
+    "evidence": "Record a concrete answer, supporting artifact or URL, owner and unresolved assumptions. Record evidence for: What happens at exhaustion?",
+    "guideIds": ["cost-capacity"]
+  },
+  {
+    "id": "release-operations-1",
+    "stage": "operations",
+    "title": "Are old jobs compatible?",
+    "evidence": "Record a concrete answer, supporting artifact or URL, owner and unresolved assumptions. Release manifest and evidence pack",
+    "guideIds": ["release-operations"]
+  },
+  {
+    "id": "release-operations-2",
+    "stage": "operations",
+    "title": "Can actions be stopped?",
+    "evidence": "Record a concrete answer, supporting artifact or URL, owner and unresolved assumptions. Record evidence for: Can actions be stopped?",
+    "guideIds": ["release-operations"]
+  },
+  {
+    "id": "release-operations-3",
+    "stage": "operations",
+    "title": "Who receives quality alerts?",
+    "evidence": "Record a concrete answer, supporting artifact or URL, owner and unresolved assumptions. Record evidence for: Who receives quality alerts?",
+    "guideIds": ["release-operations"]
+  },
+  {
+    "id": "release-operations-4",
+    "stage": "operations",
+    "title": "Can recovery be demonstrated?",
+    "evidence": "Record a concrete answer, supporting artifact or URL, owner and unresolved assumptions. Record evidence for: Can recovery be demonstrated?",
+    "guideIds": ["release-operations"]
+  },
+  {
+    "id": "leadership-1",
+    "stage": "discovery",
+    "title": "What decision is needed now?",
+    "evidence": "Record a concrete answer, supporting artifact or URL, owner and unresolved assumptions. A stakeholder map",
+    "guideIds": ["leadership"]
+  },
+  {
+    "id": "leadership-2",
+    "stage": "discovery",
+    "title": "Who owns its consequences?",
+    "evidence": "Record a concrete answer, supporting artifact or URL, owner and unresolved assumptions. Record evidence for: Who owns its consequences?",
+    "guideIds": ["leadership"]
+  },
+  {
+    "id": "leadership-3",
+    "stage": "discovery",
+    "title": "What would change our recommendation?",
+    "evidence": "Record a concrete answer, supporting artifact or URL, owner and unresolved assumptions. Record evidence for: What would change our recommendation?",
+    "guideIds": ["leadership"]
+  },
+  {
+    "id": "leadership-4",
+    "stage": "discovery",
+    "title": "Can users correct and take over?",
+    "evidence": "Record a concrete answer, supporting artifact or URL, owner and unresolved assumptions. Record evidence for: Can users correct and take over?",
+    "guideIds": ["leadership"]
+  },
+  {
+    "id": "harness-engineering-1",
+    "stage": "architecture",
+    "title": "What does the framework supply?",
+    "evidence": "Record a concrete answer, supporting artifact or URL, owner and unresolved assumptions. An operating contract",
+    "guideIds": ["harness-engineering"]
+  },
+  {
+    "id": "harness-engineering-2",
+    "stage": "architecture",
+    "title": "Where is policy enforced?",
+    "evidence": "Record a concrete answer, supporting artifact or URL, owner and unresolved assumptions. Record evidence for: Where is policy enforced?",
+    "guideIds": ["harness-engineering"]
+  },
+  {
+    "id": "harness-engineering-3",
+    "stage": "architecture",
+    "title": "How is state restored?",
+    "evidence": "Record a concrete answer, supporting artifact or URL, owner and unresolved assumptions. Record evidence for: How is state restored?",
+    "guideIds": ["harness-engineering"]
+  },
+  {
+    "id": "harness-engineering-4",
+    "stage": "architecture",
+    "title": "Which check proves completion?",
+    "evidence": "Record a concrete answer, supporting artifact or URL, owner and unresolved assumptions. Record evidence for: Which check proves completion?",
+    "guideIds": ["harness-engineering"]
+  }
+]

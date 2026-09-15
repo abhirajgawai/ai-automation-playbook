@@ -1,0 +1,316 @@
+[
+  {
+    "id": "agent-stuck",
+    "title": "Agent stuck, looping or overdelegating",
+    "symptom": "The agent repeats work or keeps delegating without useful progress.",
+    "questions": [
+      "Are verified milestones advancing?",
+      "Are task IDs or tool arguments repeating?",
+      "Do children share a finite root budget?"
+    ],
+    "guideIds": [
+      "workflow-patterns",
+      "harness-engineering",
+      "cost-capacity"
+    ],
+    "causes": [
+      {
+        "title": "No measurable progress",
+        "evidence": "Repeated action signatures and unchanged output artifacts",
+        "mitigation": "Stop additional actions and capture current state",
+        "durableFix": "Define evidence-based milestones, repetition detection and a bounded escalation path"
+      },
+      {
+        "title": "Unclear delegated ownership",
+        "evidence": "Children inspect the same scope or return incompatible outputs",
+        "mitigation": "Cancel redundant work and assign one owner per artifact",
+        "durableFix": "Require task contracts, scope exclusions, shared budgets and stale-result handling"
+      }
+    ]
+  },
+  {
+    "id": "duplicate-action",
+    "title": "Worker crash or duplicate action",
+    "symptom": "A restart appears to repeat an external business effect.",
+    "questions": [
+      "Did the first operation succeed remotely?",
+      "Was the same idempotency key reused?",
+      "Could a stale worker still write?"
+    ],
+    "guideIds": [
+      "durable-execution",
+      "tool-design"
+    ],
+    "causes": [
+      {
+        "title": "Unknown outcome was treated as failure",
+        "evidence": "Provider shows success but local checkpoint lacks confirmation",
+        "mitigation": "Suspend retries and reconcile by operation ID",
+        "durableFix": "Persist intent before dispatch and retain stable deduplication keys through recovery"
+      },
+      {
+        "title": "Two workers retained authority",
+        "evidence": "Overlapping lease history or late writes from the original worker",
+        "mitigation": "Fence the stale owner and inspect all effects",
+        "durableFix": "Enforce fencing/version checks at the side-effect boundary and test reassignment"
+      }
+    ]
+  },
+  {
+    "id": "context-loss",
+    "title": "Context missing or ignored",
+    "symptom": "The agent misses earlier constraints or contradicts available evidence.",
+    "questions": [
+      "Was the information stored?",
+      "Was it selected and included in the actual prompt?",
+      "Did compaction change exact IDs or pending actions?"
+    ],
+    "guideIds": [
+      "context-engineering",
+      "retrieval"
+    ],
+    "causes": [
+      {
+        "title": "Information omitted during assembly",
+        "evidence": "Required evidence exists but is absent from the model input",
+        "mitigation": "Reload the needed evidence and active constraints",
+        "durableFix": "Add context-assembly tracing and preservation tests"
+      },
+      {
+        "title": "Information included but misused",
+        "evidence": "Prompt contains the evidence but answer contradicts it",
+        "mitigation": "Stop dependent actions and request a checked answer",
+        "durableFix": "Reduce distracting context and test claim-level support with representative long traces"
+      },
+      {
+        "title": "Storage loss",
+        "evidence": "The authoritative record is missing before retrieval begins",
+        "mitigation": "Recover from a retained artifact or ask for the missing information",
+        "durableFix": "Separate durable task state from transient chat and test restoration"
+      },
+      {
+        "title": "Stale source",
+        "evidence": "Retrieved content is an older source version despite correct selection",
+        "mitigation": "Consult the authoritative current version before acting",
+        "durableFix": "Propagate document updates and record lineage/version in context"
+      }
+    ]
+  },
+  {
+    "id": "memory-wrong",
+    "title": "Stale, wrong or cross-user memory",
+    "symptom": "Recalled information is outdated, poisoned or belongs to another scope.",
+    "questions": [
+      "What is the provenance and timestamp?",
+      "Was a correction propagated?",
+      "Which namespace and authorization scope was queried?"
+    ],
+    "guideIds": [
+      "memory",
+      "security"
+    ],
+    "causes": [
+      {
+        "title": "Correction missed derived stores",
+        "evidence": "Old value remains in a summary, vector index or cache",
+        "mitigation": "Stop using the record and correct all derived copies",
+        "durableFix": "Implement supersession, invalidation and deletion propagation tests"
+      },
+      {
+        "title": "Isolation failed",
+        "evidence": "Recall includes another user's or project's records",
+        "mitigation": "Disable the affected retrieval path and investigate exposure",
+        "durableFix": "Enforce namespaces and authorization before retrieval; add cross-tenant tests"
+      }
+    ]
+  },
+  {
+    "id": "retrieval-poor",
+    "title": "Retrieval irrelevant, incomplete or unauthorized",
+    "symptom": "The answer lacks required evidence or sees documents outside scope.",
+    "questions": [
+      "Was source extraction faithful?",
+      "Did retrieval return the necessary passage?",
+      "Was authorization filtering applied before context assembly?"
+    ],
+    "guideIds": [
+      "retrieval",
+      "evaluations",
+      "security"
+    ],
+    "causes": [
+      {
+        "title": "Ingestion lost structure",
+        "evidence": "Parsed text drops headers, units, pages or table associations",
+        "mitigation": "Use the original source and repair extraction",
+        "durableFix": "Maintain source lineage and regression cases for messy documents"
+      },
+      {
+        "title": "Recall or permissions failure",
+        "evidence": "Known relevant documents are absent or forbidden ones are present",
+        "mitigation": "Stop relying on the result; restrict the failing path",
+        "durableFix": "Evaluate recall and access exclusion independently, then tune hybrid retrieval or reranking"
+      }
+    ]
+  },
+  {
+    "id": "tool-failure",
+    "title": "Wrong tool, timeout or false success",
+    "symptom": "A tool call is malformed, stalled, misdirected or reported complete without evidence.",
+    "questions": [
+      "Did validation reject before dispatch or did the request leave?",
+      "Does the operation have a queryable status?",
+      "Was accepted confused with completed?"
+    ],
+    "guideIds": [
+      "tool-design",
+      "durable-execution"
+    ],
+    "causes": [
+      {
+        "title": "Ambiguous tool interface",
+        "evidence": "Similar descriptions produce repeated wrong selections",
+        "mitigation": "Restrict available tools and show explicit usage examples",
+        "durableFix": "Evaluate selection with competing tools and redesign names/contracts"
+      },
+      {
+        "title": "Outcome unknown after timeout",
+        "evidence": "No response but remote state may have changed",
+        "mitigation": "Reconcile rather than unconditionally retrying",
+        "durableFix": "Add operation IDs, status lookup and distinct pending/unknown/completed states"
+      },
+      {
+        "title": "Argument rejected before dispatch",
+        "evidence": "Validation log shows the request never left the application",
+        "mitigation": "Correct the invalid field; do not retry unchanged input",
+        "durableFix": "Make schema and semantic errors actionable and test malformed arguments"
+      },
+      {
+        "title": "Authorization denied",
+        "evidence": "Policy check denies the caller, target or current action",
+        "mitigation": "Stop and request a properly scoped decision; never bypass the check",
+        "durableFix": "Enforce per-object authorization and clarify permitted actions"
+      },
+      {
+        "title": "Accepted but not completed",
+        "evidence": "Provider returns an operation ID or pending status without the postcondition",
+        "mitigation": "Poll within a deadline or expose pending status",
+        "durableFix": "Distinguish accepted, pending, verified and failed outcomes in the tool contract"
+      },
+      {
+        "title": "Postcondition mismatch",
+        "evidence": "Provider reports success but the wrong target/version changed",
+        "mitigation": "Stop further writes and reconcile affected records",
+        "durableFix": "Verify business invariants and actual external state before completion"
+      },
+      {
+        "title": "Missing observability",
+        "evidence": "There is no trustworthy operation ID or dispatch record",
+        "mitigation": "Preserve uncertainty and assign manual investigation",
+        "durableFix": "Add correlated intent, dispatch, provider and verification records"
+      }
+    ]
+  },
+  {
+    "id": "cost-latency",
+    "title": "Rising cost, queues or provider limits",
+    "symptom": "Spend or completion latency increases and capacity becomes constrained.",
+    "questions": [
+      "Are attempts per verified success rising?",
+      "Is queue age or in-flight work growing?",
+      "Did the task mix, provider quota or human review demand change?"
+    ],
+    "guideIds": [
+      "cost-capacity",
+      "workflow-patterns"
+    ],
+    "causes": [
+      {
+        "title": "Retry amplification",
+        "evidence": "SDK, worker and orchestrator each retry the same failure",
+        "mitigation": "Limit admission and establish one retry owner",
+        "durableFix": "Use shared budgets, backoff and failure classification"
+      },
+      {
+        "title": "Overload or insufficient review capacity",
+        "evidence": "Queue age and escalations grow despite healthy HTTP responses",
+        "mitigation": "Shed or defer work within the operating contract",
+        "durableFix": "Load-test realistic bursts and size end-to-end capacity including review"
+      },
+      {
+        "title": "Demand or task mix changed",
+        "evidence": "More tasks or longer inputs arrived without a comparable traffic baseline",
+        "mitigation": "Apply the defined admission limits and review the workload",
+        "durableFix": "Forecast by task class and distinguish volume from per-task cost"
+      },
+      {
+        "title": "Provider throttling",
+        "evidence": "Rate-limit responses or quota usage correlate with delays",
+        "mitigation": "Reduce concurrency and honor bounded backoff",
+        "durableFix": "Align admission control and validated fallback with provider quotas"
+      },
+      {
+        "title": "Human-review bottleneck",
+        "evidence": "Automated stages complete while approval queue age increases",
+        "mitigation": "Reduce action scope and prioritize critical reviews",
+        "durableFix": "Include staffed review capacity in throughput planning"
+      }
+    ]
+  },
+  {
+    "id": "eval-gap",
+    "title": "Offline evaluations pass, users disagree",
+    "symptom": "Production quality falls outside what the current evaluation detects.",
+    "questions": [
+      "Can a reported failure be reproduced with the same versions?",
+      "Does the grader fail a known-bad output?",
+      "Is the affected segment represented?"
+    ],
+    "guideIds": [
+      "evaluations",
+      "release-operations"
+    ],
+    "causes": [
+      {
+        "title": "Unrepresentative cases",
+        "evidence": "Production task types differ from the benchmark",
+        "mitigation": "Pause expansion and gather reviewed representative cases",
+        "durableFix": "Version datasets, holdouts and per-segment gates"
+      },
+      {
+        "title": "Grader misses the business outcome",
+        "evidence": "Fluent completion text passes while external state is wrong",
+        "mitigation": "Manually inspect outcome and revise the acceptance check",
+        "durableFix": "Combine output assessment with deterministic postconditions and calibrated review"
+      }
+    ]
+  },
+  {
+    "id": "release-regression",
+    "title": "Regression after a deployment",
+    "symptom": "A new prompt, model, tool or framework version changes outcomes.",
+    "questions": [
+      "Which configuration changed?",
+      "Are in-flight jobs compatible?",
+      "Has a documented rollback condition been met?"
+    ],
+    "guideIds": [
+      "release-operations",
+      "evaluations"
+    ],
+    "causes": [
+      {
+        "title": "Behavior change escaped release checks",
+        "evidence": "Failures cluster by new version or segment",
+        "mitigation": "Stop expansion and roll back using the operating plan",
+        "durableFix": "Add the confirmed case to regression gates and test old-state compatibility"
+      },
+      {
+        "title": "External dependency changed independently",
+        "evidence": "Provider alias or integration behavior differs with unchanged app code",
+        "mitigation": "Use a validated fallback or manual route",
+        "durableFix": "Track actual versions, retirement notices and production quality signals"
+      }
+    ]
+  }
+]

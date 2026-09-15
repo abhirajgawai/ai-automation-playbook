@@ -1,0 +1,511 @@
+[
+  {
+    "id": "langgraph-langchain",
+    "name": "LangGraph / LangChain",
+    "layer": "Agent framework / harness",
+    "summary": "LangChain is the higher-level agent framework and integrations layer; LangGraph is its lower-level orchestration runtime for long-running, stateful agents. LangGraph documents persistence, durable execution, streaming and human-in-the-loop. It can be used without LangChain. Both are current projects.",
+    "languages": "Python documented; JavaScript/TypeScript parity needs verification.",
+    "deployment": "Run application workers locally or self-hosted; LangSmith deployment is a separate managed option.",
+    "strengths": [
+      "Explicit state/graph orchestration",
+      "Choice of lower-level runtime or higher-level integrations"
+    ],
+    "limitations": [
+      "Low-level LangGraph deliberately does not abstract prompt or agent architecture. Durable execution still requires deterministic/replay-safe design and idempotent side effects; exact operational guarantees depend on the checkpointer and deployment choice.",
+      "Exact package version and all required capability tests must be recorded in your proof of concept; not pinned by this catalogue."
+    ],
+    "sourceIds": [
+      "framework-langgraph-langchain-1",
+      "framework-langgraph-langchain-2",
+      "framework-langgraph-langchain-3",
+      "framework-langgraph-langchain-4"
+    ],
+    "verifiedAt": "2026-09-15",
+    "evidenceStatus": "reviewed",
+    "license": "MIT for the open-source repositories; LangSmith is a separate commercial platform.",
+    "maturity": "Active documentation and repositories reviewed. Selected package version and deployment recovery not tested here."
+  },
+  {
+    "id": "microsoft-agent-framework",
+    "name": "Microsoft Agent Framework",
+    "layer": "Agent framework / harness",
+    "summary": "Current Microsoft framework for agents, an opinionated harness, graph/functional workflows and provider/hosting integrations. Microsoft’s official resource page identifies a production-ready 1.0 release for .NET and Python in April 2026 and provides migration paths from AutoGen and Semantic Kernel orchestration.",
+    "languages": ".NET/C# and Python; current docs also expose Go views. Verify feature parity.",
+    "deployment": "Self-hosted applications or supported managed hosting integrations, including Functions; check chosen hosting contract.",
+    "strengths": [
+      ".NET and Python agent/workflow abstractions",
+      "Documented migration paths from Microsoft predecessors"
+    ],
+    "limitations": [
+      "Provider and tool features vary. Microsoft explicitly advises simpler direct model calls when orchestration is not needed. Migration suitability from mature AutoGen/Semantic Kernel systems requires feature-by-feature validation.",
+      "Exact package version and all required capability tests must be recorded in your proof of concept; not pinned by this catalogue."
+    ],
+    "sourceIds": [
+      "framework-microsoft-agent-framework-1",
+      "framework-microsoft-agent-framework-2",
+      "framework-microsoft-agent-framework-3",
+      "framework-microsoft-agent-framework-4",
+      "framework-microsoft-agent-framework-5"
+    ],
+    "verifiedAt": "2026-09-15",
+    "evidenceStatus": "reviewed",
+    "license": "MIT for the SDK repository. Managed Microsoft services and third-party providers have separate terms.",
+    "maturity": "Microsoft documents a 1.0 release and migration paths. This catalogue has not run cross-language or recovery tests."
+  },
+  {
+    "id": "crewai",
+    "name": "CrewAI",
+    "layer": "Agent framework / harness",
+    "summary": "Maintained Python framework with two principal abstractions: role-based collaborating “Crews” and event-driven “Flows” that can include deterministic code, model calls and crews. CrewAI AMP is a separate managed deployment/monitoring product.",
+    "languages": "Python framework.",
+    "deployment": "Embed locally or self-host; CrewAI AMP is a separate managed deployment product.",
+    "strengths": [
+      "Role-based teams",
+      "Explicit event-driven flows alongside autonomous crews"
+    ],
+    "limitations": [
+      "Crews add autonomy and coordination overhead; Flows are the more explicit control path. Exact persistence, replay and failure guarantees of a chosen deployment were not established by the overview and need a failure POC. Optional sharing can collect crew/task inputs and outputs when enabled.",
+      "Exact package version and all required capability tests must be recorded in your proof of concept; not pinned by this catalogue."
+    ],
+    "sourceIds": [
+      "framework-crewai-1",
+      "framework-crewai-2",
+      "framework-crewai-3"
+    ],
+    "verifiedAt": "2026-09-15",
+    "evidenceStatus": "reviewed",
+    "license": "MIT for the open-source framework; AMP terms are separate.",
+    "maturity": "Active framework and managed product documentation reviewed; exact replay and persistence guarantees remain POC requirements."
+  },
+  {
+    "id": "google-agent-development-kit-adk",
+    "name": "Google Agent Development Kit (ADK)",
+    "layer": "Agent framework / harness",
+    "summary": "Current Google-led, model- and deployment-agnostic agent development kit covering agents, tools, sessions/memory, evaluation and multi-agent composition. It integrates closely with Gemini and Google Cloud without requiring them.",
+    "languages": "Python, Java, Go, JavaScript and Kotlin documentation; verify SDK-specific features.",
+    "deployment": "Local applications, Cloud Run, GKE and managed Agent Engine/Runtime paths are documented.",
+    "strengths": [
+      "Multi-language documentation",
+      "Multiple local and managed deployment paths"
+    ],
+    "limitations": [
+      "Managed Google deployment capabilities and SDK features are not necessarily portable across runtimes or languages. Confirm service region, identity, session persistence and model/tool support for the target environment.",
+      "Exact package version and all required capability tests must be recorded in your proof of concept; not pinned by this catalogue."
+    ],
+    "sourceIds": [
+      "framework-google-agent-development-kit-adk-1",
+      "framework-google-agent-development-kit-adk-2",
+      "framework-google-agent-development-kit-adk-3",
+      "framework-google-agent-development-kit-adk-4"
+    ],
+    "verifiedAt": "2026-09-15",
+    "evidenceStatus": "reviewed",
+    "license": "Apache-2.0 for Google’s ADK repositories.",
+    "maturity": "Maintained Google-led ecosystem; SDK parity and target-region support must be verified."
+  },
+  {
+    "id": "pydanticai",
+    "name": "PydanticAI",
+    "layer": "Agent framework / harness",
+    "summary": "Current Python SDK centered on typed agent inputs, dependencies, tools and structured outputs, with graph, evaluation, observability, harness and realtime capabilities.",
+    "languages": "Python SDK.",
+    "deployment": "Run in an application; durable integrations use separate runtimes such as Temporal or DBOS.",
+    "strengths": [
+      "Typed dependencies and output contracts",
+      "Integration with Python validation tooling"
+    ],
+    "limitations": [
+      "Typing/schema validation does not establish semantic correctness. Durable integrations replay work and therefore still demand deterministic workflow code and idempotent side effects; retry defaults vary by engine (the docs flag unbounded Temporal activity attempts unless configured).",
+      "Exact package version and all required capability tests must be recorded in your proof of concept; not pinned by this catalogue."
+    ],
+    "sourceIds": [
+      "framework-pydanticai-1",
+      "framework-pydanticai-2",
+      "framework-pydanticai-3",
+      "framework-pydanticai-4"
+    ],
+    "verifiedAt": "2026-09-15",
+    "evidenceStatus": "reviewed",
+    "license": "MIT for the repository.",
+    "maturity": "Active typed-agent SDK. Schema validation does not establish business correctness; runtime durability needs separate evidence."
+  },
+  {
+    "id": "autogen",
+    "name": "AutoGen",
+    "layer": "Agent framework / harness",
+    "summary": "Microsoft Research framework with AgentChat (high-level conversational agents), Core (event-driven actor/runtime layer), extensions and Studio. AutoGen 0.4 was a breaking rewrite of 0.2. Microsoft now directs new production orchestration evaluation toward Microsoft Agent Framework, while AutoGen remains relevant existing/research technology.",
+    "languages": "Python AgentChat; other Core worker language support requires verification.",
+    "deployment": "Embedded local or distributed Core runtime depending on the selected API.",
+    "strengths": [
+      "Actor/runtime and AgentChat abstractions",
+      "Existing research and application ecosystem"
+    ],
+    "limitations": [
+      "0.2 and 0.4 APIs differ materially, and the old migration guide listed feature gaps. State save/load is not by itself crash-safe durable execution. Establish maintenance/migration strategy before new adoption.",
+      "Exact package version and all required capability tests must be recorded in your proof of concept; not pinned by this catalogue."
+    ],
+    "sourceIds": [
+      "framework-autogen-1",
+      "framework-autogen-2",
+      "framework-autogen-3",
+      "framework-autogen-4"
+    ],
+    "verifiedAt": "2026-09-15",
+    "evidenceStatus": "reviewed",
+    "license": "MIT. The `pyautogen` package after 0.2.34 is not controlled by Microsoft; use official package names/repository.",
+    "maturity": "Existing/research technology with Microsoft Agent Framework migration guidance. Decide maintenance strategy before new adoption."
+  },
+  {
+    "id": "semantic-kernel",
+    "name": "Semantic Kernel",
+    "layer": "Agent framework / harness",
+    "summary": "Maintained Microsoft SDK for model integration, plugins/functions, prompt templates, memory/connectors and agent-related application features. Microsoft Agent Framework is now the primary Microsoft lead for new multi-agent orchestration; Semantic Kernel remains relevant where its kernel/plugin abstractions or existing investments fit.",
+    "languages": "C#/.NET, Python and Java.",
+    "deployment": "Embed the SDK in your application; hosting and connected services are separate choices.",
+    "strengths": [
+      "Kernel/plugin integration model",
+      "Useful fit for existing .NET and other SDK investments"
+    ],
+    "limitations": [
+      "Do not conflate Semantic Kernel’s agent APIs with the newer Microsoft Agent Framework. Some agent features historically used provider APIs with their own lifecycle/deprecation constraints; verify each chosen agent type and migration path.",
+      "Exact package version and all required capability tests must be recorded in your proof of concept; not pinned by this catalogue."
+    ],
+    "sourceIds": [
+      "framework-semantic-kernel-1",
+      "framework-semantic-kernel-2",
+      "framework-semantic-kernel-3",
+      "framework-semantic-kernel-4"
+    ],
+    "verifiedAt": "2026-09-15",
+    "evidenceStatus": "reviewed",
+    "license": "MIT.",
+    "maturity": "Maintained SDK with existing plugin investments; inspect migration guidance for new agent orchestration."
+  },
+  {
+    "id": "llamaindex",
+    "name": "LlamaIndex",
+    "layer": "Retrieval and pipelines",
+    "summary": "Maintained data-centric framework for ingestion, indexing, retrieval/RAG, agents and event-driven workflows. Its older Query Pipeline is feature-frozen/deprecated in favor of Workflows.",
+    "languages": "Python; verify TypeScript feature parity.",
+    "deployment": "Application-managed RAG/workflows; LlamaCloud and related deployment products have separate boundaries.",
+    "strengths": [
+      "Data-centric retrieval components",
+      "Current event-driven workflow abstractions"
+    ],
+    "limitations": [
+      "The broad connector ecosystem varies in maintenance and operational behavior. Persistence and durable/replay behavior depend on selected workflow/runtime integrations; validate update/delete propagation and access filtering for RAG workloads.",
+      "Exact package version and all required capability tests must be recorded in your proof of concept; not pinned by this catalogue."
+    ],
+    "sourceIds": [
+      "framework-llamaindex-1",
+      "framework-llamaindex-2",
+      "framework-llamaindex-3",
+      "framework-llamaindex-4"
+    ],
+    "verifiedAt": "2026-09-15",
+    "evidenceStatus": "reviewed",
+    "license": "MIT for the core repository.",
+    "maturity": "Active data framework; legacy Query Pipeline is deprecated. Select the current workflow API explicitly."
+  },
+  {
+    "id": "haystack",
+    "name": "Haystack",
+    "layer": "Retrieval and pipelines",
+    "summary": "Maintained Python framework for component-based LLM, retrieval and agentic pipelines. Directed multigraph pipelines support branches, loops and concurrent flows; agents can be built from pipeline components.",
+    "languages": "Python.",
+    "deployment": "Self-host application pipelines, including Docker; managed/enterprise offerings are separate.",
+    "strengths": [
+      "Composable retrieval/pipeline components",
+      "Self-hostable Python application integration"
+    ],
+    "limitations": [
+      "Pipeline durability, cross-process checkpoints and exactly-once effects are not established by the core pipeline overview. Integration packages have independent compatibility and should be pinned/tested.",
+      "Exact package version and all required capability tests must be recorded in your proof of concept; not pinned by this catalogue."
+    ],
+    "sourceIds": [
+      "framework-haystack-1",
+      "framework-haystack-2",
+      "framework-haystack-3",
+      "framework-haystack-4"
+    ],
+    "verifiedAt": "2026-09-15",
+    "evidenceStatus": "reviewed",
+    "license": "Apache-2.0 for Haystack.",
+    "maturity": "Active component framework. Core pipeline overview does not establish crash-safe replay or external exactly-once effects."
+  },
+  {
+    "id": "agno",
+    "name": "Agno",
+    "layer": "Agent framework / harness",
+    "summary": "Current Python stack spanning an agent/team/workflow SDK, AgentOS runtime and a control-plane UI. It emphasizes self-hosted services, sessions, memory, knowledge, guardrails, human review and observability.",
+    "languages": "Python SDK; other language SDKs unverified.",
+    "deployment": "Self-host AgentOS/application services and their databases; control-plane terms need separate review.",
+    "strengths": [
+      "Agents, teams and workflows",
+      "Separately described runtime and control-plane layers"
+    ],
+    "limitations": [
+      "Framework, runtime and control plane are distinct layers. Agno sends limited model-usage telemetry by default according to its repository; it can be disabled. Validate stateless runtime/database responsibilities and durable failure behavior.",
+      "Exact package version and all required capability tests must be recorded in your proof of concept; not pinned by this catalogue."
+    ],
+    "sourceIds": [
+      "framework-agno-1",
+      "framework-agno-2",
+      "framework-agno-3"
+    ],
+    "verifiedAt": "2026-09-15",
+    "evidenceStatus": "reviewed",
+    "license": "Apache-2.0 for the core SDK. Control-plane/cloud licensing and feature boundaries require separate verification.",
+    "maturity": "Active framework/runtime/control-plane ecosystem. Telemetry configuration and recovery behavior require deployment review."
+  },
+  {
+    "id": "strands-agents",
+    "name": "Strands Agents",
+    "layer": "Agent framework / harness",
+    "summary": "Current open agent harness SDK originating from Amazon production systems, with tools, hooks, MCP, structured output, sessions and multi-agent patterns.",
+    "languages": "Python and TypeScript; verify feature parity.",
+    "deployment": "Local/container applications or supported AWS and Kubernetes deployment paths; non-AWS providers are supported.",
+    "strengths": [
+      "Python and TypeScript harness options",
+      "Provider and deployment integrations"
+    ],
+    "limitations": [
+      "AWS integrations are optional but have separate service semantics and costs. Feature parity across Python/TypeScript and durable guarantees for each deployment path require verification; the harness alone does not make external effects exactly-once.",
+      "Exact package version and all required capability tests must be recorded in your proof of concept; not pinned by this catalogue."
+    ],
+    "sourceIds": [
+      "framework-strands-agents-1",
+      "framework-strands-agents-2",
+      "framework-strands-agents-3"
+    ],
+    "verifiedAt": "2026-09-15",
+    "evidenceStatus": "reviewed",
+    "license": "Apache-2.0 across official projects.",
+    "maturity": "Active SDK; TypeScript repository moved to a monorepo. Deployment-specific durability remains untested here."
+  },
+  {
+    "id": "temporal",
+    "name": "Temporal",
+    "layer": "Durable workflow",
+    "summary": "Mature durable-execution platform for application workflows and activities; it is not agent-specific. A self-hosted server and Temporal Cloud are available.",
+    "languages": "Go, Java, PHP, Python, TypeScript and .NET SDKs documented.",
+    "deployment": "Application workers connect to self-hosted Temporal Service or commercial Temporal Cloud.",
+    "strengths": [
+      "Durable application workflow state",
+      "Self-hosted and managed service choices"
+    ],
+    "limitations": [
+      "Workflow code must remain deterministic under replay and version changes. Activities can execute more than once after ambiguous failures, so idempotency remains an application duty. Operating the self-hosted service adds database, upgrades and observability work.",
+      "Exact package version and all required capability tests must be recorded in your proof of concept; not pinned by this catalogue."
+    ],
+    "sourceIds": [
+      "framework-temporal-1",
+      "framework-temporal-2",
+      "framework-temporal-3",
+      "framework-temporal-4"
+    ],
+    "verifiedAt": "2026-09-15",
+    "evidenceStatus": "reviewed",
+    "license": "MIT for the open-source server and SDKs; Temporal Cloud has commercial terms.",
+    "maturity": "Established durable-execution platform. Deterministic replay, versioning and activity idempotency remain application duties."
+  },
+  {
+    "id": "azure-durable-functions",
+    "name": "Azure Durable Functions",
+    "layer": "Durable workflow",
+    "summary": "Azure Functions extension built on Durable Task for stateful serverless orchestrations, activities and entities. It manages checkpoints, retries and recovery; standalone self-hosted Durable Task SDKs are now another hosting model.",
+    "languages": "C#, JavaScript/TypeScript, Python, Java and PowerShell in Functions; verify self-hosted SDK parity.",
+    "deployment": "Azure Functions durable extension or supported Durable Task hosting; storage/provider constraints vary.",
+    "strengths": [
+      "Stateful orchestration in Functions",
+      "Integration with Azure operational environments"
+    ],
+    "limitations": [
+      "Orchestrators replay and must obey deterministic-code restrictions. Storage provider, plan limits, execution duration, history growth and versioning need workload-specific checks. External activities are not guaranteed exactly once.",
+      "Exact package version and all required capability tests must be recorded in your proof of concept; not pinned by this catalogue."
+    ],
+    "sourceIds": [
+      "framework-azure-durable-functions-1",
+      "framework-azure-durable-functions-2",
+      "framework-azure-durable-functions-3"
+    ],
+    "verifiedAt": "2026-09-15",
+    "evidenceStatus": "reviewed",
+    "license": "Open-source Durable Functions/Task SDK repositories use MIT; Azure hosting and Durable Task Scheduler are paid services with separate terms.",
+    "maturity": "Established Functions capability. Test selected storage provider, orchestration constraints and version migration."
+  },
+  {
+    "id": "dapr-workflow",
+    "name": "Dapr Workflow",
+    "layer": "Durable workflow",
+    "summary": "Current Dapr building block for long-running, fault-tolerant application workflows, integrated with Dapr service invocation, pub/sub, state and bindings. Runtime scheduling occurs in the Dapr sidecar.",
+    "languages": "Python, JavaScript, .NET, Java and Go workflow SDKs documented.",
+    "deployment": "Applications run with Dapr sidecars and a compatible state store, often on Kubernetes.",
+    "strengths": [
+      "Workflow building block beside other Dapr capabilities",
+      "Sidecar-based application integration"
+    ],
+    "limitations": [
+      "Only compatible state stores may be used. Workflow functions must be deterministic and same-thread constraints apply. Default dispatch payload ceiling is 4 MiB; near-limit histories can stall. Cosmos DB and DynamoDB have documented complexity limitations.",
+      "Exact package version and all required capability tests must be recorded in your proof of concept; not pinned by this catalogue."
+    ],
+    "sourceIds": [
+      "framework-dapr-workflow-1",
+      "framework-dapr-workflow-2",
+      "framework-dapr-workflow-3"
+    ],
+    "verifiedAt": "2026-09-15",
+    "evidenceStatus": "reviewed",
+    "license": "Apache-2.0 for Dapr.",
+    "maturity": "Active Dapr building block. State-store and payload limitations must be checked against the pinned runtime."
+  },
+  {
+    "id": "n8n",
+    "name": "n8n",
+    "layer": "Low-code automation",
+    "summary": "Maintained visual/low-code workflow automation product with a large integration catalog, code nodes and AI/agent nodes. It is a general automation platform, not primarily a durable code-first agent runtime.",
+    "languages": "Node.js application; visual workflows with feature-specific JavaScript/Python code support.",
+    "deployment": "n8n Cloud or self-hosted Docker/npm; queue mode adds database/Redis operations.",
+    "strengths": [
+      "Visual workflow authoring",
+      "Large connector catalogue"
+    ],
+    "limitations": [
+      "Node behavior, credential handling, execution retention and retry semantics vary. Community nodes expand supply-chain risk. Confirm queue-mode topology, binary-data storage, licensing and idempotency before production writes.",
+      "Exact package version and all required capability tests must be recorded in your proof of concept; not pinned by this catalogue."
+    ],
+    "sourceIds": [
+      "framework-n8n-1",
+      "framework-n8n-2",
+      "framework-n8n-3",
+      "framework-n8n-4"
+    ],
+    "verifiedAt": "2026-09-15",
+    "evidenceStatus": "reviewed",
+    "license": "Source-available Sustainable Use License for most code, not OSI open source; enterprise files/features have a proprietary license. Internal business use is generally permitted, while white-label/hosting-for-fee and some customer-credential product uses require agreement.",
+    "maturity": "Maintained product under source-available licensing; not an OSI-open-source classification. Verify intended commercial use."
+  },
+  {
+    "id": "hindsight",
+    "name": "Hindsight",
+    "layer": "Memory",
+    "summary": "Active Vectorize project providing long-term agent memory with retain, recall and reflect operations and structured factual, experiential and belief-like memory. It complements an agent/runtime rather than replacing orchestration.",
+    "languages": "Server API with SDK/integration clients; exact current client-language matrix unverified.",
+    "deployment": "Server-oriented memory service with self-hosting documentation; verify storage and edition requirements.",
+    "strengths": [
+      "Dedicated long-term memory layer",
+      "Can complement rather than replace a task runtime"
+    ],
+    "limitations": [
+      "Published benchmark claims are not universal production evidence. Memory can be stale, inferred or poisoned; applications still need tenant isolation, provenance, deletion propagation and authorization outside conversational memory.",
+      "Exact package version and all required capability tests must be recorded in your proof of concept; not pinned by this catalogue."
+    ],
+    "sourceIds": [
+      "framework-hindsight-1",
+      "framework-hindsight-2",
+      "framework-hindsight-3"
+    ],
+    "verifiedAt": "2026-09-15",
+    "evidenceStatus": "reviewed",
+    "license": "The repository currently identifies an open-source project, but the exact license text/edition boundaries were not verified from a reviewed primary license page; check before adoption.",
+    "maturity": "Emerging memory layer; exact license and production guarantees were not established by reviewed pages."
+  },
+  {
+    "id": "flue",
+    "name": "Flue",
+    "layer": "Agent framework / harness",
+    "summary": "Emerging TypeScript agent framework/harness built around synchronous agent functions plus hooks for models, tools, sandboxes, skills, subagents and persisted state. It can run standalone or integrate with workflow systems.",
+    "languages": "TypeScript/JavaScript.",
+    "deployment": "Local, CI or backend execution; documented Cloudflare-oriented and workflow integrations.",
+    "strengths": [
+      "TypeScript-first agent definitions",
+      "Hooks for tools and workflow integrations"
+    ],
+    "limitations": [
+      "Newer ecosystem with less independently established maturity. Agent definition functions must be synchronous; async work moves to tools/hooks/resources. Verify database adapter durability, migrations, sandbox isolation and non-Cloudflare production behavior.",
+      "Exact package version and all required capability tests must be recorded in your proof of concept; not pinned by this catalogue."
+    ],
+    "sourceIds": [
+      "framework-flue-1",
+      "framework-flue-2",
+      "framework-flue-3"
+    ],
+    "verifiedAt": "2026-09-15",
+    "evidenceStatus": "reviewed",
+    "license": "Marketed as open, but the exact repository license and commercial-service boundaries were unverified from the reviewed pages.",
+    "maturity": "Emerging ecosystem. Exact license, persistence adapters and non-Cloudflare production behavior require verification."
+  },
+  {
+    "id": "paperclip",
+    "name": "Paperclip",
+    "layer": "Control plane",
+    "summary": "Emerging control plane for organizing external coding/agent runtimes as “AI employees”: companies, org structure, assignments/issues, approvals, budgets, costs and audit records. It is a management/orchestration layer above Claude, Codex, Gemini or custom adapters, not a model SDK.",
+    "languages": "External runtime adapters; exact product implementation requirements unverified.",
+    "deployment": "Install locally, in Docker or on a server; workers depend on configured external runtimes.",
+    "strengths": [
+      "Organizational task and budget visibility",
+      "Adapters to external agent runtimes"
+    ],
+    "limitations": [
+      "Heartbeat execution is burst-based, not a continuously running worker. Reliability depends on adapter session persistence and agent cooperation with task APIs. Human organizational metaphors do not supply transactionality, safe delegation or semantic correctness.",
+      "Exact package version and all required capability tests must be recorded in your proof of concept; not pinned by this catalogue."
+    ],
+    "sourceIds": [
+      "framework-paperclip-1",
+      "framework-paperclip-2",
+      "framework-paperclip-3"
+    ],
+    "verifiedAt": "2026-09-15",
+    "evidenceStatus": "reviewed",
+    "license": "Presented as open source, but the exact license and edition boundaries were unverified from a reviewed primary license page.",
+    "maturity": "Emerging agent management/control plane. Heartbeat-based work is not itself a durable execution guarantee."
+  },
+  {
+    "id": "thin-custom",
+    "name": "Thin custom loop + provider SDK",
+    "layer": "Custom baseline",
+    "summary": "A small application-owned loop around a model API and a restricted set of tools.",
+    "languages": "Choose a language supported by the selected SDK or HTTP API.",
+    "deployment": "Your existing application or worker environment.",
+    "strengths": [
+      "Direct visibility into control flow",
+      "No agent framework required for a small loop"
+    ],
+    "limitations": [
+      "You implement state, policy, budgets, retries and verification.",
+      "Provider capabilities and commercial terms need current verification."
+    ],
+    "sourceIds": [
+      "agents",
+      "harnesses"
+    ],
+    "verifiedAt": "2026-09-15",
+    "evidenceStatus": "reviewed",
+    "license": "Your code and selected dependency licenses; provider terms separate.",
+    "maturity": "Architecture baseline, not a product release or vendor support claim."
+  },
+  {
+    "id": "conventional-automation",
+    "name": "Conventional rules and integration",
+    "layer": "Non-AI baseline",
+    "summary": "Deterministic rules, scheduled jobs, APIs and queues without model decisions.",
+    "languages": "Use the team’s existing supported stack.",
+    "deployment": "Existing service, scheduler or queue worker.",
+    "strengths": [
+      "Explicit reproducible decision rules",
+      "Avoids model inference cost and variability"
+    ],
+    "limitations": [
+      "Ambiguous unstructured interpretation may require humans or a separate model step.",
+      "External effects still require authorization and recovery."
+    ],
+    "sourceIds": [
+      "agents",
+      "retries"
+    ],
+    "verifiedAt": "2026-09-15",
+    "evidenceStatus": "reviewed",
+    "license": "Depends on selected components.",
+    "maturity": "Established engineering pattern; fitness depends on process stability and exceptions."
+  }
+]

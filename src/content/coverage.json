@@ -1,0 +1,1433 @@
+[
+  {
+    "id": "C01.01",
+    "categoryId": "C01",
+    "requirement": "Process mapping, users, stakeholders, goals, process owner, current pain and baseline.",
+    "guideIds": ["business-discovery"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C01.02",
+    "categoryId": "C01",
+    "requirement": "Process simplification before automation; stable rules versus judgment and ambiguity.",
+    "guideIds": ["business-discovery"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C01.03",
+    "categoryId": "C01",
+    "requirement": "Volume, variability, exceptions, seasonality, data readiness and access feasibility.",
+    "guideIds": ["business-discovery"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C01.04",
+    "categoryId": "C01",
+    "requirement": "Manual versus conventional automation versus fixed AI workflow versus autonomous agent.",
+    "guideIds": ["business-discovery"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C01.05",
+    "categoryId": "C01",
+    "requirement": "Error economics: wrong action, missed action, delay, escalation, review and rework.",
+    "guideIds": ["business-discovery"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C01.06",
+    "categoryId": "C01",
+    "requirement": "Success criteria, acceptance thresholds, scope, exclusions, autonomy levels.",
+    "guideIds": ["business-discovery"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C01.07",
+    "categoryId": "C01",
+    "requirement": "Reversibility, impact, human capacity, opportunity cost, feasibility, ROI.",
+    "guideIds": ["business-discovery"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C01.08",
+    "categoryId": "C01",
+    "requirement": "Prioritization, small experiments, stop/continue criteria, validating real adoption.",
+    "guideIds": ["business-discovery"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C01.09",
+    "categoryId": "C01",
+    "requirement": "How to say \"we need more evidence\" or \"do not automate this.\"",
+    "guideIds": ["business-discovery"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C02.01",
+    "categoryId": "C02",
+    "requirement": "SOLID, separation of concerns, explicit contracts, domain boundaries, dependency inversion.",
+    "guideIds": ["architecture"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C02.02",
+    "categoryId": "C02",
+    "requirement": "Typed inputs/outputs plus semantic validation; schema validity is not correctness.",
+    "guideIds": ["architecture"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C02.03",
+    "categoryId": "C02",
+    "requirement": "Business invariants, explicit state/transitions, authoritative systems, ownership.",
+    "guideIds": ["architecture"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C02.04",
+    "categoryId": "C02",
+    "requirement": "Deterministic rules around probabilistic decisions; bounded autonomy.",
+    "guideIds": ["architecture"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C02.05",
+    "categoryId": "C02",
+    "requirement": "Synchronous/API, queued, scheduled, event-driven, and long-running execution.",
+    "guideIds": ["architecture"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C02.06",
+    "categoryId": "C02",
+    "requirement": "Distributed-system fundamentals: consistency, concurrency, transaction boundaries.",
+    "guideIds": ["architecture"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C02.07",
+    "categoryId": "C02",
+    "requirement": "Build only necessary abstraction; one step does not imply one agent.",
+    "guideIds": ["architecture"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C02.08",
+    "categoryId": "C02",
+    "requirement": "Deployment boundaries, modularity, portability, maintainability, change isolation.",
+    "guideIds": ["architecture"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C02.09",
+    "categoryId": "C02",
+    "requirement": "Risk-proportionate design, uncertainty, architectural decision records.",
+    "guideIds": ["architecture"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C03.01",
+    "categoryId": "C03",
+    "requirement": "Sequential pipelines/prompt chaining, routing, fan-out/fan-in, aggregation.",
+    "guideIds": ["workflow-patterns"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C03.02",
+    "categoryId": "C03",
+    "requirement": "Orchestrator–workers, handoffs, plan/execute, evaluator–optimizer.",
+    "guideIds": ["workflow-patterns"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C03.03",
+    "categoryId": "C03",
+    "requirement": "Human interrupt/resume, durable state machines, saga/compensating actions.",
+    "guideIds": ["workflow-patterns"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C03.04",
+    "categoryId": "C03",
+    "requirement": "Single-agent/multitool versus multi-agent; dependencies and parallelizability.",
+    "guideIds": ["workflow-patterns"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C03.05",
+    "categoryId": "C03",
+    "requirement": "Task boundaries, ownership, delegation contracts, outputs, tools and context.",
+    "guideIds": ["workflow-patterns"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C03.06",
+    "categoryId": "C03",
+    "requirement": "Conflicting results, correlated model errors, shared-state races.",
+    "guideIds": ["workflow-patterns"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C03.07",
+    "categoryId": "C03",
+    "requirement": "Parent/child lifecycle, shared resource budgets, depth/width limits.",
+    "guideIds": ["workflow-patterns"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C03.08",
+    "categoryId": "C03",
+    "requirement": "Repeated handoff, stalled convergence, cancellation propagation, stopping.",
+    "guideIds": ["workflow-patterns"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C03.09",
+    "categoryId": "C03",
+    "requirement": "Asynchronous versus synchronous coordination trade-offs.",
+    "guideIds": ["workflow-patterns"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C03.10",
+    "categoryId": "C03",
+    "requirement": "Pattern examples and failure modes; avoid multi-agent complexity without evidence.",
+    "guideIds": ["workflow-patterns"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C04.01",
+    "categoryId": "C04",
+    "requirement": "Discover current ecosystem rather than restrict to names from this discussion.",
+    "guideIds": ["framework-selection"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C04.02",
+    "categoryId": "C04",
+    "requirement": "Compare conventional workflow engines, event platforms, agent runtimes, managed cloud platforms, low-code tools, and thin custom implementations.",
+    "guideIds": ["framework-selection"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C04.03",
+    "categoryId": "C04",
+    "requirement": "Candidates to investigate, not predetermined winners: LangGraph/LangChain, Microsoft Agent Framework, CrewAI, Google ADK, PydanticAI, AutoGen where current, Semantic Kernel where current, LlamaIndex, Haystack, Agno, Strands, provider SDKs, Temporal, Azure Durable Functions, Dapr Workflow, n8n, and other relevant maintained options.",
+    "guideIds": ["framework-selection"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C04.04",
+    "categoryId": "C04",
+    "requirement": "Hindsight, Flue, Paperclip and similar products may occupy complementary layers; verify exact current scope and maturity.",
+    "guideIds": ["framework-selection"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C04.05",
+    "categoryId": "C04",
+    "requirement": "Treat names as research leads; verify current status, successor/deprecation, version, license, features and production limitations.",
+    "guideIds": ["framework-selection"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C04.06",
+    "categoryId": "C04",
+    "requirement": "Distinguish model, provider/router, SDK, harness, orchestrator, memory layer, retrieval system, and developer coding subscription.",
+    "guideIds": ["framework-selection"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C04.07",
+    "categoryId": "C04",
+    "requirement": "Hard requirements: persistence, approvals, failure semantics, security, deployment, stack fit, operations, budget.",
+    "guideIds": ["framework-selection"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C04.08",
+    "categoryId": "C04",
+    "requirement": "Team skills, maintainability, build/buy, managed/self-hosted, licensing, costs, lock-in, export and migration.",
+    "guideIds": ["framework-selection"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C04.09",
+    "categoryId": "C04",
+    "requirement": "Comparable POCs using common tasks, failure tests, budgets, and documented weights.",
+    "guideIds": ["framework-selection"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C04.10",
+    "categoryId": "C04",
+    "requirement": "Model task quality, tool calling, structured outputs, latency, language/document needs, context and privacy.",
+    "guideIds": ["framework-selection"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C04.11",
+    "categoryId": "C04",
+    "requirement": "Routing, fallback equivalence, provider outages, model retirement, version pinning where possible.",
+    "guideIds": ["framework-selection"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C04.12",
+    "categoryId": "C04",
+    "requirement": "Prompting versus retrieval versus fine-tuning; choose the intervention matching the failure.",
+    "guideIds": ["framework-selection"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C04.13",
+    "categoryId": "C04",
+    "requirement": "Record assumptions and revisit criteria; never rank models solely on public benchmarks.",
+    "guideIds": ["framework-selection"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C05.01",
+    "categoryId": "C05",
+    "requirement": "Clear instructions, examples, instruction hierarchy, structured outputs and grounding.",
+    "guideIds": ["context-engineering"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C05.02",
+    "categoryId": "C05",
+    "requirement": "Context assembly: task, instructions, tools, history, state, retrieved evidence.",
+    "guideIds": ["context-engineering"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C05.03",
+    "categoryId": "C05",
+    "requirement": "Token allocation, output/tool-result headroom, just-in-time retrieval.",
+    "guideIds": ["context-engineering"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C05.04",
+    "categoryId": "C05",
+    "requirement": "Sliding window, summarization, compaction, tool-result clearing, external artifacts.",
+    "guideIds": ["context-engineering"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C05.05",
+    "categoryId": "C05",
+    "requirement": "Test preservation of goals, constraints, pending actions and evidence after compaction.",
+    "guideIds": ["context-engineering"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C05.06",
+    "categoryId": "C05",
+    "requirement": "Context isolation between projects, tenants, agents and trust levels.",
+    "guideIds": ["context-engineering"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C05.07",
+    "categoryId": "C05",
+    "requirement": "Distinguish storage loss, retrieval omission, attention failure and stale knowledge.",
+    "guideIds": ["context-engineering"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C05.08",
+    "categoryId": "C05",
+    "requirement": "RAG versus direct API/SQL access; RAG versus long context; when neither is required.",
+    "guideIds": ["retrieval"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C05.09",
+    "categoryId": "C05",
+    "requirement": "Ingestion, parsing/OCR, tables, chunking, embeddings, metadata, indexes.",
+    "guideIds": ["retrieval"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C05.10",
+    "categoryId": "C05",
+    "requirement": "Keyword/vector/hybrid retrieval, reranking, query transformation and access filtering.",
+    "guideIds": ["retrieval"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C05.11",
+    "categoryId": "C05",
+    "requirement": "Recall/relevance, groundedness, completeness, citation support, conflicting sources.",
+    "guideIds": ["retrieval"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C05.12",
+    "categoryId": "C05",
+    "requirement": "Document updates, deletions, freshness, lineage, authoritative source selection.",
+    "guideIds": ["retrieval"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C05.13",
+    "categoryId": "C05",
+    "requirement": "Execution state versus conversation versus long-term memory versus business database.",
+    "guideIds": ["memory"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C05.14",
+    "categoryId": "C05",
+    "requirement": "Semantic facts/preferences, episodic examples, procedural guidance.",
+    "guideIds": ["memory"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C05.15",
+    "categoryId": "C05",
+    "requirement": "Explicit/inferred memory writes, synchronous/background writes, approval of sensitive changes.",
+    "guideIds": ["memory"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C05.16",
+    "categoryId": "C05",
+    "requirement": "Namespaces, provenance, confidence limitations, deduplication, contradictions.",
+    "guideIds": ["memory"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C05.17",
+    "categoryId": "C05",
+    "requirement": "TTL, correction, deletion propagation, retention, poisoning, stale assumptions.",
+    "guideIds": ["memory"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C05.18",
+    "categoryId": "C05",
+    "requirement": "Relational/key-value/vector/graph storage choices, driven by access patterns.",
+    "guideIds": ["memory"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C05.19",
+    "categoryId": "C05",
+    "requirement": "Memory is not automatic learning or truth; critical permissions are not conversational memories.",
+    "guideIds": ["memory"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C06.01",
+    "categoryId": "C06",
+    "requirement": "Names, descriptions, schemas, non-overlap, discovery, restricted tool sets.",
+    "guideIds": ["tool-design"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C06.02",
+    "categoryId": "C06",
+    "requirement": "Fine-grained wrappers versus business operations; ergonomics and tool-choice evaluation.",
+    "guideIds": ["tool-design"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C06.03",
+    "categoryId": "C06",
+    "requirement": "Argument validation, identifiers, ownership, preconditions and postconditions.",
+    "guideIds": ["tool-design"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C06.04",
+    "categoryId": "C06",
+    "requirement": "Dispatch, sequential/parallel calls, pagination, bounded results and useful errors.",
+    "guideIds": ["tool-design"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C06.05",
+    "categoryId": "C06",
+    "requirement": "Read versus write tools, dry-run/preview, approval-bound exact actions.",
+    "guideIds": ["tool-design"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C06.06",
+    "categoryId": "C06",
+    "requirement": "API/database contracts, external outcome verification and reconciliation.",
+    "guideIds": ["tool-design"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C06.07",
+    "categoryId": "C06",
+    "requirement": "MCP suitability versus direct integration; protocols do not replace authorization.",
+    "guideIds": ["tool-design"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C06.08",
+    "categoryId": "C06",
+    "requirement": "Dependency hygiene, testable boundaries, coding standards, reviews.",
+    "guideIds": ["tool-design"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C06.09",
+    "categoryId": "C06",
+    "requirement": "Review AI-generated code and claims; avoid unnecessary frameworks, agents and abstractions.",
+    "guideIds": ["tool-design"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C06.10",
+    "categoryId": "C06",
+    "requirement": "Clear documentation and examples; implementation must remain understandable by another engineer.",
+    "guideIds": ["tool-design"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C07.01",
+    "categoryId": "C07",
+    "requirement": "Connection/read/overall deadlines; retry classification and retry ownership.",
+    "guideIds": ["durable-execution"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C07.02",
+    "categoryId": "C07",
+    "requirement": "Backoff/jitter, retry budgets, circuit breakers, dependency isolation.",
+    "guideIds": ["durable-execution"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C07.03",
+    "categoryId": "C07",
+    "requirement": "Idempotency, unknown outcomes after timeout, outbox/inbox, deduplication.",
+    "guideIds": ["durable-execution"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C07.04",
+    "categoryId": "C07",
+    "requirement": "Checkpoints, replay versus fresh rerun, side-effect boundaries.",
+    "guideIds": ["durable-execution"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C07.05",
+    "categoryId": "C07",
+    "requirement": "Queue limits, duplicate/out-of-order events, dead letters, backpressure.",
+    "guideIds": ["durable-execution"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C07.06",
+    "categoryId": "C07",
+    "requirement": "Heartbeat versus real progress, watchdogs, repeated-action detection.",
+    "guideIds": ["durable-execution"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C07.07",
+    "categoryId": "C07",
+    "requirement": "Worker leases/ownership and fencing stale workers; safe reassignment.",
+    "guideIds": ["durable-execution"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C07.08",
+    "categoryId": "C07",
+    "requirement": "Cancellation, graceful shutdown, resource cleanup, bounded delegation.",
+    "guideIds": ["durable-execution"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C07.09",
+    "categoryId": "C07",
+    "requirement": "Approval timeouts, stale approvals, revalidation of current business state.",
+    "guideIds": ["durable-execution"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C07.10",
+    "categoryId": "C07",
+    "requirement": "Recovery, compensation, manual fallback, restore/reconciliation procedures.",
+    "guideIds": ["durable-execution"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C07.11",
+    "categoryId": "C07",
+    "requirement": "Fault injection, worker-kill tests, dependency outages and duplicate-action checks.",
+    "guideIds": ["durable-execution"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C07.12",
+    "categoryId": "C07",
+    "requirement": "No promise of exactly-once external effects merely because execution is durable.",
+    "guideIds": ["durable-execution"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C08.01",
+    "categoryId": "C08",
+    "requirement": "Risk assessment, workflow inventory, action boundaries, abuse cases.",
+    "guideIds": ["security"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C08.02",
+    "categoryId": "C08",
+    "requirement": "Prompt injection, untrusted tools/documents, poisoned memory, exfiltration.",
+    "guideIds": ["security"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C08.03",
+    "categoryId": "C08",
+    "requirement": "Identity, delegated authority, least privilege, tenant isolation and secrets.",
+    "guideIds": ["security"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C08.04",
+    "categoryId": "C08",
+    "requirement": "Connector provenance, MCP authentication/authorization, supply-chain changes.",
+    "guideIds": ["security"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C08.05",
+    "categoryId": "C08",
+    "requirement": "Sandboxing, filesystem/network/egress restrictions for code/browser agents.",
+    "guideIds": ["security"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C08.06",
+    "categoryId": "C08",
+    "requirement": "Approval controls bound to exact action; revocation and time-of-check/time-of-use.",
+    "guideIds": ["security"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C08.07",
+    "categoryId": "C08",
+    "requirement": "Input/output handling, retention, data minimization, log redaction.",
+    "guideIds": ["security"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C08.08",
+    "categoryId": "C08",
+    "requirement": "Fairness, accessibility, explainability, appeals where decisions affect people.",
+    "guideIds": ["security"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C08.09",
+    "categoryId": "C08",
+    "requirement": "Applicability of company policy/legal review; no invented compliance certification.",
+    "guideIds": ["security"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C08.10",
+    "categoryId": "C08",
+    "requirement": "Business/process owner, engineering owner, security/domain reviewer, budget owner, operations owner, release authority.",
+    "guideIds": ["security"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C08.11",
+    "categoryId": "C08",
+    "requirement": "One startup employee may hold multiple roles, but responsibilities remain named.",
+    "guideIds": ["security"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C08.12",
+    "categoryId": "C08",
+    "requirement": "Governance aligned with Govern/Map/Measure/Manage as guidance, not blanket legal obligation.",
+    "guideIds": ["security"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C08.13",
+    "categoryId": "C08",
+    "requirement": "Incident ownership, escalation, release/increased-autonomy approval, shutdown.",
+    "guideIds": ["security"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C08.14",
+    "categoryId": "C08",
+    "requirement": "Independent review proportionate to impact and accepted residual risk.",
+    "guideIds": ["security"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C09.01",
+    "categoryId": "C09",
+    "requirement": "Acceptance criteria, ground-truth owner, uncertainty and disagreement resolution.",
+    "guideIds": ["evaluations"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C09.02",
+    "categoryId": "C09",
+    "requirement": "Unit, integration, contract, end-to-end, load, security and failure tests.",
+    "guideIds": ["evaluations"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C09.03",
+    "categoryId": "C09",
+    "requirement": "Representative cases, holdouts, dataset versions, contamination and overfitting.",
+    "guideIds": ["evaluations"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C09.04",
+    "categoryId": "C09",
+    "requirement": "Code graders, model judges, human review, rubric design and judge calibration.",
+    "guideIds": ["evaluations"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C09.05",
+    "categoryId": "C09",
+    "requirement": "Outcome versus trajectory evaluation; allow valid alternate paths while enforcing invariants.",
+    "guideIds": ["evaluations"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C09.06",
+    "categoryId": "C09",
+    "requirement": "Repeated runs, reliability distributions, sampling uncertainty and rare severe failures.",
+    "guideIds": ["evaluations"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C09.07",
+    "categoryId": "C09",
+    "requirement": "Segment results by task difficulty, language, document type and consequence.",
+    "guideIds": ["evaluations"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C09.08",
+    "categoryId": "C09",
+    "requirement": "Component evals for retrieval, memory, routing, tools, context and delegation.",
+    "guideIds": ["evaluations"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C09.09",
+    "categoryId": "C09",
+    "requirement": "Hallucinated facts/IDs/recommendations/completion claims and distinct checks.",
+    "guideIds": ["evaluations"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C09.10",
+    "categoryId": "C09",
+    "requirement": "Abstention and escalation evaluation; false positives versus false negatives.",
+    "guideIds": ["evaluations"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C09.11",
+    "categoryId": "C09",
+    "requirement": "Low temperature, RAG, valid JSON or another model's agreement are not guarantees.",
+    "guideIds": ["evaluations"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C09.12",
+    "categoryId": "C09",
+    "requirement": "Isolated test environments, resets, safe fixtures, no production side effects.",
+    "guideIds": ["evaluations"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C09.13",
+    "categoryId": "C09",
+    "requirement": "Regression gates, sensitivity to real failures, production sampling.",
+    "guideIds": ["evaluations"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C09.14",
+    "categoryId": "C09",
+    "requirement": "Attribute failures to model, context, tools, runtime, data or test.",
+    "guideIds": ["evaluations"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C09.15",
+    "categoryId": "C09",
+    "requirement": "Evaluate full business outcomes including external state and review/rework.",
+    "guideIds": ["evaluations"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C10.01",
+    "categoryId": "C10",
+    "requirement": "Total cost per verified successful task, including failures and human review.",
+    "guideIds": ["cost-capacity"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C10.02",
+    "categoryId": "C10",
+    "requirement": "Models, input/output tokens, caching, embeddings, retrieval, tools, infrastructure and observability.",
+    "guideIds": ["cost-capacity"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C10.03",
+    "categoryId": "C10",
+    "requirement": "Latency distribution, throughput, concurrency and queue wait; not averages alone.",
+    "guideIds": ["cost-capacity"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C10.04",
+    "categoryId": "C10",
+    "requirement": "Attribution per workflow/project/tenant/model/tool.",
+    "guideIds": ["cost-capacity"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C10.05",
+    "categoryId": "C10",
+    "requirement": "Concurrency-safe budget reservations and reconciliation with billed usage.",
+    "guideIds": ["cost-capacity"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C10.06",
+    "categoryId": "C10",
+    "requirement": "Shared parent/child/retry budgets; limits on calls, output, time and delegation.",
+    "guideIds": ["cost-capacity"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C10.07",
+    "categoryId": "C10",
+    "requirement": "Delayed billing and in-flight requests; alerts are not hard spending caps.",
+    "guideIds": ["cost-capacity"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C10.08",
+    "categoryId": "C10",
+    "requirement": "Quotas, forecasts, budget exhaustion behaviour, load shedding and escalation.",
+    "guideIds": ["cost-capacity"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C10.09",
+    "categoryId": "C10",
+    "requirement": "Validated cheaper fallback, batching, cache correctness/freshness/isolation.",
+    "guideIds": ["cost-capacity"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C10.10",
+    "categoryId": "C10",
+    "requirement": "Model quality/cost trade-offs; cheap calls may create more retries and rework.",
+    "guideIds": ["cost-capacity"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C10.11",
+    "categoryId": "C10",
+    "requirement": "Avoid buying capacity before value is demonstrated.",
+    "guideIds": ["cost-capacity"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C10.12",
+    "categoryId": "C10",
+    "requirement": "Estimation calculators with explicit user inputs, units and assumptions; no invented live prices.",
+    "guideIds": ["cost-capacity"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C11.01",
+    "categoryId": "C11",
+    "requirement": "Production operating contract: allowed actions, completion evidence, limits, owner.",
+    "guideIds": ["release-operations"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C11.02",
+    "categoryId": "C11",
+    "requirement": "Release evidence pack with risk-appropriate requirements and known gaps.",
+    "guideIds": ["release-operations"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C11.03",
+    "categoryId": "C11",
+    "requirement": "Shadow execution without writes, pilots, staged release and stop conditions.",
+    "guideIds": ["release-operations"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C11.04",
+    "categoryId": "C11",
+    "requirement": "Version prompts/models/tools/indexes/memory policy/workflow/evaluation datasets.",
+    "guideIds": ["release-operations"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C11.05",
+    "categoryId": "C11",
+    "requirement": "In-flight upgrades, compatible state migration, old-version drain or parallel versions.",
+    "guideIds": ["release-operations"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C11.06",
+    "categoryId": "C11",
+    "requirement": "Traces tied to business IDs with redaction; logs, metrics and decision evidence.",
+    "guideIds": ["release-operations"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C11.07",
+    "categoryId": "C11",
+    "requirement": "Quality/progress objectives alongside availability; correct HTTP does not mean correct work.",
+    "guideIds": ["release-operations"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C11.08",
+    "categoryId": "C11",
+    "requirement": "On-call, incident response, rollback, kill switches, fallback and recovery drills.",
+    "guideIds": ["release-operations"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C11.09",
+    "categoryId": "C11",
+    "requirement": "Production checks and user feedback can reveal failures offline benchmarks miss.",
+    "guideIds": ["release-operations"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C11.10",
+    "categoryId": "C11",
+    "requirement": "Root causes into regression cases; reviewed updates rather than uncontrolled self-modification.",
+    "guideIds": ["release-operations"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C11.11",
+    "categoryId": "C11",
+    "requirement": "Realized ROI, adoption, revisit architecture, retire unsuccessful automation.",
+    "guideIds": ["release-operations"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C11.12",
+    "categoryId": "C11",
+    "requirement": "Backup and restore, disaster recovery scope, dependency changes and deprecation.",
+    "guideIds": ["release-operations"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C12.01",
+    "categoryId": "C12",
+    "requirement": "Discovery questions, design reviews, proposing options, communicating uncertainty.",
+    "guideIds": ["leadership"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C12.02",
+    "categoryId": "C12",
+    "requirement": "Executive framing: outcome, evidence, cost, risks, alternatives and next decision.",
+    "guideIds": ["leadership"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C12.03",
+    "categoryId": "C12",
+    "requirement": "Decision records, assumptions, evidence and revisit triggers.",
+    "guideIds": ["leadership"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C12.04",
+    "categoryId": "C12",
+    "requirement": "Adoption, user training, approval UX, review fatigue and capacity.",
+    "guideIds": ["leadership"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C12.05",
+    "categoryId": "C12",
+    "requirement": "Clear action/evidence/consequence presentation, manual takeover and corrections.",
+    "guideIds": ["leadership"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C12.06",
+    "categoryId": "C12",
+    "requirement": "Team ownership, handover, documentation, learning-gap assessment.",
+    "guideIds": ["leadership"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C12.07",
+    "categoryId": "C12",
+    "requirement": "General first-day/week/month guidance for joining an automation team.",
+    "guideIds": ["leadership"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C12.08",
+    "categoryId": "C12",
+    "requirement": "Transfer backend skills while learning probabilistic-system evaluation.",
+    "guideIds": ["leadership"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C12.09",
+    "categoryId": "C12",
+    "requirement": "Reusable question-to-guide navigation and daily stage checklists.",
+    "guideIds": ["leadership"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C12.10",
+    "categoryId": "C12",
+    "requirement": "No employer-specific internal assumptions.",
+    "guideIds": ["leadership"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C13.01",
+    "categoryId": "C13",
+    "requirement": "Execution loop: model -> proposed tool calls -> validation -> dispatch -> results -> next step or verified completion.",
+    "guideIds": ["harness-engineering"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C13.02",
+    "categoryId": "C13",
+    "requirement": "Model adapters, structured outputs, streaming and usage accounting.",
+    "guideIds": ["harness-engineering"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C13.03",
+    "categoryId": "C13",
+    "requirement": "Tool registry, selection, schemas, policy checks, dispatch and result normalization.",
+    "guideIds": ["harness-engineering"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C13.04",
+    "categoryId": "C13",
+    "requirement": "Context assembly and compaction; instruction/data trust separation.",
+    "guideIds": ["harness-engineering"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C13.05",
+    "categoryId": "C13",
+    "requirement": "State/checkpoint management and restoration.",
+    "guideIds": ["harness-engineering"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C13.06",
+    "categoryId": "C13",
+    "requirement": "Memory/retrieval hooks and isolation.",
+    "guideIds": ["harness-engineering"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C13.07",
+    "categoryId": "C13",
+    "requirement": "Limits, deadlines, retry/cancellation and progress controls.",
+    "guideIds": ["harness-engineering"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C13.08",
+    "categoryId": "C13",
+    "requirement": "Authorization, exact-action approvals and sandbox execution.",
+    "guideIds": ["harness-engineering"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C13.09",
+    "categoryId": "C13",
+    "requirement": "Child agents, handoffs, task ownership, shared budgets and aggregation.",
+    "guideIds": ["harness-engineering"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C13.10",
+    "categoryId": "C13",
+    "requirement": "Verification hooks, traces, evaluation integration and configuration versions.",
+    "guideIds": ["harness-engineering"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C13.11",
+    "categoryId": "C13",
+    "requirement": "Worker lifecycle, startup, shutdown, recovery and deployment.",
+    "guideIds": ["harness-engineering"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C13.12",
+    "categoryId": "C13",
+    "requirement": "What framework provides versus what application must implement/configure.",
+    "guideIds": ["harness-engineering"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C13.13",
+    "categoryId": "C13",
+    "requirement": "Thin custom harness versus framework runtime; avoid unnecessary universal frameworks.",
+    "guideIds": ["harness-engineering"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  },
+  {
+    "id": "C13.14",
+    "categoryId": "C13",
+    "requirement": "Teach how components fit together without duplicating entire specialist chapters.",
+    "guideIds": ["harness-engineering"],
+    "verification": "Content reference validation plus semantic review of the matching guide section.",
+    "status": "implemented",
+    "notes": "One authored section maps to this requirement; applicability, alternatives, example and verification accompany the guide."
+  }
+]
