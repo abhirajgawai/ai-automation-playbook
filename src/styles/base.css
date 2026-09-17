@@ -49,7 +49,11 @@ body {
 }
 
 a {
-  color: var(--color-action);
+  /* --color-action fails AA (4.39:1) against the canvas background that
+     most page bodies sit on directly (i.e. links with no surface card
+     behind them, such as guide source/related links); --color-action-strong
+     keeps the same hue family while passing 4.5:1 in both themes. */
+  color: var(--color-action-strong);
   text-decoration-thickness: 1px;
   text-underline-offset: 0.18em;
 }

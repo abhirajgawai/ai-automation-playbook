@@ -155,12 +155,6 @@ section + section {
   border-bottom: 1px solid var(--line);
   text-decoration: none;
 }
-.local-callout {
-  margin-top: 55px;
-  padding: 18px 20px;
-  border-left: 4px solid var(--blue);
-  background: var(--blue-soft);
-}
 .split {
   display: grid;
   grid-template-columns: minmax(0, 0.85fr) minmax(320px, 1.15fr);
@@ -304,93 +298,13 @@ th small {
 .empty p {
   color: var(--muted);
 }
-.guide-layout {
-  display: grid;
-  grid-template-columns: minmax(0, 750px) minmax(220px, 1fr);
-  gap: 65px;
-}
-.guide-layout > * {
-  min-width: 0;
-}
-.prose,
-.guide-meta,
-.applicability,
-.local-callout {
-  max-width: 100%;
-  overflow-wrap: anywhere;
-}
-.prose table {
-  width: max-content;
-  min-width: 100%;
-  max-width: none;
-}
-.table-wrap {
-  max-width: 100%;
-  min-width: 0;
-  overflow-x: auto;
-}
-.prose {
-  font-family: "Newsreader Variable", serif;
-  font-size: 1.1rem;
-}
-.prose h2,
-.prose h3,
-.prose summary,
-.prose table {
-  font-family: "Inter Variable", sans-serif;
-}
-.prose p {
-  max-width: 72ch;
-}
-.guide-meta {
-  font-family: "Inter Variable";
-  color: var(--muted);
-  font-size: 0.8rem;
-}
-.applicability {
-  background: var(--blue-soft);
-  padding: 20px;
-}
-.applicability h2 {
-  margin-top: 0;
-}
-.applicability dl {
-  display: grid;
-  grid-template-columns: 100px 1fr;
-  gap: 7px;
-}
-.applicability dt {
-  font-weight: 700;
-}
-.applicability dd {
-  margin: 0;
-}
-.prose details,
 .diagnostic details {
   border-bottom: 1px solid var(--line);
   padding: 12px 0;
 }
-.prose summary,
 .diagnostic summary {
   font-weight: 700;
   cursor: pointer;
-}
-.detail-rail {
-  position: sticky;
-  top: 95px;
-  align-self: start;
-  border-left: 1px solid var(--line);
-  padding-left: 22px;
-}
-.detail-rail h2 {
-  font-size: 0.9rem;
-  margin-top: 30px;
-}
-.detail-rail > a,
-.detail-rail p {
-  display: block;
-  font-size: 0.85rem;
-  margin-bottom: 10px;
 }
 .table-wrap {
   overflow-x: auto;
@@ -410,9 +324,6 @@ td {
 }
 thead th {
   background: var(--blue-soft);
-}
-.checks li::marker {
-  color: var(--ok);
 }
 .project-select {
   display: flex;
@@ -603,18 +514,11 @@ thead th {
     padding-top: 32px;
   }
   .decision-preview,
-  .split,
-  .guide-layout {
+  .split {
     grid-template-columns: 1fr;
   }
-  .results,
-  .detail-rail {
+  .results {
     position: static;
-  }
-  .detail-rail {
-    border-left: 0;
-    border-top: 1px solid var(--line);
-    padding: 20px 0;
   }
   .flow-list {
     grid-template-columns: 1fr 1fr;

@@ -53,8 +53,17 @@
   transition: border-color var(--motion-base) var(--easing-standard);
 }
 
+/* Dimming recedes a node's chrome (border/background/kind label) without
+   lowering the opacity of its label or status text: opacity blending
+   against the light canvas crushes small colored text below AA contrast,
+   so text stays fully opaque and only decorative surfaces lighten. */
 .react-flow__node.is-dimmed .diagram-node {
-  opacity: 0.5;
+  background: color-mix(in srgb, var(--color-surface) 55%, var(--color-canvas));
+  border-color: color-mix(in srgb, var(--color-border) 55%, var(--color-canvas));
+}
+
+.react-flow__node.is-dimmed .diagram-node-risk::before {
+  background: color-mix(in srgb, var(--color-warning) 55%, var(--color-canvas));
 }
 
 .react-flow__node.selectable:focus-visible {

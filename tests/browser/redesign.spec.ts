@@ -424,6 +424,103 @@ test("first visit can search, open, annotate, bookmark and revisit a guide", asy
   ).toBeVisible();
 });
 
+test("guide shows orientation metadata, a decision rule and a state-model diagram with a linear alternative", async ({
+  page,
+}) => {
+  await page.goto("/guides/durable-execution");
+  await expect(
+    page.getByRole("heading", { name: "Orientation", level: 2 }),
+  ).toBeVisible();
+  const orientation = page.locator("#orientation");
+  await expect(orientation).toContainText(/min read/i);
+  await expect(orientation).toContainText("Reviewed");
+  await expect(orientation).toContainText(/source/i);
+
+  const decisionRule = page.locator("#decision-rule");
+  await expect(decisionRule.getByText("When to use this")).toBeVisible();
+
+  const mechanism = page.locator("#mechanism");
+  await expect(
+    mechanism.getByRole("group", { name: /diagram/i }),
+  ).toBeVisible();
+  await expect(
+    mechanism.getByRole("region", { name: /linear|text equivalent/i }),
+  ).toBeVisible();
+});
+
+test("guide prose renders at a readable measure", async ({ page }) => {
+  await page.goto("/guides/durable-execution");
+  const paragraph = page.locator(".guide-body p").first();
+  const { width, fontSize } = await paragraph.evaluate((el) => ({
+    width: el.getBoundingClientRect().width,
+    fontSize: parseFloat(getComputedStyle(el).fontSize),
+  }));
+  // 60-72 characters per line at roughly 0.55em average character width.
+  const approxChars = width / (fontSize * 0.55);
+  expect(approxChars).toBeLessThanOrEqual(80);
+});
+
+test("guide shows safe and dangerous actions without a collapsed detail hiding them", async ({
+  page,
+}) => {
+  await page.goto("/guides/durable-execution");
+  const section = page.locator("#safe-actions");
+  await expect(section.getByText(/Dangerous:/)).toBeVisible();
+  await expect(
+    section.getByRole("heading", { name: "Safe response" }),
+  ).toBeVisible();
+  // Neither the dangerous nor the safe callout may be inside a closed
+  // <details> element.
+  const hiddenCount = await section.evaluate(
+    (el) => el.querySelectorAll("details:not([open])").length,
+  );
+  expect(hiddenCount).toBe(0);
+});
+
+test("guide offers in-page section navigation and a deep anchor scrolls to and focuses that section", async ({
+  page,
+}) => {
+  await page.goto("/guides/durable-execution");
+  await expect(
+    page.getByRole("navigation", { name: "Guide sections" }),
+  ).toBeVisible();
+  await expect(
+    page
+      .getByRole("navigation", { name: "Guide sections" })
+      .getByRole("link", { name: /Safe vs\. dangerous actions/i }),
+  ).toHaveAttribute("href", "#safe-actions");
+
+  await page.goto("/guides/durable-execution#safe-actions");
+  await expect(page.locator("#safe-actions")).toBeFocused();
+});
+
+test("guide route survives a hard refresh and browser back/forward", async ({
+  page,
+}) => {
+  await page.goto("/explore");
+  await page.goto("/guides/durable-execution");
+  await expect(page.locator("h1")).toHaveText(
+    "Recover without duplicating business actions",
+  );
+  await page.reload();
+  await expect(page.locator("h1")).toHaveText(
+    "Recover without duplicating business actions",
+  );
+  await page.goBack();
+  await expect(page).toHaveURL(/\/explore/);
+  await page.goForward();
+  await expect(page).toHaveURL(/\/guides\/durable-execution/);
+});
+
+test("guide sources are scoped to that guide", async ({ page }) => {
+  await page.goto("/guides/durable-execution");
+  const sourcesSection = page.locator("#sources");
+  await expect(
+    sourcesSection.getByRole("heading", { name: "Sources", exact: true }),
+  ).toBeVisible();
+  await expect(sourcesSection.getByRole("link")).not.toHaveCount(0);
+});
+
 for (const viewport of viewports) {
   test(`deterministic screenshots at ${viewport.width}x${viewport.height}`, async ({
     page,

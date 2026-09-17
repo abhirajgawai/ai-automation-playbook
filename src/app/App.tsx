@@ -2,12 +2,12 @@ import { Route, Routes } from "react-router-dom";
 import { StateProvider } from "./StateContext";
 import { Layout } from "./Layout";
 import { HomePage } from "../features/home/HomePage";
+import { GuidePage } from "../features/guides/GuidePage";
 import {
   Bookmarks,
   Compare,
   Explore,
   Glossary,
-  GuidePage,
   NotFound,
   ProjectDetail,
   Projects,
