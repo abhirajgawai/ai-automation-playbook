@@ -35,6 +35,19 @@ describe("calculator", () => {
     expect(x.successfulOutcomes).toBe(5);
     expect(x.costPerSuccess).toBe(18);
   });
+  it("prefers explicit attempts over a raw call count when both are present", () => {
+    const x = calculateMonthlyCost({
+      inputTokens: 100,
+      outputTokens: 0,
+      calls: 999,
+      attempts: 10,
+      callsPerAttempt: 4,
+      inputPerMillion: 1,
+      outputPerMillion: 0,
+      otherMonthly: 0,
+    });
+    expect(x.totalCalls).toBe(40);
+  });
   it("rejects negative, infinite and invalid success inputs", () => {
     expect(() =>
       calculateMonthlyCost({

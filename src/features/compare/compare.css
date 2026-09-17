@@ -1,0 +1,285 @@
+/* Comparisons and cost model (Task 11). Token-only styling. The scorecard
+   renders as stacked, full-width readable cards on narrow viewports rather
+   than a horizontally-scrolled mega-table; a focused multi-column grid is
+   used only once there is real room for it. No rule in this file shrinks
+   text inside `.comparison-card` below the ambient 16px body size — badges
+   and flags are distinguished by color/border/weight, never by size. */
+
+.compare-picker-section,
+.compare-matrix-section,
+.compare-patterns-section,
+.cost-model {
+  margin-bottom: var(--space-12);
+}
+
+/* --- Shortlist picker --- */
+
+.comparison-picker {
+  border: var(--border-subtle);
+  border-radius: var(--radius-surface);
+  padding: var(--space-5);
+  margin: 0;
+}
+
+.comparison-picker legend {
+  font-weight: 700;
+  padding: 0 var(--space-2);
+}
+
+.picker-count {
+  font-weight: 400;
+  color: var(--color-ink-subtle);
+}
+
+.picker-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+}
+
+.picker-option {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  border: var(--border-subtle);
+  border-radius: var(--radius-control);
+  background: var(--color-surface);
+}
+
+.picker-option input {
+  margin-top: 0.2em;
+  flex-shrink: 0;
+}
+
+.picker-layer {
+  display: block;
+  color: var(--color-ink-subtle);
+}
+
+/* --- Scorecard matrix --- */
+
+.criteria-weights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-5);
+  border: var(--border-subtle);
+  border-radius: var(--radius-surface);
+  padding: var(--space-5);
+  margin: 0 0 var(--space-6);
+}
+
+.criteria-weights legend {
+  font-weight: 700;
+  padding: 0 var(--space-2);
+}
+
+.criterion-weight {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  min-width: 200px;
+}
+
+.criterion-weight input {
+  width: 6rem;
+}
+
+.criterion-mandatory-tag {
+  display: inline-block;
+  margin-left: var(--space-2);
+  padding: 0 var(--space-2);
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  color: var(--color-warning);
+  font-weight: 700;
+}
+
+.comparison-cards {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.comparison-card {
+  width: 100%;
+  box-sizing: border-box;
+  padding: var(--space-6);
+  border: var(--border-subtle);
+  border-radius: var(--radius-surface);
+  background: var(--color-surface);
+  overflow-wrap: break-word;
+}
+
+.comparison-card-header h3 {
+  margin: 0;
+}
+
+.comparison-card-layer {
+  margin: var(--space-1) 0 0;
+  color: var(--color-ink-subtle);
+}
+
+.comparison-card-evidence,
+.comparison-card-sources {
+  margin: var(--space-3) 0 0;
+}
+
+.evidence-tag {
+  display: inline-block;
+  padding: 0 var(--space-2);
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  font-weight: 700;
+}
+
+.evidence-reviewed {
+  color: var(--color-verified);
+}
+
+.evidence-unverified {
+  color: var(--color-evidence);
+}
+
+.comparison-card-facts {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: var(--space-2) var(--space-4);
+  margin: var(--space-4) 0 0;
+}
+
+.comparison-card-facts dt {
+  font-weight: 700;
+  min-width: 0;
+}
+
+.comparison-card-facts dd {
+  margin: 0;
+  min-width: 0;
+  overflow-wrap: break-word;
+}
+
+.comparison-card-section {
+  margin-top: var(--space-5);
+}
+
+.comparison-card-section h4 {
+  margin: 0 0 var(--space-2);
+}
+
+.comparison-card-section ul {
+  margin: 0;
+  padding-left: 1.2em;
+}
+
+.criteria-scores {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.criterion-score {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.comparison-card-result {
+  margin-top: var(--space-5);
+  padding-top: var(--space-5);
+  border-top: var(--border-subtle);
+}
+
+.weighted-score-value {
+  font-weight: 700;
+  margin: 0 0 var(--space-2);
+}
+
+.gate-flag {
+  display: inline-block;
+  padding: var(--space-1) var(--space-3);
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  font-weight: 700;
+  margin: 0 0 var(--space-2);
+}
+
+.gate-flag-fail {
+  color: var(--color-warning);
+  background: var(--color-warning-surface);
+}
+
+.gate-flag-unknown {
+  color: var(--color-evidence);
+  background: var(--color-evidence-surface);
+}
+
+.gate-flag-pass {
+  color: var(--color-verified);
+  background: var(--color-verified-surface);
+}
+
+.comparison-card-denominator {
+  margin: 0;
+  color: var(--color-ink-subtle);
+}
+
+/* Wide screens get a focused multi-column layout since there is room for
+   it without cramping any single card. */
+@media (min-width: 900px) {
+  .comparison-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    align-items: start;
+  }
+}
+
+/* --- Cost model --- */
+
+.cost-mode {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-5);
+  border: var(--border-subtle);
+  border-radius: var(--radius-surface);
+  padding: var(--space-4) var(--space-5);
+  margin: var(--space-4) 0;
+}
+
+.cost-mode legend {
+  font-weight: 700;
+  padding: 0 var(--space-2);
+}
+
+.cost-mode-option {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.calc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: var(--space-4);
+  margin: var(--space-4) 0;
+}
+
+.cost-result {
+  display: block;
+  margin-top: var(--space-4);
+  padding: var(--space-5);
+  border: var(--border-subtle);
+  border-radius: var(--radius-surface);
+  background: var(--color-surface);
+}
+
+.cost-result p {
+  margin: 0 0 var(--space-2);
+}
+
+.cost-result p:last-child {
+  margin-bottom: 0;
+}

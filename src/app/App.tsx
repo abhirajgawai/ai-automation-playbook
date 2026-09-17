@@ -9,9 +9,9 @@ import { ReviewPage } from "../features/reviews/ReviewPage";
 import { ProjectsPage } from "../features/projects/ProjectsPage";
 import { ProjectPage } from "../features/projects/ProjectPage";
 import { TroubleshootPage } from "../features/troubleshooting/TroubleshootPage";
+import { ComparePage } from "../features/compare/ComparePage";
 import {
   Bookmarks,
-  Compare,
   Glossary,
   NotFound,
   Settings,
@@ -28,7 +28,7 @@ export function App() {
           <Route path="guides/:id" element={<GuidePage />} />
           <Route path="review" element={<ReviewPage />} />
           <Route path="troubleshoot" element={<TroubleshootPage />} />
-          <Route path="compare" element={<Compare />} />
+          <Route path="compare" element={<ComparePage />} />
           <Route path="projects" element={<ProjectsPage />} />
           <Route path="projects/:id" element={<ProjectPage />} />
           <Route path="bookmarks" element={<Bookmarks />} />

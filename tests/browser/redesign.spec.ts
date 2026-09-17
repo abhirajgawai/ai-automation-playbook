@@ -294,6 +294,111 @@ test("comparison presents readable cards on a narrow viewport", async ({
   ).toBe(true);
 });
 
+test("comparison shortlist allows at most three options with no fabricated default ranking", async ({
+  page,
+}) => {
+  await page.goto("/compare");
+  const picker = page.getByRole("group", { name: "Options to compare" });
+  await expect(picker).toBeVisible();
+  const cards = page.getByRole("article");
+  const initialCount = await cards.count();
+  expect(initialCount).toBeGreaterThanOrEqual(2);
+  expect(initialCount).toBeLessThanOrEqual(3);
+
+  // No default score/weight input has been fabricated into a winner: every
+  // shortlisted card starts with "No verified inputs" until a person scores
+  // something.
+  await expect(page.getByText("No verified inputs")).toHaveCount(initialCount);
+
+  const checkboxes = picker.getByRole("checkbox");
+  const total = await checkboxes.count();
+  let checkedCount = await picker.getByRole("checkbox", { checked: true }).count();
+  for (let i = 0; i < total && checkedCount < 3; i++) {
+    const box = checkboxes.nth(i);
+    if (!(await box.isChecked())) {
+      await box.check();
+      checkedCount++;
+    }
+  }
+  await expect(cards).toHaveCount(3);
+  const unchecked = picker.getByRole("checkbox", { checked: false });
+  const uncheckedCount = await unchecked.count();
+  for (let i = 0; i < uncheckedCount; i++) {
+    await expect(unchecked.nth(i)).toBeDisabled();
+  }
+});
+
+test("a failed mandatory criterion and an unknown mandatory criterion are flagged distinctly, never as unsupported", async ({
+  page,
+}) => {
+  await page.goto("/compare");
+  const cards = page.getByRole("article");
+  const firstCard = cards.first();
+  const secondCard = cards.nth(1);
+
+  // Before any scoring, missing mandatory evidence is flagged as unknown,
+  // not as a failure.
+  await expect(firstCard.getByText("Mandatory evidence missing")).toBeVisible();
+  await expect(firstCard.getByText("Fails a mandatory requirement")).toHaveCount(0);
+
+  const firstOptionName = await firstCard.locator("h3").innerText();
+  await firstCard
+    .getByLabel(`Operational fit for ${firstOptionName}`)
+    .selectOption("0");
+  await expect(firstCard.getByText("Fails a mandatory requirement")).toBeVisible();
+  await expect(firstCard.getByText("Mandatory evidence missing")).toHaveCount(0);
+
+  // The second, untouched card still reads as unknown, not failing, and the
+  // two states are visually distinguished (different colors), not merged.
+  await expect(secondCard.getByText("Mandatory evidence missing")).toBeVisible();
+  const [failColor, unknownColor] = await Promise.all([
+    firstCard
+      .getByText("Fails a mandatory requirement")
+      .evaluate((el) => getComputedStyle(el).color),
+    secondCard
+      .getByText("Mandatory evidence missing")
+      .evaluate((el) => getComputedStyle(el).color),
+  ]);
+  expect(failColor).not.toBe(unknownColor);
+
+  const unknownFlagText = (
+    await secondCard.locator(".gate-flag-unknown").innerText()
+  ).toLowerCase();
+  expect(unknownFlagText).not.toMatch(/unsupported|fail/);
+});
+
+test("cost model exposes explicit units and distinguishes attempts-times-calls-per-attempt from raw call counts", async ({
+  page,
+}) => {
+  await page.goto("/compare");
+  const costModel = page.locator(".cost-model");
+  await expect(
+    costModel.getByRole("heading", { name: "Explicit-input cost model" }),
+  ).toBeVisible();
+
+  // Explicit units/hints are present, not just bare numeric fields.
+  await expect(
+    costModel.getByText(/business tasks attempted per month/i),
+  ).toBeVisible();
+  await expect(
+    costModel.getByText(/model calls per attempt, including expected retries/i),
+  ).toBeVisible();
+  await expect(
+    costModel.getByText(/currency per 1,000,000 input tokens/i),
+  ).toBeVisible();
+
+  // Default mode: attempts x calls-per-attempt.
+  await costModel.getByLabel(/^Attempts per month/).fill("100");
+  await costModel.getByLabel(/^Calls per attempt/).fill("3");
+  await expect(costModel.getByText("300 model calls per month.")).toBeVisible();
+
+  // Switching to raw call counts uses the entered value directly, not
+  // multiplied by attempts.
+  await costModel.getByLabel("Raw model call count").check();
+  await costModel.getByLabel(/^Model calls per month/).fill("500");
+  await expect(costModel.getByText("500 model calls per month.")).toBeVisible();
+});
+
 test("upstream answers recompute the decision path", async ({ page }) => {
   await page.goto("/start");
   const rules = page.getByLabel("Can fixed rules solve it?");
