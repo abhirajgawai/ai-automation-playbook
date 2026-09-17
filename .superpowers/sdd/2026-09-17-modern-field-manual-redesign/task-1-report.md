@@ -70,3 +70,17 @@ Commands and exact results:
 Fix Round 2 commit: `1bc864db5aa3426e274bcc31c9c182a4d2125094` — `test: close redesign contract review findings`.
 
 Self-review: all three review findings are represented as executable assertions; no production files were changed. Screenshot capture remains deterministic and intentionally has no committed visual baseline.
+
+## Fix Round 3
+
+The Beta project ID is now selected by finding the persisted project whose ID differs from Alpha, rather than relying on array position. This matches the actual prepend ordering used when creating projects.
+
+Commands and exact results:
+
+- `npx prettier --write tests/browser/redesign.spec.ts` — passed; file unchanged after formatting.
+- `npx playwright test tests/browser/redesign.spec.ts --grep 'review evidence stays isolated' --reporter=line` — passed, 1 test (9.4s).
+- `npm run typecheck` — passed (`tsc -b --pretty false`).
+
+Fix Round 3 commit: `1337bed04cf0a537f8e3fce3951615921f72adf2` — `test: select isolated review project by identity`.
+
+Self-review: the full review-evidence-isolation journey now reaches Beta by identity, verifies its direct project note is blank, and returns to Alpha to verify retention. No production files changed.
