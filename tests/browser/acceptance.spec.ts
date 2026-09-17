@@ -243,6 +243,18 @@ test("mobile navigation, guide and graph fit the viewport", async ({
   });
 });
 
+test("page intros stack at the tablet shell breakpoint", async ({ page }) => {
+  await page.setViewportSize({ width: 800, height: 900 });
+  await page.goto("/explore");
+
+  await expect(page.locator(".page-intro")).toBeVisible();
+  expect(
+    await page
+      .locator(".page-intro")
+      .evaluate((element) => getComputedStyle(element).display),
+  ).toBe("block");
+});
+
 test("core screens have no serious or critical automated accessibility violations", async ({
   page,
 }) => {
