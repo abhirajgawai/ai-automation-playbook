@@ -4,6 +4,7 @@ import { Layout } from "./Layout";
 import { HomePage } from "../features/home/HomePage";
 import { GuidePage } from "../features/guides/GuidePage";
 import { ExplorePage } from "../features/explore/ExplorePage";
+import { StartProblemPage } from "../features/discovery/StartProblemPage";
 import {
   Bookmarks,
   Compare,
@@ -14,7 +15,6 @@ import {
   Review,
   Settings,
   Sources,
-  StartProblem,
   Troubleshoot,
 } from "../features/pages";
 export function App() {
@@ -23,7 +23,7 @@ export function App() {
       <Routes>
         <Route element={<Layout />}>
           <Route index element={<HomePage />} />
-          <Route path="start" element={<StartProblem />} />
+          <Route path="start" element={<StartProblemPage />} />
           <Route path="explore" element={<ExplorePage />} />
           <Route path="guides/:id" element={<GuidePage />} />
           <Route path="review" element={<Review />} />

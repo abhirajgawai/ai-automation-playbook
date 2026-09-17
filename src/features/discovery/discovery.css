@@ -1,0 +1,160 @@
+/* Guided problem discovery (Task 8): a progressive question stepper with an
+   always-visible answer summary, and a results column pairing a live
+   read-only decision graph with recommendations and an evidence-gap list.
+   Token-only styling, reused across light and dark themes. */
+
+.discovery-save {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--space-4);
+  margin-bottom: var(--space-8);
+}
+
+.discovery-save .field {
+  flex: 1;
+  max-width: 360px;
+}
+
+.discovery-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 1fr);
+  gap: var(--space-8);
+  align-items: start;
+}
+
+.discovery-questions {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.discovery-steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.discovery-step {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: var(--color-surface);
+  border: var(--border-subtle);
+  border-radius: var(--radius-control);
+  padding: var(--space-2) var(--space-3);
+  color: var(--color-ink);
+  text-decoration: none;
+  font: inherit;
+}
+
+.discovery-step.is-active {
+  border-color: var(--color-action-strong);
+  border-width: 2px;
+}
+
+.discovery-step.is-complete .discovery-step-index {
+  background: var(--color-verified-surface);
+  color: var(--color-verified);
+}
+
+.discovery-step-index {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background: var(--color-surface-selected);
+  font-size: var(--type-sm);
+  flex-shrink: 0;
+}
+
+.discovery-step-label {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.discovery-step-label small {
+  color: var(--color-ink);
+  font-size: var(--type-xs);
+}
+
+.discovery-panel {
+  background: var(--color-surface);
+  border: var(--border-subtle);
+  border-radius: var(--radius-surface);
+  padding: var(--space-6);
+  display: grid;
+  gap: var(--space-4);
+}
+
+.discovery-summary {
+  background: var(--color-surface);
+  border: var(--border-subtle);
+  border-radius: var(--radius-surface);
+  padding: var(--space-6);
+  display: grid;
+  gap: var(--space-4);
+}
+
+.discovery-summary h2 {
+  margin: 0;
+}
+
+.discovery-summary-step h3 {
+  margin: 0 0 var(--space-2);
+  font-size: var(--type-sm);
+  color: var(--color-ink-subtle);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.discovery-summary-step dl {
+  display: grid;
+  gap: var(--space-1);
+  margin: 0 0 var(--space-4);
+}
+
+.discovery-summary-item {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-3);
+  font-size: var(--type-sm);
+}
+
+.discovery-summary-item dt {
+  color: var(--color-ink);
+}
+
+.discovery-summary-item dd {
+  margin: 0;
+  color: var(--color-ink-subtle);
+  text-align: right;
+}
+
+.discovery-results {
+  display: grid;
+  gap: var(--space-8);
+}
+
+.discovery-trigger {
+  font-size: var(--type-sm);
+  color: var(--color-ink-subtle);
+}
+
+.discovery-gap-list {
+  display: grid;
+  gap: var(--space-2);
+  padding-left: var(--space-5);
+}
+
+@media (max-width: 900px) {
+  .discovery-layout {
+    grid-template-columns: 1fr;
+  }
+  .discovery-save {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

@@ -58,6 +58,50 @@ export const problemQuestions: readonly ProblemQuestion[] = [
     kind: "text",
   },
 ];
+/**
+ * Task 8 groups the flat `problemQuestions` list into five named steps for
+ * progressive presentation. This grouping is purely a UI concern: every
+ * answer is still stored under its original question `id`, so existing
+ * projects, exports and the `evaluateAnswers` rules above are untouched.
+ */
+export interface DiscoveryStep {
+  id: "outcome" | "process" | "consequence" | "authority" | "operations";
+  title: string;
+  description: string;
+  questionIds: string[];
+}
+export const discoverySteps: readonly DiscoveryStep[] = [
+  {
+    id: "outcome",
+    title: "Outcome",
+    description: "What should improve, and for whom.",
+    questionIds: ["outcome"],
+  },
+  {
+    id: "process",
+    title: "Process",
+    description: "How stable and rule-governed the current work is.",
+    questionIds: ["process", "exceptions", "data", "rules"],
+  },
+  {
+    id: "consequence",
+    title: "Consequence",
+    description: "What happens if the system gets it wrong.",
+    questionIds: ["impact", "reversible"],
+  },
+  {
+    id: "authority",
+    title: "Authority",
+    description: "What the system may do, and who checks it.",
+    questionIds: ["autonomy", "review"],
+  },
+  {
+    id: "operations",
+    title: "Operations",
+    description: "Timing and real-world constraints.",
+    questionIds: ["timing", "constraints"],
+  },
+];
 export function evaluateAnswers(a: Record<string, string>): DecisionResult[] {
   const r: DecisionResult[] = [];
   if (a.rules === "yes")

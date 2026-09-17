@@ -307,6 +307,84 @@ test("upstream answers recompute the decision path", async ({ page }) => {
   ).toHaveCount(0);
 });
 
+test("discovery groups questions into five named, distinguishable steps", async ({
+  page,
+}) => {
+  await page.goto("/start");
+  const nav = page.getByRole("navigation", { name: "Discovery steps" });
+  for (const label of [
+    "Outcome",
+    "Process",
+    "Consequence",
+    "Authority",
+    "Operations",
+  ]) {
+    await expect(nav.getByText(label)).toBeVisible();
+    await expect(
+      page.locator(".discovery-panel").getByRole("heading", { name: label, exact: true }),
+    ).toBeVisible();
+  }
+  // Every question stays reachable on the same page regardless of which
+  // named step it belongs to -- grouping is a presentation aid, not a
+  // gate, so existing direct interactions keep working unchanged.
+  await expect(page.getByLabel("Can fixed rules solve it?")).toBeVisible();
+  await expect(page.getByLabel("What may the system do?")).toBeVisible();
+});
+
+test("discovery keeps an always-visible answer summary while answering questions", async ({
+  page,
+}) => {
+  await page.goto("/start");
+  await page.getByLabel("Can fixed rules solve it?").selectOption("yes");
+  const summary = page.locator(".discovery-summary");
+  await expect(summary).toContainText("Can fixed rules solve it?");
+  await expect(summary).toContainText("yes");
+  // Answering a later-step question keeps the earlier answer visible too.
+  await page.getByLabel("What may the system do?").selectOption("autonomous");
+  await expect(summary).toContainText("Can fixed rules solve it?");
+  await expect(summary).toContainText("yes");
+  await expect(summary).toContainText("autonomous");
+});
+
+test("discovery explains which answer triggered a recommendation and lists remaining evidence gaps", async ({
+  page,
+}) => {
+  await page.goto("/start");
+  await page.getByLabel("Can fixed rules solve it?").selectOption("yes");
+  const recommendation = page
+    .locator("article.result", { hasText: "Prefer conventional automation first" })
+    .first();
+  await expect(recommendation.getByText(/Because:/)).toContainText(
+    "Can fixed rules solve it?",
+  );
+  await expect(
+    page.getByRole("heading", { name: "Evidence still needed" }),
+  ).toBeVisible();
+  const gapList = page.locator(".discovery-gap-list");
+  await expect(gapList).toContainText(/What is the consequence of a wrong action\?/);
+});
+
+test("discovery renders a synchronized read-only decision graph that follows live answers", async ({
+  page,
+}) => {
+  await page.goto("/start");
+  await expect(
+    page.getByRole("group", { name: /decision path/i }),
+  ).toBeVisible();
+  await page.getByLabel("Can fixed rules solve it?").selectOption("yes");
+  await expect(page.getByText("Status: Verified").first()).toBeVisible();
+});
+
+test("discovery does not crash with no answers yet and surfaces every unresolved question as an evidence gap", async ({
+  page,
+}) => {
+  await page.goto("/start");
+  await expect(page.locator("h1")).toContainText("Start a problem");
+  const gapList = page.locator(".discovery-gap-list");
+  await expect(gapList).toContainText("Can fixed rules solve it?");
+  await expect(gapList).toContainText("What may the system do?");
+});
+
 test("review evidence stays isolated between two projects", async ({
   page,
 }) => {
