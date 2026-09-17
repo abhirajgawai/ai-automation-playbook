@@ -32,7 +32,7 @@ docker compose up -d
 docker compose ps
 ```
 
-Use `PLAYBOOK_VERSION=<commit>` with Compose to tag releases. Recheck browser journeys, deep links, HTTPS and the existing Hermes service. HTML uses `no-cache`; fingerprinted assets use immutable caching. An already-open old tab may need refreshing if it requests a removed lazy chunk after an update. No offline service worker is installed.
+Use `PLAYBOOK_VERSION=<commit>` with Compose to tag releases (currently deployed: `PLAYBOOK_VERSION=587252c`). Recheck browser journeys, deep links, HTTPS and the existing Hermes service. HTML uses `no-cache`; fingerprinted assets use immutable caching. An already-open old tab may need refreshing if it requests a removed lazy chunk after an update — a route-level lazy-loaded chunk that fails to load now shows a recoverable in-app reload prompt instead of a blank page. No offline service worker is installed.
 
 ## Roll back
 

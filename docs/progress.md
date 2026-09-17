@@ -60,3 +60,19 @@ unformatted-but-passing set of ~30 files left outside this task's scope)
 rather than silently papering over either. Production deployment,
 containerization and live-host verification are the responsibility of the
 release task that follows this audit and are intentionally not covered here.
+
+### Production release (Task 15, 2026-09-17)
+
+`redesign/modern-field-manual` (commit `587252c`) was fast-forward merged
+into `main` and deployed to the existing VPS as `ai-playbook:587252c`,
+replacing the pre-redesign `ai-playbook:32e73b9528c4` image (retained on the
+host as the rollback target). Only the Compose `web` service was recreated;
+the unrelated `hermes` container was never touched and remained running
+throughout. The new container reached `healthy` immediately and again after
+an explicit restart. The full 66-test Playwright suite passed against the
+live `https://playbook.abhiraj.net`, TLS/HSTS/CSP/cache headers were verified
+directly, and `https://abhiraj.net`/`https://www.abhiraj.net` continued
+returning 200. Full evidence, image IDs and the rollback command are recorded
+in `docs/verification.md`'s "Production release acceptance (redesign,
+Task 15)" section and `docs/handover.md`. This closes out all 15 tasks of the
+modern field manual redesign plan.

@@ -4,6 +4,8 @@ A static engineering reference and local project workspace at https://playbook.a
 
 The playbook covers all 13 categories in [plan.md](plan.md), with 15 substantive guides, 159 mapped topics, 60 review checks, nine troubleshooting paths, a technology catalogue and glossary. It helps record evidence and uncertainty; checklist completion is not production certification.
 
+Navigation is organized into three modes — Learn (guides, glossary, sources, topic exploration), Decide (start a problem, comparisons, decision paths) and Operate (projects, design review, troubleshooting, saved work) — with React Flow diagrams used wherever spatial or state relationships are clearer than prose, and a complete keyboard-accessible linear text alternative for every diagram. Existing URLs and deep links are unchanged.
+
 ## Development
 
 Requires Node 22.12+ and npm. Dependencies are resolved by the committed lockfile.

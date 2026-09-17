@@ -245,3 +245,50 @@ An independent review identified corrupt-storage overwrite, incomplete nested im
 - Existing `hermes` remained up on port 8642. `https://abhiraj.net` and `https://www.abhiraj.net` continued to return 200.
 
 The production application has no backend, runtime AI calls, analytics or external data requests. Personal data remains in the visitor's browser unless they export it.
+
+## Production release acceptance (redesign, Task 15, 2026-09-17)
+
+This supersedes the "Production release acceptance" section above for the
+currently deployed application. It documents the deployment of the completed
+`redesign/modern-field-manual` branch, fast-forward merged into `main`.
+
+- Release commit: `587252c88ee023ba7e706f24520d50868046a9e1` (`587252c`).
+- Previous running image (rollback target): `ai-playbook:32e73b9528c4`, image ID
+  `sha256:827a9de31c641e23586758b1423f7f76ba4c0f4b290d0a856f538c50939068a9`,
+  retained on the host and not deleted.
+- New image: `ai-playbook:587252c`, image ID
+  `sha256:a7a8627b8e54380417ae8192038ec6918fe029813e4a8211e6985900bfd8513e`,
+  size 24,341,364 bytes.
+- `docker run --rm ai-playbook:587252c caddy validate --config /etc/caddy/Caddyfile`
+  reported `Valid configuration` before deployment.
+- Deployed via `PLAYBOOK_VERSION=587252c docker compose up -d web` (only the
+  `web` service was recreated; `hermes` was never touched).
+- Container health reached `healthy` immediately after deployment and again
+  after an explicit `docker compose restart web`.
+- `http://playbook.abhiraj.net` returned `308 Permanent Redirect` to
+  `https://playbook.abhiraj.net/`. The homepage and
+  `/guides/durable-execution` both returned `200`.
+- TLS: TLSv1.3, certificate CN `playbook.abhiraj.net`, valid through
+  2026-12-14. HSTS (`max-age=31536000`), CSP, `X-Frame-Options: DENY`,
+  `X-Content-Type-Options: nosniff`, `Referrer-Policy` and
+  `Permissions-Policy` headers all present on every checked route.
+- Cache headers: HTML routes serve `Cache-Control: no-cache`; fingerprinted
+  `/assets/*` files serve `Cache-Control: public, max-age=31536000, immutable`.
+- The full 66-test Playwright suite (`tests/browser/acceptance.spec.ts` +
+  `tests/browser/redesign.spec.ts`) passed against
+  `https://playbook.abhiraj.net` after deployment (`PLAYBOOK_BASE_URL`
+  pointed at the live host), including all four deterministic screenshot
+  viewports and the 13-route axe accessibility sweep.
+- Runtime remains bounded to 256 MiB RAM and 0.5 CPU, `unless-stopped`,
+  `no-new-privileges`, rotated JSON logs (10 MiB × 3) — unchanged from the
+  prior release's Compose configuration.
+- Existing `hermes` container remained `running` on port 8642 throughout,
+  untouched by this deployment. `https://abhiraj.net` and
+  `https://www.abhiraj.net` continued to return `200`.
+- No known production-specific regressions. The one documented UX limitation
+  (residual header overflow in the non-mandated 900-1199px window) and the
+  one deliberate palette deviation (warning color darkened for WCAG AA
+  contrast) carry over unchanged from the Task 14 audit above; both were
+  re-observed as expected, not regressed, against the live deployment.
+
+Rollback, if ever needed: `PLAYBOOK_VERSION=32e73b9528c4 docker compose up -d --no-build web`, then verify health and browser behavior per `docs/operations.md`.
