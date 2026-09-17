@@ -23,95 +23,7 @@
   top: 1rem;
 }
 .shell {
-  display: grid;
-  grid-template: 72px 1fr/238px minmax(0, 1fr);
   min-height: 100vh;
-}
-.topbar {
-  grid-column: 1/-1;
-  position: sticky;
-  top: 0;
-  z-index: 20;
-  height: 72px;
-  display: flex;
-  align-items: center;
-  padding: 0 24px;
-  background: var(--surface);
-  border-bottom: 1px solid var(--line);
-}
-.brand {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-  color: var(--ink);
-  text-decoration: none;
-  font-weight: 680;
-}
-.brand small {
-  display: block;
-  color: var(--muted);
-  font-size: 0.72rem;
-  font-weight: 500;
-}
-.brand-mark {
-  display: grid;
-  place-items: center;
-  width: 40px;
-  height: 40px;
-  border: 1px solid var(--ink);
-  font-family: "Newsreader Variable", serif;
-  font-size: 1.15rem;
-}
-.brand-mark span {
-  color: var(--blue);
-}
-.local-indicator {
-  margin-left: auto;
-  color: var(--muted);
-  font-size: 0.78rem;
-  border: 1px solid var(--line);
-  border-radius: 99px;
-  padding: 4px 9px;
-}
-.menu {
-  display: none;
-}
-.sidebar {
-  position: sticky;
-  top: 72px;
-  height: calc(100vh - 72px);
-  padding: 28px 16px;
-  border-right: 1px solid var(--line);
-  background: var(--surface);
-}
-.sidebar nav {
-  display: grid;
-  gap: 3px;
-}
-.sidebar nav a {
-  display: flex;
-  justify-content: space-between;
-  color: var(--muted);
-  text-decoration: none;
-  padding: 8px 10px;
-  border-radius: 5px;
-  font-size: 0.9rem;
-}
-.sidebar nav a:hover,
-.sidebar nav a.active {
-  color: var(--blue);
-  background: var(--blue-soft);
-}
-.sidebar nav a span {
-  font-size: 0.75rem;
-}
-.sidebar-note {
-  position: absolute;
-  bottom: 20px;
-  padding: 0 10px;
-  color: var(--muted);
-  font-size: 0.75rem;
-  max-width: 190px;
 }
 .content {
   min-width: 0;
@@ -714,33 +626,6 @@ thead th {
   font-weight: 650;
 }
 @media (max-width: 850px) {
-  .shell {
-    display: block;
-  }
-  .topbar {
-    height: 62px;
-    padding: 0 15px;
-  }
-  .menu {
-    display: block;
-    background: transparent;
-    color: var(--ink);
-    padding: 8px;
-    margin-right: 8px;
-  }
-  .sidebar {
-    display: none;
-    position: fixed;
-    z-index: 15;
-    top: 62px;
-    left: 0;
-    width: 280px;
-    height: calc(100vh - 62px);
-    box-shadow: var(--shadow);
-  }
-  .sidebar.open {
-    display: block;
-  }
   .page {
     width: calc(100% - 32px);
     padding-top: 32px;
@@ -772,10 +657,6 @@ thead th {
   }
 }
 @media (max-width: 560px) {
-  .brand small,
-  .local-indicator {
-    display: none;
-  }
   .hero-search {
     padding: 20px;
   }

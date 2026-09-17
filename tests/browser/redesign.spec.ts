@@ -45,6 +45,66 @@ test("home has Learn, Decide and Operate landmarks and an accessible decision ma
   );
 });
 
+test("desktop navigation groups routes into Learn, Decide and Operate with active-route indication", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await page.goto("/explore");
+  const learn = page.getByRole("navigation", { name: "Learn" });
+  const decide = page.getByRole("navigation", { name: "Decide" });
+  const operate = page.getByRole("navigation", { name: "Operate" });
+  await expect(learn).toBeVisible();
+  await expect(decide).toBeVisible();
+  await expect(operate).toBeVisible();
+  await expect(learn.getByRole("link", { name: "Explore" })).toHaveAttribute(
+    "aria-current",
+    "page",
+  );
+  await expect(
+    decide.getByRole("link", { name: "Start a problem" }),
+  ).toBeVisible();
+  await expect(
+    operate.getByRole("link", { name: "Troubleshoot" }),
+  ).toBeVisible();
+});
+
+test("mobile navigation opens as a disclosure, closes on Escape and returns focus", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/");
+  const toggle = page.getByRole("button", { name: "Menu" });
+  await expect(page.getByRole("navigation", { name: "Learn" })).toBeHidden();
+  await toggle.click();
+  await expect(page.getByRole("navigation", { name: "Learn" })).toBeVisible();
+  await expect(
+    page.getByRole("navigation", { name: "Operate" }).getByRole("link", {
+      name: "Troubleshoot",
+    }),
+  ).toBeVisible();
+  await page.keyboard.press("Escape");
+  await expect(page.getByRole("navigation", { name: "Learn" })).toBeHidden();
+  await expect(toggle).toBeFocused();
+});
+
+test("search command opens with a keyboard shortcut and navigates to a result", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await page.keyboard.press("/");
+  const dialog = page.getByRole("dialog", { name: /search/i });
+  await expect(dialog).toBeVisible();
+  await page.getByLabel(/search the playbook/i).fill("duplicate action");
+  await page
+    .getByRole("link", {
+      name: /recover without duplicating business actions/i,
+    })
+    .first()
+    .click();
+  await expect(page).toHaveURL(/\/guides\/durable-execution/);
+  await expect(dialog).toBeHidden();
+});
+
 test("comparison presents readable cards on a narrow viewport", async ({
   page,
 }) => {
