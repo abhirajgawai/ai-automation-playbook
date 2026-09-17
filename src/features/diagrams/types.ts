@@ -23,7 +23,8 @@ export type NodeStatus =
   | "supported"
   | "ruled-out"
   | "verified"
-  | "current";
+  | "current"
+  | "observed";
 
 export interface PlaybookNodeData {
   /** Short label shown on the node and used as its accessible name. */

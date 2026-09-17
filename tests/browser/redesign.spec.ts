@@ -448,6 +448,120 @@ test("review evidence stays isolated between two projects", async ({
   await expect(page.getByLabel(/^Saved to/)).toHaveValue("Alpha project note");
 });
 
+test("troubleshooting flows are grouped and browsable by symptom", async ({
+  page,
+}) => {
+  await page.goto("/troubleshoot");
+  const nav = page.getByRole("navigation", {
+    name: "Troubleshooting flows by symptom",
+  });
+  await expect(nav).toBeVisible();
+  await expect(
+    nav.getByText("The agent repeats work or keeps delegating without useful progress."),
+  ).toBeVisible();
+  await expect(
+    nav.getByText("A restart appears to repeat an external business effect."),
+  ).toBeVisible();
+  await expect(nav.locator(".flow-list button")).toHaveCount(9);
+});
+
+test("a diagnostic tree visualizes cause status and stays synchronized with evidence selection", async ({
+  page,
+}) => {
+  await page.goto("/troubleshoot");
+  await page.getByRole("button", { name: "New project" }).click();
+  await page.locator(".flow-list button").first().click();
+  const diagram = page.getByRole("group", { name: /diagnostic tree/i });
+  await expect(diagram).toBeVisible();
+  const cause = page.locator(".diagnostic details").first();
+  await cause.locator("summary").click();
+
+  // Freshly opened, with no evidence recorded, the cause reads as unknown
+  // both in the accessible select and in the diagram's node status text.
+  await expect(cause.getByLabel("What does your evidence indicate?")).toHaveValue(
+    "unknown",
+  );
+  await expect(page.locator(".graph-detail")).toContainText(/unknown/i);
+
+  await cause
+    .getByLabel("What does your evidence indicate?")
+    .selectOption("supports");
+  await expect(page.locator(".graph-detail")).toContainText(/supported/i);
+
+  await cause
+    .getByLabel("What does your evidence indicate?")
+    .selectOption("rules-out");
+  await expect(page.locator(".graph-detail")).toContainText(/ruled out/i);
+});
+
+test("the readable diagnostic panel shows one cause's evidence, safe mitigation and durable fix, warning while evidence is uncertain", async ({
+  page,
+}) => {
+  await page.goto("/troubleshoot");
+  await page.getByRole("button", { name: "New project" }).click();
+  await page.locator(".flow-list button").first().click();
+  const panel = page.locator(".diagnostic-inspector");
+  await expect(panel).toBeVisible();
+  await expect(panel.locator("dt", { hasText: "Evidence" })).toBeVisible();
+  await expect(
+    panel.locator("dt", { hasText: "Safe mitigation" }),
+  ).toBeVisible();
+  await expect(
+    panel.locator("dt", { hasText: "Durable fix" }),
+  ).toBeVisible();
+  // The panel presents a single cause at a readable width, not a dense
+  // multi-column comparison layout.
+  const width = await panel.evaluate((el) => el.getBoundingClientRect().width);
+  expect(width).toBeLessThanOrEqual(760);
+
+  // Uncertain (unknown) evidence must keep a prominent, unconditional
+  // warning against retrying or applying a fix.
+  await expect(panel.getByRole("alert")).toContainText(
+    /do not (retry|apply)/i,
+  );
+
+  const cause = page.locator(".diagnostic details").first();
+  await cause.locator("summary").click();
+  await cause
+    .getByLabel("What does your evidence indicate?")
+    .selectOption("supports");
+  await expect(panel.getByRole("alert")).toHaveCount(0);
+});
+
+test("troubleshooting evidence persists across reload as diagnostic node status", async ({
+  page,
+}) => {
+  await page.goto("/troubleshoot");
+  await page.getByRole("button", { name: "New project" }).click();
+  await page.locator(".flow-list button").first().click();
+  const cause = page.locator(".diagnostic details").first();
+  await cause.locator("summary").click();
+  await cause
+    .getByLabel("What does your evidence indicate?")
+    .selectOption("rules-out");
+  await expect(page.locator(".graph-detail")).toContainText(/ruled out/i);
+  await page.reload();
+  await page.locator(".flow-list button").first().click();
+  await expect(page.locator(".graph-detail")).toContainText(/ruled out/i);
+  const reopened = page.locator(".diagnostic details").first();
+  await reopened.locator("summary").click();
+  await expect(
+    reopened.getByLabel("What does your evidence indicate?"),
+  ).toHaveValue("rules-out");
+});
+
+test("troubleshooting diagnostic tree has a linear text fallback for no-JS/mobile equivalence", async ({
+  page,
+}) => {
+  await page.goto("/troubleshoot");
+  await page.locator(".flow-list button").first().click();
+  const region = page.getByRole("region", {
+    name: /linear|text equivalent/i,
+  });
+  await expect(region).toBeVisible();
+  await expect(region).toContainText("Agent stuck, looping or overdelegating");
+});
+
 test("a review item requires and preserves not-applicable rationale as project-specific evidence", async ({
   page,
 }) => {

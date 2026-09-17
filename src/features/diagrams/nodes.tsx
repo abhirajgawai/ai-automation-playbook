@@ -17,6 +17,7 @@ const statusLabels: Record<NodeStatus, string> = {
   "ruled-out": "Ruled out",
   verified: "Verified",
   current: "Current step",
+  observed: "Observed",
 };
 
 function PlaybookNodeShell({

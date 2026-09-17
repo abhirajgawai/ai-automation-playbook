@@ -1,0 +1,58 @@
+/* Evidence-driven troubleshooting (Task 10): a symptom-first flow nav, a
+   read-only diagnostic tree synced to per-cause evidence answers, and a
+   single-cause readable panel. Token-only styling, reused across light and
+   dark themes. `.flow-list`, `.diagnostic`, `.diagnostic details/dl` and
+   `.project-select` are the unchanged legacy classes from src/styles.css
+   preserved for acceptance-test compatibility; only the additions below
+   are new. */
+
+.troubleshoot-flow-nav {
+  margin-bottom: var(--space-6);
+}
+
+.diagnostic-inspector {
+  max-width: 640px;
+  margin: var(--space-6) 0;
+  padding: var(--space-5);
+  background: var(--color-surface);
+  border: var(--border-subtle);
+  border-radius: var(--radius-control);
+}
+
+.diagnostic-inspector h3 {
+  margin-top: var(--space-2);
+}
+
+.diagnostic-inspector dl {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: var(--space-2) var(--space-4);
+}
+
+.diagnostic-inspector dt {
+  font-weight: 700;
+}
+
+.diagnostic-inspector dd {
+  margin: 0 0 var(--space-2);
+}
+
+.diagnostic-warning {
+  margin-top: var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-warning-surface);
+  color: var(--color-warning);
+  border-radius: var(--radius-control);
+  font-weight: 600;
+}
+
+.diagnostic-note {
+  margin-top: var(--space-4);
+  color: var(--color-ink-subtle);
+}
+
+.diagnostic-confirm {
+  margin-top: var(--space-4);
+  color: var(--color-verified);
+  font-weight: 600;
+}

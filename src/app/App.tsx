@@ -8,6 +8,7 @@ import { StartProblemPage } from "../features/discovery/StartProblemPage";
 import { ReviewPage } from "../features/reviews/ReviewPage";
 import { ProjectsPage } from "../features/projects/ProjectsPage";
 import { ProjectPage } from "../features/projects/ProjectPage";
+import { TroubleshootPage } from "../features/troubleshooting/TroubleshootPage";
 import {
   Bookmarks,
   Compare,
@@ -15,7 +16,6 @@ import {
   NotFound,
   Settings,
   Sources,
-  Troubleshoot,
 } from "../features/pages";
 export function App() {
   return (
@@ -27,7 +27,7 @@ export function App() {
           <Route path="explore" element={<ExplorePage />} />
           <Route path="guides/:id" element={<GuidePage />} />
           <Route path="review" element={<ReviewPage />} />
-          <Route path="troubleshoot" element={<Troubleshoot />} />
+          <Route path="troubleshoot" element={<TroubleshootPage />} />
           <Route path="compare" element={<Compare />} />
           <Route path="projects" element={<ProjectsPage />} />
           <Route path="projects/:id" element={<ProjectPage />} />
