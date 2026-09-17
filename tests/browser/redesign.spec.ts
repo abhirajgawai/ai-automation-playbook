@@ -18,11 +18,13 @@ test("home has Learn, Decide and Operate landmarks and an accessible decision ma
   await expect(
     page.getByRole("region", { name: /linear|text equivalent/i }),
   ).toBeVisible();
-  const linearText = await page.locator(".linear").innerText();
+  const linear = page.locator("details.linear");
+  await linear.locator("summary").click();
+  const linearText = (await linear.innerText()).toLowerCase();
   const orderedSteps = [
-    "Define the business outcome",
-    "Check whether stable rules are sufficient",
-    "Map the consequence",
+    "define the business outcome",
+    "check whether stable rules are sufficient",
+    "map the consequence",
     "gather evidence",
   ];
   for (let i = 1; i < orderedSteps.length; i++) {
@@ -61,15 +63,24 @@ test("comparison presents readable cards on a narrow viewport", async ({
       };
     }),
   );
-  expect(Math.max(...geometry.map((card) => card.width))).toBeLessThanOrEqual(
-    390,
+  expect(geometry.every((card) => card.width <= 390)).toBe(true);
+  const descendantFontSizes = await cards.evaluateAll((els) =>
+    els.flatMap((card) =>
+      [card, ...Array.from(card.querySelectorAll("*"))].map((el) =>
+        parseFloat(getComputedStyle(el).fontSize),
+      ),
+    ),
   );
+  expect(descendantFontSizes.every((size) => size >= 16)).toBe(true);
+  for (let i = 1; i < geometry.length; i++) {
+    expect(geometry[i].top).toBeGreaterThan(geometry[i - 1].top);
+    expect(geometry[i].top).toBeGreaterThanOrEqual(geometry[i - 1].top + 1);
+  }
   expect(
-    Math.max(...geometry.map((card) => card.fontSize)),
-  ).toBeGreaterThanOrEqual(16);
-  expect(
-    new Set(geometry.map((card) => Math.round(card.top))).size,
-  ).toBeGreaterThan(1);
+    geometry.every(
+      (card, i) => i === 0 || Math.abs(card.width - geometry[0].width) <= 1,
+    ),
+  ).toBe(true);
   expect(
     await page.evaluate(
       () => document.documentElement.scrollWidth <= innerWidth + 1,
@@ -135,6 +146,19 @@ test("review evidence stays isolated between two projects", async ({
   await expect(restored.getByLabel("Revisit when")).toHaveValue(
     "Alpha revisit",
   );
+  const betaId = await page.evaluate(
+    () =>
+      JSON.parse(localStorage.getItem("ai-playbook-state")!).projects.at(-1).id,
+  );
+  await page.goto(`/troubleshoot?project=${alphaId}`);
+  await page.locator(".flow-list button").first().click();
+  const cause = page.locator(".diagnostic details").first();
+  await cause.locator("summary").click();
+  await page.getByLabel(/^Saved to/).fill("Alpha project note");
+  await page.getByLabel("Project", { exact: true }).selectOption(betaId);
+  await expect(page.getByLabel(/^Saved to/)).toHaveValue("");
+  await page.getByLabel("Project", { exact: true }).selectOption(alphaId);
+  await expect(page.getByLabel(/^Saved to/)).toHaveValue("Alpha project note");
 });
 
 test("export reset and import preserves a project and bookmark", async ({
