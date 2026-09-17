@@ -117,3 +117,42 @@ button:disabled {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Route-level Suspense fallback (see RouteFallback.tsx) and the reload
+   prompt shown by RouteErrorBoundary.tsx when a lazy route chunk fails to
+   load. Both render inside the shared `#main` landmark so the header's
+   "Skip to content" link always has a target. The spinner's animation is
+   already silenced by the global prefers-reduced-motion rule above. */
+.route-fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  min-height: 40vh;
+  padding: var(--space-6) 0;
+  color: var(--color-ink-subtle);
+}
+
+.route-fallback__spinner {
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 3px solid var(--color-border);
+  border-top-color: var(--color-action);
+  border-radius: 50%;
+  animation: route-fallback-spin 0.8s linear infinite;
+}
+
+@keyframes route-fallback-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.route-error {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-3);
+  min-height: 40vh;
+  padding: var(--space-6) 0;
+}

@@ -1135,6 +1135,16 @@ const KNOWN_TOP_LEVEL_ROUTES = [
 test("every guide route renders through the guide shell with core fields present, with no console errors or broken internal links", async ({
   page,
 }) => {
+  // Each iteration below is a full hard navigation (page.goto), and
+  // GuidePage's module is now lazy-loaded (Task 13) rather than bundled
+  // into the eagerly-loaded main entry, so every one of these 15 reloads
+  // now pays its own chunk-fetch round trip under the (unbundled) Vite dev
+  // server. That pushed this test's already-substantial 15-guide loop
+  // close to, and occasionally over, the default 30s test timeout even
+  // though each guide renders correctly — a real, expected cost of route
+  // splitting on this particular full-reload-heavy test, not a
+  // functional regression.
+  test.setTimeout(60000);
   expect(ALL_GUIDE_IDS.length).toBe(15);
   const errors: string[] = [];
   page.on("pageerror", (e) => errors.push(e.message));
@@ -1211,6 +1221,97 @@ test("guide continue-reading section presents sources, related guides, glossary 
   await expect(section.getByText(/Idempotency/)).toBeVisible();
   await expect(section.getByText(/bookmarked/i)).toBeVisible();
   await expect(section.getByRole("link", { name: "Bookmarks" })).toBeVisible();
+});
+
+test("navigating to a lazy-loaded route through the nav does not lose or trap keyboard focus", async ({
+  page,
+}) => {
+  await page.goto("/");
+  const settingsLink = page
+    .getByRole("navigation", { name: "Operate" })
+    .getByRole("link", { name: "Settings" });
+  await settingsLink.focus();
+  await settingsLink.click();
+  await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
+
+  // Focus must not be left referencing a node the Suspense swap removed.
+  const activeAfterLoad = await page.evaluate(() => ({
+    tag: document.activeElement?.tagName ?? null,
+    inDocument: document.activeElement
+      ? document.body.contains(document.activeElement)
+      : false,
+  }));
+  expect(activeAfterLoad.tag).not.toBeNull();
+  expect(activeAfterLoad.inDocument).toBe(true);
+
+  // Tabbing onward must reach a real, attached element too, not a dead end.
+  await page.keyboard.press("Tab");
+  const activeAfterTab = await page.evaluate(() => ({
+    tag: document.activeElement?.tagName ?? null,
+    inDocument: document.activeElement
+      ? document.body.contains(document.activeElement)
+      : false,
+  }));
+  expect(activeAfterTab.tag).not.toBeNull();
+  expect(activeAfterTab.inDocument).toBe(true);
+});
+
+test("the route-loading spinner is disabled under prefers-reduced-motion", async ({
+  page,
+}) => {
+  // React Router wraps in-app link navigations in React's startTransition,
+  // which keeps the previously-committed page on screen instead of showing
+  // the Suspense fallback while the next route's chunk loads (verified by
+  // manual instrumentation: the fallback never mounted on a same-tab nav
+  // even with a multi-second artificial delay). The fallback is only
+  // reachable on the route's *first* commit, i.e. a direct/hard navigation
+  // such as a fresh page load or refresh — so exercise it that way here.
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.route("**/*Settings*", async (route) => {
+    await new Promise((resolve) => setTimeout(resolve, 800));
+    await route.continue();
+  });
+  await page.goto("/settings");
+  const spinner = page.locator(".route-fallback__spinner");
+  await expect(spinner).toBeVisible();
+  // Chromium normalizes the near-zero duration set by the global
+  // prefers-reduced-motion rule to a value like "0s" rather than echoing
+  // "0.01ms" back literally, so compare the parsed magnitude (in ms)
+  // instead of the raw string. The un-reduced spin is 800ms; anything
+  // under 1ms confirms the reduced-motion override won.
+  const durationMs = await spinner.evaluate((el) => {
+    const raw = getComputedStyle(el).animationDuration;
+    const value = parseFloat(raw);
+    return raw.trim().endsWith("ms") ? value : value * 1000;
+  });
+  expect(durationMs).toBeLessThan(1);
+  await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
+});
+
+test("a lazy route chunk that fails to load shows a recoverable reload prompt instead of a blank page", async ({
+  page,
+}) => {
+  await page.goto("/");
+  const pageErrors: string[] = [];
+  page.on("pageerror", (e) => pageErrors.push(e.message));
+  await page.route("**/*Settings*", (route) => route.abort());
+  const settingsLink = page
+    .getByRole("navigation", { name: "Operate" })
+    .getByRole("link", { name: "Settings" });
+  await settingsLink.click();
+
+  const alert = page.getByRole("alert");
+  await expect(alert).toBeVisible();
+  await expect(alert.getByRole("button", { name: /reload/i })).toBeVisible();
+
+  const bodyText = (await page.locator("body").innerText()).trim();
+  expect(bodyText.length).toBeGreaterThan(0);
+  // The header shell (nav, search, skip link) survives the failure; only
+  // the routed content area shows the recoverable error.
+  await expect(
+    page.getByRole("navigation", { name: "Operate" }),
+  ).toBeVisible();
+  expect(pageErrors).toEqual([]);
 });
 
 for (const viewport of viewports) {

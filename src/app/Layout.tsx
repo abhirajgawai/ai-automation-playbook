@@ -1,7 +1,9 @@
-import { useRef, useState } from "react";
+import { Suspense, useRef, useState } from "react";
 import { Outlet } from "react-router-dom";
 import { AppHeader } from "../components/AppHeader";
 import { MobileNav } from "../components/MobileNav";
+import { RouteErrorBoundary } from "../components/RouteErrorBoundary";
+import { RouteFallback } from "../components/RouteFallback";
 import { usePersonalState } from "./StateContext";
 
 export function Layout() {
@@ -26,7 +28,11 @@ export function Layout() {
             {storageError} Export or copy your work before continuing.
           </div>
         )}
-        <Outlet />
+        <RouteErrorBoundary>
+          <Suspense fallback={<RouteFallback />}>
+            <Outlet />
+          </Suspense>
+        </RouteErrorBoundary>
       </div>
     </div>
   );
