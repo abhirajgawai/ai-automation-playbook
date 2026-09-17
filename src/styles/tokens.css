@@ -11,7 +11,9 @@
   --color-action: #2367ff;
   --color-action-strong: #1752dc;
   --color-action-contrast: #ffffff;
+  --color-signal-lime: #a3e635;
   --color-verified: #4c7a12;
+  --color-verified-highlight: var(--color-signal-lime);
   --color-verified-surface: #f2fbdc;
   --color-warning: #b93826;
   --color-warning-surface: #fff0ec;
@@ -87,7 +89,9 @@
   --color-action: #8babff;
   --color-action-strong: #b4c8ff;
   --color-action-contrast: #101828;
+  --color-signal-lime: #bef264;
   --color-verified: #b7e86c;
+  --color-verified-highlight: var(--color-signal-lime);
   --color-verified-surface: #243414;
   --color-warning: #ffae9f;
   --color-warning-surface: #48251f;

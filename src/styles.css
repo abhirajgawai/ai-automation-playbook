@@ -127,28 +127,6 @@
   margin: 0 auto;
   padding: 54px 0 100px;
 }
-.page-head {
-  display: flex;
-  align-items: start;
-  justify-content: space-between;
-  gap: 30px;
-  margin-bottom: 38px;
-  border-bottom: 1px solid var(--line);
-  padding-bottom: 25px;
-}
-.page-head h1 {
-  font-family: "Newsreader Variable", serif;
-  font-size: clamp(2.2rem, 5vw, 4rem);
-  font-weight: 500;
-  letter-spacing: -0.035em;
-  line-height: 1.02;
-  margin: 0;
-}
-.page-head p {
-  max-width: 670px;
-  color: var(--muted);
-  font-size: 1.04rem;
-}
 .page h2 {
   font-size: 1.25rem;
   margin: 42px 0 14px;
@@ -767,9 +745,6 @@ thead th {
     width: calc(100% - 32px);
     padding-top: 32px;
   }
-  .page-head {
-    display: block;
-  }
   .decision-preview,
   .split,
   .guide-layout {
@@ -800,9 +775,6 @@ thead th {
   .brand small,
   .local-indicator {
     display: none;
-  }
-  .page-head h1 {
-    font-size: 2.3rem;
   }
   .hero-search {
     padding: 20px;

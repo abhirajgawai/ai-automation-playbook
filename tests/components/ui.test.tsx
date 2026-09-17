@@ -80,6 +80,18 @@ describe("UI primitives", () => {
     expect(screen.getByRole("heading", { name: "Field manual" })).toBeTruthy();
   });
 
+  it("keeps the page intro out of the legacy compatibility class", () => {
+    const { container } = render(
+      <Page title="Field manual" intro="A short guide">
+        <p>Content</p>
+      </Page>,
+    );
+
+    const intro = container.querySelector("header");
+    expect(intro?.className).toContain("page-intro");
+    expect(intro?.className).not.toContain("page-head");
+  });
+
   it("associates fields with their controls and exposes badges", () => {
     render(
       <Field label="Project name">

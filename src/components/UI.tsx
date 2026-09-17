@@ -13,12 +13,7 @@ export const Page = ({
   children: ReactNode;
 }) => (
   <main id="main" className="page">
-    <PageIntro
-      className="page-head"
-      title={title}
-      intro={intro}
-      actions={actions}
-    />
+    <PageIntro title={title} intro={intro} actions={actions} />
     {children}
   </main>
 );
