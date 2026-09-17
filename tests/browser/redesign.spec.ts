@@ -147,8 +147,11 @@ test("review evidence stays isolated between two projects", async ({
     "Alpha revisit",
   );
   const betaId = await page.evaluate(
-    () =>
-      JSON.parse(localStorage.getItem("ai-playbook-state")!).projects.at(-1).id,
+    (alpha) =>
+      JSON.parse(localStorage.getItem("ai-playbook-state")!).projects.find(
+        (project: { id: string }) => project.id !== alpha,
+      ).id,
+    alphaId,
   );
   await page.goto(`/troubleshoot?project=${alphaId}`);
   await page.locator(".flow-list button").first().click();
