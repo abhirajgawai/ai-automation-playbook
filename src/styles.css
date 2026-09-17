@@ -1,75 +1,8 @@
-:root {
-  font-family: "Inter Variable", sans-serif;
-  color: #17243b;
-  background: #f6f8fc;
-  font-synthesis: none;
-  --bg: #f6f8fc;
-  --surface: #fff;
-  --ink: #17243b;
-  --muted: #5d6b82;
-  --line: #d9e0eb;
-  --blue: #1559b7;
-  --blue-soft: #e8f1ff;
-  --navy: #0c1b33;
-  --warn: #9b4b11;
-  --warn-bg: #fff4dd;
-  --ok: #17623c;
-  --shadow: 0 16px 40px rgba(28, 52, 84, 0.08);
-}
-:root[data-theme="dark"] {
-  --bg: #091426;
-  --surface: #10213a;
-  --ink: #edf4ff;
-  --muted: #a7b5c9;
-  --line: #2a3e59;
-  --blue: #76adff;
-  --blue-soft: #172f50;
-  --navy: #edf4ff;
-  --warn: #ffc16d;
-  --warn-bg: #3d2d19;
-  --ok: #77d7a5;
-  --shadow: 0 16px 40px rgba(0, 0, 0, 0.22);
-  color-scheme: dark;
-}
-* {
-  box-sizing: border-box;
-}
-html {
-  background: var(--bg);
-}
-body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--ink);
-  line-height: 1.55;
-}
-a {
-  color: var(--blue);
-  text-decoration-thickness: 1px;
-  text-underline-offset: 3px;
-}
-button,
-input,
-select,
-textarea {
-  font: inherit;
-  color: inherit;
-}
-button,
-.button {
-  border: 0;
-  border-radius: 6px;
-  padding: 0.68rem 1rem;
-  background: var(--blue);
-  color: white;
-  font-weight: 650;
-  text-decoration: none;
-  cursor: pointer;
-}
-button:disabled {
-  opacity: 0.45;
-  cursor: not-allowed;
-}
+@import "./styles/tokens.css";
+@import "./styles/base.css";
+@import "./styles/components.css";
+
+/* Compatibility selectors for pages that have not migrated to primitives. */
 .quiet {
   background: var(--blue-soft);
   color: var(--blue);
@@ -88,17 +21,6 @@ button:disabled {
 }
 .skip:focus {
   top: 1rem;
-}
-:focus-visible {
-  outline: 3px solid #ed9d28;
-  outline-offset: 3px;
-}
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
 }
 .shell {
   display: grid;

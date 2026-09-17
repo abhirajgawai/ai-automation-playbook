@@ -1,5 +1,3 @@
-import "@fontsource-variable/inter";
-import "@fontsource-variable/newsreader";
 import "./styles.css";
 import React from "react";
 import ReactDOM from "react-dom/client";

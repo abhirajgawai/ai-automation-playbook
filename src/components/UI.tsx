@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
+import { EmptyState, PageIntro, StatusPill } from "./Primitives";
 export const Page = ({
   title,
   intro,
@@ -12,13 +13,12 @@ export const Page = ({
   children: ReactNode;
 }) => (
   <main id="main" className="page">
-    <header className="page-head">
-      <div>
-        <h1>{title}</h1>
-        {intro && <p>{intro}</p>}
-      </div>
-      {actions}
-    </header>
+    <PageIntro
+      className="page-head"
+      title={title}
+      intro={intro}
+      actions={actions}
+    />
     {children}
   </main>
 );
@@ -33,15 +33,20 @@ export const Empty = ({
   link?: string;
   to?: string;
 }) => (
-  <div className="empty">
-    <h2>{title}</h2>
-    <p>{body}</p>
-    {link && to && (
-      <Link className="button" to={to}>
-        {link}
-      </Link>
-    )}
-  </div>
+  <EmptyState
+    className="empty"
+    title={title}
+    action={
+      link &&
+      to && (
+        <Link className="button" to={to}>
+          {link}
+        </Link>
+      )
+    }
+  >
+    {body}
+  </EmptyState>
 );
 export const Badge = ({
   children,
@@ -49,7 +54,7 @@ export const Badge = ({
 }: {
   children: ReactNode;
   tone?: string;
-}) => <span className={`badge ${tone}`}>{children}</span>;
+}) => <StatusPill className={`badge ${tone}`}>{children}</StatusPill>;
 export const Field = ({
   label,
   hint,
