@@ -105,6 +105,40 @@ test("search command opens with a keyboard shortcut and navigates to a result", 
   await expect(dialog).toBeHidden();
 });
 
+test("decision diagram canvas nodes are keyboard selectable and update the inspector", async ({
+  page,
+}) => {
+  await page.goto("/");
+  const canvasNode = page.locator(".react-flow__node", {
+    hasText: "Bound action + gather evidence",
+  });
+  await canvasNode.focus();
+  await page.keyboard.press("Enter");
+  await expect(page.locator(".graph-detail strong")).toHaveText(
+    "Bound action + gather evidence",
+  );
+});
+
+test("decision diagram exposes a legend, fit control and a complete linear text equivalent", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(
+    page.getByRole("button", { name: "Fit diagram" }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("list", { name: "Diagram legend" }),
+  ).toBeVisible();
+  const region = page.getByRole("region", {
+    name: /linear text equivalent/i,
+  });
+  await expect(region).toBeVisible();
+  await region.locator("summary").click();
+  const text = (await region.innerText()).toLowerCase();
+  expect(text).toContain("map the consequence");
+  expect(text).toContain("gather evidence");
+});
+
 test("comparison presents readable cards on a narrow viewport", async ({
   page,
 }) => {

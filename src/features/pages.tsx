@@ -86,29 +86,6 @@ export function Home() {
           >
             <DecisionGraph />
           </Suspense>
-          <details className="linear">
-            <summary>Read this path without the diagram</summary>
-            <ol>
-              <li>Define the business outcome and current baseline.</li>
-              <li>Check whether stable rules are sufficient.</li>
-              <li>
-                If yes, use conventional automation and validate the business
-                outcome.
-              </li>
-              <li>
-                If no or partly, map the consequence and reversibility of
-                errors.
-              </li>
-              <li>
-                If impact is high or unknown, bound actions, require appropriate
-                approval and gather evidence.
-              </li>
-              <li>
-                For lower reversible impact, run a bounded experiment with
-                verification and stop conditions.
-              </li>
-            </ol>
-          </details>
         </div>
       </section>
       <section>

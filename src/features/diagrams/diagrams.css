@@ -1,0 +1,305 @@
+/*
+ * Playbook diagram system. Replaces @xyflow/react's default node/edge/
+ * control styling entirely (this file is imported instead of
+ * `@xyflow/react/dist/style.css`); only the minimal `dist/base.css`
+ * structural layout rules are imported alongside it. Every color is a
+ * semantic token from `styles/tokens.css` so light and dark themes stay
+ * correct automatically.
+ */
+
+.diagram-frame {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.diagram-canvas {
+  position: relative;
+  height: 320px;
+  border: var(--border-subtle);
+  border-radius: var(--radius-canvas);
+  background: var(--color-canvas);
+  overflow: hidden;
+}
+
+.diagram-frame[data-variant="dark"] .diagram-canvas {
+  background: var(--color-ink);
+}
+
+.diagram-canvas .react-flow__pane {
+  cursor: default;
+}
+
+.diagram-canvas .react-flow__attribution {
+  display: none;
+}
+
+/* Node shell shared by every kind; kind-specific rules below vary shape and
+   accent color only, keeping typography and spacing consistent. */
+.diagram-node {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  min-width: 140px;
+  max-width: 190px;
+  padding: var(--space-2) var(--space-3);
+  min-height: 44px;
+  justify-content: center;
+  background: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-control);
+  font-size: var(--type-sm);
+  line-height: var(--leading-ui);
+  color: var(--color-ink);
+  transition: border-color var(--motion-base) var(--easing-standard);
+}
+
+.react-flow__node.is-dimmed .diagram-node {
+  opacity: 0.5;
+}
+
+.react-flow__node.selectable:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+.diagram-node-kind {
+  font-size: var(--type-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-ink-subtle);
+}
+
+.diagram-node-label {
+  font-size: var(--type-base);
+}
+
+.diagram-node-status {
+  align-self: flex-start;
+  font-size: var(--type-xs);
+  font-weight: 600;
+  padding: 0.1rem 0.45rem;
+  border-radius: 999px;
+  background: var(--color-surface-selected);
+  color: var(--color-action-strong);
+}
+
+.diagram-node-owner {
+  font-size: var(--type-xs);
+  color: var(--color-ink-subtle);
+}
+
+/* Decision: rectangular with a bold action-colored top rule. */
+.diagram-node-decision {
+  border-top: 4px solid var(--color-action);
+  border-radius: var(--radius-control);
+}
+
+/* Principle: rectangle with a strong left rule (a durable rule of thumb). */
+.diagram-node-principle {
+  border-left: 4px solid var(--color-ink);
+  border-radius: 2px;
+}
+
+/* System: dashed border denotes a component/service boundary. */
+.diagram-node-system {
+  border-style: dashed;
+  border-color: var(--color-evidence);
+}
+
+/* Evidence: pill shape denotes an observation, not a rule. */
+.diagram-node-evidence {
+  border-radius: 999px;
+  border-color: var(--color-evidence);
+  padding-inline: var(--space-4);
+}
+
+/* Risk: warning-colored border with a corner flag. */
+.diagram-node-risk {
+  border-color: var(--color-warning);
+  position: relative;
+}
+
+.diagram-node-risk::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 10px;
+  height: 10px;
+  background: var(--color-warning);
+  clip-path: polygon(100% 0, 0 0, 100% 100%);
+}
+
+/* Outcome: rounded, signal-lime filled to mark a verified terminal result. */
+.diagram-node-outcome {
+  border-radius: var(--radius-surface);
+  border-color: var(--color-verified);
+  background: var(--color-verified-surface);
+}
+
+.react-flow__node.selected .diagram-node,
+.diagram-node.is-selected {
+  border-color: var(--color-action);
+  box-shadow: 0 0 0 3px var(--color-surface-selected);
+}
+
+.diagram-canvas .react-flow__handle {
+  width: 8px;
+  height: 8px;
+  background: var(--color-ink-subtle);
+  border: 1px solid var(--color-surface);
+}
+
+.diagram-edge {
+  stroke: var(--color-border);
+  stroke-width: 1.5;
+}
+
+.diagram-edge.is-active {
+  stroke: var(--color-action);
+  stroke-width: 2.5;
+}
+
+.diagram-edge-label {
+  position: absolute;
+  font-size: var(--type-xs);
+  background: var(--color-surface);
+  border: var(--border-subtle);
+  border-radius: var(--radius-control);
+  padding: 0.1rem 0.4rem;
+  color: var(--color-ink-subtle);
+  pointer-events: none;
+}
+
+.diagram-edge-label.is-active {
+  color: var(--color-action-strong);
+  border-color: var(--color-action);
+}
+
+.diagram-canvas-controls {
+  position: absolute;
+  bottom: var(--space-2);
+  right: var(--space-2);
+  z-index: 5;
+}
+
+.diagram-canvas-controls button {
+  min-height: 44px;
+  padding: 0 var(--space-3);
+  border-radius: var(--radius-control);
+  border: var(--border-subtle);
+  background: var(--color-surface);
+  color: var(--color-ink);
+  font-size: var(--type-sm);
+}
+
+.diagram-legend {
+  position: absolute;
+  top: var(--space-2);
+  left: var(--space-2);
+  z-index: 5;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.diagram-legend-item {
+  font-size: var(--type-xs);
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-control);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-ink-subtle);
+}
+
+/* Selected-node inspector, shared with the pre-redesign `.graph-detail`
+   contract exercised by existing acceptance tests. */
+.graph-detail {
+  padding: var(--space-4);
+  background: var(--color-surface-selected);
+  border-radius: var(--radius-surface);
+  font-size: var(--type-base);
+  color: var(--color-ink);
+}
+
+.graph-detail p {
+  margin: var(--space-1) 0 var(--space-3);
+  color: var(--color-ink);
+}
+
+.graph-detail .diagram-node-kind {
+  color: var(--color-ink);
+}
+
+.graph-detail .diagram-node-status-text {
+  display: inline-block;
+  margin-bottom: var(--space-3);
+  font-size: var(--type-sm);
+  color: var(--color-ink);
+}
+
+.diagram-step-select {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.diagram-step-select span {
+  color: var(--color-ink);
+  font-size: var(--type-sm);
+}
+
+.graph-detail .quiet {
+  min-height: 44px;
+  padding: 0 var(--space-3);
+  border-radius: var(--radius-control);
+  border: 1px solid transparent;
+  background: var(--color-surface);
+  color: var(--color-action-strong);
+  font-size: var(--type-sm);
+}
+
+.graph-detail .quiet.is-selected {
+  background: var(--color-action);
+  color: var(--color-action-contrast);
+}
+
+/* Linear text equivalent. */
+.diagram-linear .linear {
+  border-top: var(--border-subtle);
+  padding-top: var(--space-3);
+}
+
+.diagram-linear summary {
+  cursor: pointer;
+  font-weight: 650;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+
+.diagram-linear ol {
+  display: grid;
+  gap: var(--space-2);
+  padding-left: var(--space-6);
+}
+
+@media (max-width: 640px) {
+  .diagram-frame[data-mobile-mode="steps"] .diagram-canvas {
+    display: none;
+  }
+
+  .diagram-frame[data-mobile-mode="canvas"] .diagram-canvas {
+    height: 260px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .diagram-node {
+    transition: none;
+  }
+}

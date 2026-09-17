@@ -254,7 +254,7 @@
 
 .desktop-nav-groups nav a:hover,
 .desktop-nav-groups nav a.active {
-  color: var(--color-action);
+  color: var(--color-action-strong);
   background: var(--color-surface-selected);
 }
 
