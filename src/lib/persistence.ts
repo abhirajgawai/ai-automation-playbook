@@ -24,8 +24,12 @@ const statuses: ReviewStatus[] = [
 ];
 const record = (v: unknown): v is Record<string, unknown> =>
   !!v && typeof v === "object" && !Array.isArray(v);
+const reservedKeys = new Set(["__proto__", "constructor", "prototype"]);
 const id = (v: unknown) =>
-  typeof v === "string" && v.length > 0 && v.length <= 256;
+  typeof v === "string" &&
+  v.length > 0 &&
+  v.length <= 256 &&
+  !reservedKeys.has(v);
 function stringMap(v: unknown, label: string): Record<string, string> {
   if (!record(v)) throw new Error(`${label} must be an object.`);
   for (const [k, x] of Object.entries(v))
@@ -68,7 +72,7 @@ function project(v: unknown, i: number): Project {
   const notes = stringMap(v.notes, `${label}.notes`);
   if (!record(v.reviews))
     throw new Error(`${label}.reviews must be an object.`);
-  const reviews: Record<string, ReviewRecord> = {};
+  const reviews: Record<string, ReviewRecord> = Object.create(null);
   for (const [key, value] of Object.entries(v.reviews)) {
     if (!id(key)) throw new Error(`${label}.reviews has an invalid ID.`);
     reviews[key] = review(value, `${label}.reviews.${key}`);

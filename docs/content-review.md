@@ -66,3 +66,16 @@ The research and entries are dated and generally careful, but the UI data does n
 - Ran `node scripts/validate-content.mjs`; it passed structural validation. That result does not resolve the semantic findings above.
 
 No UI, deployment, or runtime implementation was assessed in this review.
+
+## Remediation record — 2026-09-17
+
+The original findings above are retained as an audit trail. The release candidate addresses them as follows:
+
+- Comparison data now has distinct language, deployment, maturity and strengths fields, plus conventional-automation and thin-custom baselines. The catalogue contains 20 options.
+- Troubleshooting causes are explicitly ruled in, ruled out or left unknown; the remaining diagnosis and next evidence change accordingly and persist per project.
+- Coverage rows remain labelled `implemented`, not semantically verified. This document and the browser/content verification provide separate review evidence.
+- Guides include concrete artifacts such as state contracts, exact-action approvals, ambiguous-timeout traces, evaluation reports, retrieval fixtures, framework gates, release records, cost scenarios and a confused-deputy attack path.
+- Source records now expose their evidence scope and review date in the UI. A 90-day re-verification policy is documented for time-sensitive technology evidence.
+- Evaluation, security and release guidance gained the concrete cases requested above.
+
+Residual limitation: source references are still primarily guide- and technology-entry-level rather than attached to every sentence. The UI calls this evidence scope out and does not present the catalogue as a live endorsement or benchmark.

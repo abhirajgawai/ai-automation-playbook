@@ -514,7 +514,12 @@ export function GuidePage() {
           {g.alternatives.length > 0 && (
             <section>
               <h2>Alternatives</h2>
-              <div className="table-wrap">
+              <div
+                className="table-wrap"
+                tabIndex={0}
+                role="region"
+                aria-label="Alternatives comparison table"
+              >
                 <table>
                   <thead>
                     <tr>
@@ -1100,7 +1105,12 @@ export function Compare() {
       </Field>
       {opts.length ? (
         <>
-          <div className="table-wrap">
+          <div
+            className="table-wrap"
+            tabIndex={0}
+            role="region"
+            aria-label="Comparison scorecard table"
+          >
             <table>
               <thead>
                 <tr>
@@ -1205,11 +1215,13 @@ export function Compare() {
                           <option value="unverified">
                             {c.mandatory ? "Unknown" : "Unverified"}
                           </option>
-                          {[0, 1, 2, 3, 4, 5].map((n) => (
-                            <option value={n} key={n}>
-                              {c.mandatory ? (n === 0 ? "Fail" : "Pass") : n}
-                            </option>
-                          ))}
+                          {(c.mandatory ? [0, 1] : [0, 1, 2, 3, 4, 5]).map(
+                            (n) => (
+                              <option value={n} key={n}>
+                                {c.mandatory ? (n === 0 ? "Fail" : "Pass") : n}
+                              </option>
+                            ),
+                          )}
                         </select>
                       </td>
                     ))}
@@ -1283,7 +1295,8 @@ export function CostCalculator() {
   const [i, setI] = useState({
     inputTokens: 1000,
     outputTokens: 500,
-    calls: 10000,
+    attempts: 1000,
+    callsPerAttempt: 2,
     inputPerMillion: 1,
     outputPerMillion: 4,
     otherMonthly: 0,
@@ -1302,9 +1315,10 @@ export function CostCalculator() {
     <section className="calculator">
       <h2>Explicit-input cost model</h2>
       <p>
-        Tokens are per call and calls are per month. Cost per successful outcome
-        includes your estimated success rate and human review time. It excludes
-        retries, caching and taxes unless included in other monthly cost.
+        Tokens are per model call. Attempts are business tasks per month; calls
+        per attempt includes initial calls and expected retries. Review minutes
+        are per attempted task. Unit prices are your currency per million
+        tokens. The defaults are hypothetical inputs, not live provider prices.
       </p>
       <div className="calc-grid">
         {Object.entries(i).map(([k, v]) => (
@@ -1337,6 +1351,10 @@ export function CostCalculator() {
               ? "n/a"
               : `$${result.costPerSuccess.toFixed(2)}`}
           </strong>
+          <small>
+            {result.totalCalls.toLocaleString()} model calls ·{" "}
+            {result.successfulOutcomes.toFixed(1)} estimated verified outcomes
+          </small>
         </output>
       )}
     </section>

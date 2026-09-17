@@ -50,6 +50,14 @@ describe("persistence", () => {
         JSON.stringify({ ...emptyState, projects: [project(), project()] }),
       ),
     ).toThrow("unique");
+    expect(() =>
+      parseImport(
+        JSON.stringify({
+          ...emptyState,
+          projects: [project({ reviews: { constructor: {} } })],
+        }),
+      ),
+    ).toThrow("invalid ID");
   });
   it("returns corrupt raw storage without overwriting it", () => {
     const storage = {

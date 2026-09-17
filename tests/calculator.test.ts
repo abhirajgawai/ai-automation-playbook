@@ -16,6 +16,25 @@ describe("calculator", () => {
     expect(x.monthly).toBe(76);
     expect(x.costPerSuccess).toBe(76);
   });
+  it("separates business attempts from model calls and review effort", () => {
+    const x = calculateMonthlyCost({
+      inputTokens: 1_000_000,
+      outputTokens: 0,
+      attempts: 10,
+      callsPerAttempt: 3,
+      inputPerMillion: 1,
+      outputPerMillion: 0,
+      otherMonthly: 0,
+      successRate: 50,
+      humanReviewMinutes: 6,
+      humanHourlyRate: 60,
+    });
+    expect(x.totalCalls).toBe(30);
+    expect(x.human).toBe(60);
+    expect(x.monthly).toBe(90);
+    expect(x.successfulOutcomes).toBe(5);
+    expect(x.costPerSuccess).toBe(18);
+  });
   it("rejects negative, infinite and invalid success inputs", () => {
     expect(() =>
       calculateMonthlyCost({

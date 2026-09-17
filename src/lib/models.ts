@@ -41,7 +41,9 @@ export interface DecisionResult {
 export interface CostInput {
   inputTokens: number;
   outputTokens: number;
-  calls: number;
+  calls?: number;
+  attempts?: number;
+  callsPerAttempt?: number;
   inputPerMillion: number;
   outputPerMillion: number;
   otherMonthly: number;

@@ -14,16 +14,23 @@ export function calculateMonthlyCost(
     (i.successRate <= 0 || i.successRate > 100)
   )
     throw new Error("Success rate must be greater than 0 and at most 100.");
+  const attempts = i.attempts ?? i.calls ?? 0;
+  const totalCalls =
+    i.attempts === undefined
+      ? (i.calls ?? 0)
+      : attempts * (i.callsPerAttempt ?? 1);
   const usage =
-    ((i.inputTokens * i.calls) / 1e6) * i.inputPerMillion +
-    ((i.outputTokens * i.calls) / 1e6) * i.outputPerMillion;
+    ((i.inputTokens * totalCalls) / 1e6) * i.inputPerMillion +
+    ((i.outputTokens * totalCalls) / 1e6) * i.outputPerMillion;
   const human =
-    ((i.humanReviewMinutes ?? 0) / 60) * (i.humanHourlyRate ?? 0) * i.calls;
+    ((i.humanReviewMinutes ?? 0) / 60) * (i.humanHourlyRate ?? 0) * attempts;
   const monthly = usage + i.otherMonthly + human;
-  const successes = i.calls * ((i.successRate ?? 100) / 100);
+  const successes = attempts * ((i.successRate ?? 100) / 100);
   return {
     usage,
     human,
+    totalCalls,
+    successfulOutcomes: successes,
     monthly,
     costPerSuccess: successes ? monthly / successes : null,
   };
