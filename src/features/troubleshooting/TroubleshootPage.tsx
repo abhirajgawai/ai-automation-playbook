@@ -2,6 +2,7 @@ import { lazy, Suspense, useEffect, useMemo, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { guides, troubleshootingFlows } from "../../content";
 import { Empty, Field, Page } from "../../components/UI";
+import { ProjectSelect } from "../../components/ProjectSelect";
 import { usePersonalState } from "../../app/StateContext";
 import { troubleshootingDiagram } from "../diagrams/definitions/troubleshootingDefinition";
 import { DiagnosticInspector } from "./DiagnosticInspector";
@@ -10,49 +11,6 @@ import "./troubleshooting.css";
 const DiagramFrame = lazy(() =>
   import("../diagrams/DiagramFrame").then((m) => ({ default: m.DiagramFrame })),
 );
-
-/**
- * `ProjectSelect` mirrors the identical "Project"/"New project" contract
- * the legacy `Troubleshoot()` (`src/features/pages.tsx`, now unused/dead
- * pending Task 12's cleanup) and `ReviewPage.tsx` already provide. Kept as
- * its own small copy rather than shared/exported, matching the precedent
- * Task 9 established for keeping each feature's file-touch surface
- * contained to its own directory.
- */
-function ProjectSelect({
-  projectId,
-  onChange,
-}: {
-  projectId: string;
-  onChange: (id: string) => void;
-}) {
-  const { state, newProject } = usePersonalState();
-  return (
-    <div className="project-select">
-      <select
-        aria-label="Project"
-        value={projectId}
-        onChange={(e) => onChange(e.target.value)}
-      >
-        <option value="">Select a project</option>
-        {state.projects.map((p) => (
-          <option key={p.id} value={p.id}>
-            {p.name}
-          </option>
-        ))}
-      </select>
-      <button
-        className="quiet"
-        onClick={() => {
-          const p = newProject("New troubleshooting session");
-          onChange(p.id);
-        }}
-      >
-        New project
-      </button>
-    </div>
-  );
-}
 
 /**
  * Evidence-driven troubleshooting (Task 10). Replaces the legacy
@@ -126,6 +84,7 @@ export function TroubleshootPage() {
     >
       <ProjectSelect
         projectId={projectId}
+        newProjectName="New troubleshooting session"
         onChange={(id) => {
           setProjectId(id);
           setParams((p) => {

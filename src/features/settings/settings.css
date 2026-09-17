@@ -1,0 +1,70 @@
+/* Settings (Task 12): appearance, backup/restore and a destructive reset as
+   three visually separated sections, each its own bordered card rather than
+   the legacy flat `border-bottom` stack. Token-only styling, reused across
+   light and dark themes. `.quiet`, `.danger`, `.form-error` and `.field`
+   are unchanged shared primitives from `src/styles.css`/`UI.tsx`. */
+
+.settings-section {
+  max-width: 720px;
+  background: var(--color-surface);
+  border: var(--border-subtle);
+  border-radius: var(--radius-surface);
+  padding: var(--space-6);
+  margin-bottom: var(--space-6);
+}
+
+.settings-section h2 {
+  margin: 0 0 var(--space-2);
+}
+
+.settings-lede {
+  color: var(--color-ink-subtle);
+  margin: 0 0 var(--space-6);
+}
+
+.settings-subsection {
+  padding-top: var(--space-6);
+  border-top: var(--border-subtle);
+}
+
+.settings-subsection:first-of-type {
+  padding-top: 0;
+  border-top: none;
+}
+
+.settings-subsection h3 {
+  margin: 0 0 var(--space-1);
+  font-family: var(--font-serif);
+}
+
+.settings-subsection textarea {
+  display: block;
+  width: 100%;
+  margin: var(--space-4) 0;
+}
+
+.settings-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.import-preview {
+  background: var(--color-surface-selected);
+  border-radius: var(--radius-control);
+  padding: var(--space-4);
+  margin-top: var(--space-4);
+}
+
+.import-preview h4 {
+  margin: 0 0 var(--space-2);
+}
+
+.settings-danger-zone {
+  border-color: var(--color-warning);
+}
+
+.settings-danger-zone .field {
+  max-width: 320px;
+  margin: var(--space-4) 0;
+}

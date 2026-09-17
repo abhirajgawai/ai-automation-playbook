@@ -3,6 +3,7 @@ import { useSearchParams } from "react-router-dom";
 import { checklistItems, CONTENT_VERSION } from "../../content";
 import type { Stage } from "../../content/types";
 import { Empty, Page } from "../../components/UI";
+import { ProjectSelect } from "../../components/ProjectSelect";
 import { usePersonalState } from "../../app/StateContext";
 import type { ReviewRecord } from "../../lib/models";
 import { ReviewItem, type ReviewFieldKey } from "./ReviewItem";
@@ -27,49 +28,6 @@ const EMPTY_RECORD: ReviewRecord = {
   revisit: "",
   reviewedContentVersion: CONTENT_VERSION,
 };
-
-/**
- * Review's own project switcher (Task 9). A self-contained copy of the
- * `ProjectSelect` shape `Troubleshoot()` still uses from
- * `src/features/pages.tsx` -- kept separate rather than exported/shared so
- * this file's scope stays limited to reviews/projects, per the plan's file
- * list. Both preserve the identical "Project" accessible name and
- * "New project" button the acceptance/redesign suites depend on.
- */
-function ProjectSelect({
-  projectId,
-  onChange,
-}: {
-  projectId: string;
-  onChange: (id: string) => void;
-}) {
-  const { state, newProject } = usePersonalState();
-  return (
-    <div className="project-select">
-      <select
-        aria-label="Project"
-        value={projectId}
-        onChange={(e) => onChange(e.target.value)}
-      >
-        <option value="">Select a project</option>
-        {state.projects.map((p) => (
-          <option key={p.id} value={p.id}>
-            {p.name}
-          </option>
-        ))}
-      </select>
-      <button
-        className="quiet"
-        onClick={() => {
-          const p = newProject("New design review");
-          onChange(p.id);
-        }}
-      >
-        New project
-      </button>
-    </div>
-  );
-}
 
 /**
  * Design review (Task 9). Replaces the legacy `Review()` page in
@@ -159,6 +117,7 @@ export function ReviewPage() {
       actions={
         <ProjectSelect
           projectId={projectId}
+          newProjectName="New design review"
           onChange={(id) => {
             setProjectId(id);
             setParams({ project: id });

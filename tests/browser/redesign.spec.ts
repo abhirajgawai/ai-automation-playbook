@@ -805,6 +805,148 @@ test("export reset and import preserves a project and bookmark", async ({
   expect(restoredState).toEqual(expectedState);
 });
 
+test("settings shows a conflict count for a matching project ID, and merge/replace resolve it as documented", async ({
+  page,
+}) => {
+  await page.goto("/start");
+  await page.getByLabel(/^Project name/).fill("Local project");
+  await page.getByRole("button", { name: "Save as project" }).click();
+  const local = await page.evaluate(() =>
+    JSON.parse(localStorage.getItem("ai-playbook-state")!),
+  );
+  const localProjectId = local.projects[0].id;
+
+  // Same project ID, different name/answers: a genuine conflict, not a
+  // fresh addition.
+  const conflicting = {
+    ...local,
+    projects: [
+      {
+        ...local.projects[0],
+        name: "Imported name",
+        answers: { imported: "value" },
+      },
+    ],
+  };
+
+  await page.goto("/settings");
+  await page
+    .getByPlaceholder("Paste exported JSON")
+    .fill(JSON.stringify(conflicting));
+  await page.getByRole("button", { name: "Preview import" }).click();
+  await expect(page.getByText(/1 project ID conflict/i)).toBeVisible();
+  await expect(page.getByText(/Merge keeps local values/i)).toBeVisible();
+  await expect(
+    page.getByText(/Replace discards all current local data/i),
+  ).toBeVisible();
+
+  await page.getByRole("button", { name: "Merge with current data" }).click();
+  const merged = await page.evaluate(() =>
+    JSON.parse(localStorage.getItem("ai-playbook-state")!),
+  );
+  const mergedProject = merged.projects.find(
+    (p: any) => p.id === localProjectId,
+  );
+  // Merge keeps the local name but absorbs the non-conflicting imported field.
+  expect(mergedProject.name).toBe("Local project");
+  expect(mergedProject.answers.imported).toBe("value");
+
+  await page.goto("/settings");
+  await page
+    .getByPlaceholder("Paste exported JSON")
+    .fill(JSON.stringify(conflicting));
+  await page.getByRole("button", { name: "Preview import" }).click();
+  await page.getByRole("button", { name: "Replace current data" }).click();
+  const replaced = await page.evaluate(() =>
+    JSON.parse(localStorage.getItem("ai-playbook-state")!),
+  );
+  // Replace discards the local record entirely in favor of the imported one.
+  expect(
+    replaced.projects.find((p: any) => p.id === localProjectId).name,
+  ).toBe("Imported name");
+});
+
+test("settings offers a recovery download for unreadable local data and resolving it stops blocking writes", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await page.evaluate(() =>
+    localStorage.setItem("ai-playbook-state", "{corrupt-json"),
+  );
+  await page.reload();
+  await expect(page.getByText(/Saved data could not be read/)).toBeVisible();
+
+  await page.goto("/settings");
+  const recovery = page.getByRole("button", {
+    name: "Download unreadable saved data",
+  });
+  await expect(recovery).toBeVisible();
+  const [download] = await Promise.all([
+    page.waitForEvent("download"),
+    recovery.click(),
+  ]);
+  expect(download.suggestedFilename()).toBe("corrupt-playbook-recovery.txt");
+
+  await page.getByLabel(/Type .*reset.*confirm/i).fill("reset");
+  await page.getByRole("button", { name: /Reset local data/i }).click();
+  // Resolving unblocks writes: the banner clears and the corrupt raw value
+  // in storage is overwritten by a valid, empty state.
+  await expect(page.getByText(/Saved data could not be read/)).toHaveCount(0);
+  const raw = await page.evaluate(() =>
+    localStorage.getItem("ai-playbook-state"),
+  );
+  expect(raw).not.toBe("{corrupt-json");
+  expect(JSON.parse(raw!).projects).toEqual([]);
+});
+
+test("the shell surfaces a message and export still works when browser storage writes fail", async ({
+  page,
+}) => {
+  await page.addInitScript(() => {
+    const original = Storage.prototype.setItem;
+    Storage.prototype.setItem = function (key, value) {
+      if (key === "ai-playbook-state") {
+        throw new DOMException(
+          "The quota has been exceeded.",
+          "QuotaExceededError",
+        );
+      }
+      return original.call(this, key, value);
+    };
+  });
+  await page.goto("/settings");
+  await expect(page.getByText(/Changes could not be saved/i)).toBeVisible();
+  await expect(
+    page.getByText(/Export or copy your work before continuing/i),
+  ).toBeVisible();
+  const [download] = await Promise.all([
+    page.waitForEvent("download"),
+    page.getByRole("button", { name: "Download export" }).click(),
+  ]);
+  expect(download.suggestedFilename()).toMatch(
+    /^ai-playbook-\d{4}-\d{2}-\d{2}\.json$/,
+  );
+});
+
+test("glossary filters terms live and links back to the guides that use them", async ({
+  page,
+}) => {
+  await page.goto("/glossary");
+  await expect(
+    page.getByRole("heading", { level: 1, name: "Glossary" }),
+  ).toBeVisible();
+  const filter = page.getByLabel("Filter glossary");
+  await filter.fill("zqxjnonexistentterm");
+  await expect(page.getByText("No terms match")).toBeVisible();
+  await filter.fill("idempot");
+  await expect(page.getByText("Idempotency")).toBeVisible();
+  const entry = page.locator(".glossary-entry", { hasText: "Idempotency" });
+  const relatedLink = entry.getByRole("link").first();
+  await expect(relatedLink).toBeVisible();
+  await relatedLink.click();
+  await expect(page).toHaveURL(/\/guides\/durable-execution/);
+});
+
 test("first visit can search, open, annotate, bookmark and revisit a guide", async ({
   page,
 }) => {

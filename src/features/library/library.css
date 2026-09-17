@@ -1,0 +1,94 @@
+/* Bookmarks/Glossary/Sources (Task 12). Bookmarks reuses `explore.css`'s
+   `.guide-index`/`.guide-index-item` cards directly (imported by
+   `BookmarksPage.tsx`) rather than duplicating that layout here. Token-only
+   styling, reused across light and dark themes. */
+
+.glossary-search {
+  max-width: 480px;
+  margin-bottom: var(--space-8);
+}
+
+.glossary-list {
+  display: grid;
+  gap: var(--space-6);
+  margin: 0;
+  padding: 0;
+}
+
+.glossary-entry {
+  border-bottom: var(--border-subtle);
+  padding-bottom: var(--space-5);
+}
+
+.glossary-entry dt {
+  font-family: var(--font-serif);
+  font-size: var(--type-lg);
+  font-weight: 600;
+  margin: 0 0 var(--space-1);
+}
+
+.glossary-entry dd {
+  margin: 0;
+  color: var(--color-ink-subtle);
+  max-width: 70ch;
+}
+
+.glossary-entry dd p {
+  margin: 0;
+}
+
+.glossary-related {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-4);
+  margin-top: var(--space-2) !important;
+}
+
+.source-cards {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.source-card {
+  position: relative;
+  background: var(--color-surface);
+  border: var(--border-subtle);
+  border-radius: var(--radius-surface);
+  padding: var(--space-5);
+  padding-inline-end: calc(var(--space-5) + 96px);
+}
+
+.source-card .badge {
+  position: absolute;
+  top: var(--space-5);
+  right: var(--space-5);
+}
+
+.source-card h2 {
+  font-family: var(--font-serif);
+  font-size: var(--type-lg);
+  margin: 0 0 var(--space-1);
+}
+
+.source-card-meta {
+  color: var(--color-ink-subtle);
+  font-size: var(--type-sm);
+  margin: 0;
+}
+
+.source-card-notes {
+  margin: var(--space-2) 0 0;
+  max-width: 70ch;
+}
+
+@media (max-width: 560px) {
+  .source-card {
+    padding-inline-end: var(--space-5);
+  }
+
+  .source-card .badge {
+    position: static;
+    display: inline-block;
+    margin-bottom: var(--space-2);
+  }
+}

@@ -10,13 +10,11 @@ import { ProjectsPage } from "../features/projects/ProjectsPage";
 import { ProjectPage } from "../features/projects/ProjectPage";
 import { TroubleshootPage } from "../features/troubleshooting/TroubleshootPage";
 import { ComparePage } from "../features/compare/ComparePage";
-import {
-  Bookmarks,
-  Glossary,
-  NotFound,
-  Settings,
-  Sources,
-} from "../features/pages";
+import { BookmarksPage } from "../features/library/BookmarksPage";
+import { GlossaryPage } from "../features/library/GlossaryPage";
+import { SourcesPage } from "../features/library/SourcesPage";
+import { SettingsPage } from "../features/settings/SettingsPage";
+import { NotFound } from "../components/UI";
 export function App() {
   return (
     <StateProvider>
@@ -31,10 +29,10 @@ export function App() {
           <Route path="compare" element={<ComparePage />} />
           <Route path="projects" element={<ProjectsPage />} />
           <Route path="projects/:id" element={<ProjectPage />} />
-          <Route path="bookmarks" element={<Bookmarks />} />
-          <Route path="glossary" element={<Glossary />} />
-          <Route path="sources" element={<Sources />} />
-          <Route path="settings" element={<Settings />} />
+          <Route path="bookmarks" element={<BookmarksPage />} />
+          <Route path="glossary" element={<GlossaryPage />} />
+          <Route path="sources" element={<SourcesPage />} />
+          <Route path="settings" element={<SettingsPage />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>

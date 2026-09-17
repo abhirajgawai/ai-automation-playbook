@@ -79,3 +79,15 @@ export function ExternalLink({
     </a>
   );
 }
+export function NotFound() {
+  return (
+    <Page title="That page is not in the playbook">
+      <Empty
+        title="The link may be old"
+        body="Your saved work has not been changed."
+        link="Return home"
+        to="/"
+      />
+    </Page>
+  );
+}
