@@ -45,6 +45,118 @@ test("home has Learn, Decide and Operate landmarks and an accessible decision ma
   );
 });
 
+test("home states the promise and offers primary actions into every core flow", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(
+    page.getByRole("heading", {
+      level: 1,
+      name: /build systems you can explain/i,
+    }),
+  ).toBeVisible();
+  await expect(
+    page.getByText(/navigate uncertain ai and automation decisions/i),
+  ).toBeVisible();
+  for (const name of [
+    "Map a new problem",
+    "Explore guidance",
+    "Compare approaches",
+    "Troubleshoot a symptom",
+  ]) {
+    await expect(page.getByRole("link", { name })).toBeVisible();
+  }
+});
+
+test("home lays out a varied Discover, Design, Verify, Operate stage path", async ({
+  page,
+}) => {
+  await page.goto("/");
+  const stageHeadings = page.locator(".home-stage-path h3");
+  await expect(stageHeadings).toHaveText(["Discover", "Design", "Verify", "Operate"]);
+  await expect(
+    page.getByRole("link", { name: "Browse guidance by concern" }),
+  ).toHaveAttribute("href", "/explore");
+  await expect(
+    page.getByRole("link", { name: "Start a design decision" }),
+  ).toHaveAttribute("href", "/start");
+  await expect(
+    page.getByRole("link", { name: "Open a design review" }),
+  ).toHaveAttribute("href", "/review");
+  await expect(
+    page.getByRole("link", { name: "Diagnose a symptom" }),
+  ).toHaveAttribute("href", "/troubleshoot");
+  // The four stages should not read as identical dashboard cards: their
+  // layouts differ (a two-column feature, an inline pair, a narrow column
+  // and a wrapping row).
+  const gridColumns = await page.evaluate(() =>
+    [...document.querySelectorAll(".home-stage-path > li")].map(
+      (el) => getComputedStyle(el).gridTemplateColumns,
+    ),
+  );
+  expect(new Set(gridColumns).size).toBeGreaterThan(1);
+});
+
+test("home explains that personal data stays local", async ({ page }) => {
+  await page.goto("/");
+  await expect(page.locator(".home-local-callout")).toContainText(
+    /stays in this browser/i,
+  );
+  await expect(page.locator(".home-local-callout")).toContainText(
+    /stored only in this browser/i,
+  );
+});
+
+test("home hides recent work and evidence sections when there is no local data", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(page.getByRole("heading", { name: "Continue where you left off" })).toHaveCount(0);
+  await expect(page.getByRole("heading", { name: "Evidence still needed" })).toHaveCount(0);
+});
+
+test("home surfaces a recent project, a saved guide and unresolved evidence once local data exists", async ({
+  page,
+}) => {
+  await page.goto("/start");
+  await page.getByLabel(/^Project name/).fill("Homepage continuation project");
+  await page.getByRole("button", { name: "Save as project" }).click();
+  await page.goto("/guides/durable-execution");
+  await page.getByRole("button", { name: "Bookmark guide" }).click();
+  const projectId = await page.evaluate(
+    () =>
+      JSON.parse(localStorage.getItem("ai-playbook-state")!).projects.at(0)
+        .id,
+  );
+  await page.goto(`/review?project=${projectId}`);
+  const first = page.locator(".review-item").first();
+  await first.locator("summary").click();
+  await first.getByLabel("Status").selectOption("unresolved");
+
+  await page.goto("/");
+  const continueSection = page.locator(".home-continue");
+  await expect(continueSection.getByRole("heading")).toHaveText(
+    "Continue where you left off",
+  );
+  await expect(
+    continueSection.getByRole("link", {
+      name: /Homepage continuation project/,
+    }),
+  ).toBeVisible();
+  await expect(
+    continueSection.locator('a[href="/guides/durable-execution"]'),
+  ).toBeVisible();
+  const evidenceSection = page.locator(".home-evidence");
+  await expect(evidenceSection.getByRole("heading")).toHaveText(
+    "Evidence still needed",
+  );
+  await expect(
+    evidenceSection.getByRole("link", {
+      name: /Homepage continuation project/,
+    }),
+  ).toHaveAttribute("href", `/review?project=${projectId}`);
+});
+
 test("desktop navigation groups routes into Learn, Decide and Operate with active-route indication", async ({
   page,
 }) => {

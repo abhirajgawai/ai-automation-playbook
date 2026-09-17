@@ -1,0 +1,305 @@
+/* Homepage vertical slice: technical-canvas hero, interactive decision map
+   and an editorially varied Discover/Design/Verify/Operate stage path.
+   Uses only the shared design tokens so both themes stay in sync. */
+
+.home {
+  display: grid;
+  /* minmax(0, 1fr), not the "auto" implicit column default, so a wide
+     grid-item child (e.g. the hero) is clamped to the container's own
+     width instead of growing the whole page horizontally. */
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-16);
+  padding: var(--space-10) 0 var(--space-20);
+}
+
+/* Hero */
+.home-hero {
+  display: grid;
+  min-width: 0;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+  gap: var(--space-10);
+  align-items: center;
+  padding: var(--space-8);
+  border-radius: var(--radius-canvas);
+  background: var(--color-surface);
+  border: var(--border-subtle);
+  box-shadow: var(--elevation-canvas);
+}
+
+.home-hero-copy h1 {
+  margin: 0 0 var(--space-4);
+  font-family: var(--font-serif);
+  font-size: var(--type-3xl);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: var(--leading-tight);
+}
+
+.home-promise {
+  max-width: 62ch;
+  margin: 0 0 var(--space-6);
+  color: var(--color-ink-subtle);
+  font-size: var(--type-lg);
+  line-height: var(--leading-prose);
+}
+
+.home-primary-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+}
+
+.home-secondary-action {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.68rem 1rem;
+  border: var(--border-subtle);
+  border-radius: var(--radius-control);
+  color: var(--color-ink);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.home-secondary-action:hover {
+  border-color: var(--color-action);
+  color: var(--color-action);
+}
+
+.home-search {
+  max-width: 34rem;
+}
+
+.home-search label {
+  display: block;
+  margin-bottom: var(--space-2);
+  font-weight: 650;
+}
+
+.home-search div {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.home-search input {
+  flex: 1;
+  min-width: 0;
+}
+
+.home-hero-glyph {
+  width: 100%;
+  height: auto;
+  justify-self: center;
+}
+
+.home-hero-glyph-edge {
+  stroke: var(--color-border);
+  stroke-width: 2;
+}
+
+.home-hero-glyph-node {
+  fill: var(--color-surface-selected);
+  stroke: var(--color-action);
+  stroke-width: 1.5;
+}
+
+.home-hero-glyph-node-outcome {
+  fill: var(--color-surface-selected);
+  stroke: var(--color-action-strong);
+}
+
+.home-hero-glyph-node-risk {
+  fill: var(--color-warning-surface);
+  stroke: var(--color-warning);
+}
+
+.home-hero-glyph-node-verified {
+  fill: var(--color-verified-surface);
+  stroke: var(--color-verified);
+}
+
+/* Decision map */
+.home-decision {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.home-decision-copy h2 {
+  margin: 0 0 var(--space-2);
+  font-family: var(--font-serif);
+  font-size: var(--type-2xl);
+}
+
+.home-decision-copy p {
+  max-width: 68ch;
+  color: var(--color-ink-subtle);
+}
+
+/* Stage path: deliberately varied composition per stage rather than
+   identical dashboard cards. */
+.home-stages h2 {
+  margin: 0 0 var(--space-6);
+  font-family: var(--font-serif);
+  font-size: var(--type-2xl);
+}
+
+.home-stage-path {
+  display: grid;
+  gap: var(--space-6);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.home-stage {
+  border-top: var(--border-subtle);
+  padding-top: var(--space-5);
+}
+
+.home-stage h3 {
+  margin: 0 0 var(--space-2);
+  font-size: var(--type-xl);
+}
+
+.home-stage p {
+  max-width: 68ch;
+  color: var(--color-ink-subtle);
+  margin: 0 0 var(--space-3);
+}
+
+.home-stage a {
+  /* --color-action falls just under 4.5:1 on --color-canvas; the stronger
+     token keeps AA contrast without changing anywhere else's link color. */
+  color: var(--color-action-strong);
+  font-weight: 650;
+}
+
+.home-stage a + a {
+  margin-left: var(--space-5);
+}
+
+.home-stage-discover {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: var(--space-6);
+  align-items: start;
+}
+
+.home-stage-discover h3,
+.home-stage-discover p,
+.home-stage-discover > a {
+  grid-column: 1;
+}
+
+.home-stage-chips {
+  grid-column: 2;
+  grid-row: 1 / span 3;
+  min-width: 0;
+  display: grid;
+  gap: var(--space-2);
+  align-content: start;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.home-stage-chips li {
+  padding: var(--space-2) var(--space-3);
+  border: var(--border-subtle);
+  border-radius: var(--radius-control);
+  font-size: var(--type-sm);
+  color: var(--color-ink-subtle);
+}
+
+.home-stage-design {
+  padding-left: var(--space-8);
+}
+
+.home-stage-verify {
+  max-width: 52rem;
+}
+
+.home-stage-operate {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-2) var(--space-6);
+}
+
+.home-stage-operate h3 {
+  width: 100%;
+}
+
+/* Recent work / evidence gaps */
+.home-continue h2,
+.home-evidence h2 {
+  margin: 0 0 var(--space-4);
+  font-size: var(--type-xl);
+}
+
+.home-ruled-list {
+  display: grid;
+}
+
+.home-ruled-list a {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-3) 0;
+  border-bottom: var(--border-subtle);
+  text-decoration: none;
+  color: var(--color-ink);
+}
+
+.home-ruled-list a:hover strong {
+  color: var(--color-action);
+}
+
+.home-ruled-list span {
+  color: var(--color-ink-subtle);
+  font-size: var(--type-sm);
+  white-space: nowrap;
+}
+
+/* Local-only explanation */
+.home-local-callout {
+  display: grid;
+  gap: var(--space-3);
+  justify-items: start;
+  padding: var(--space-5) var(--space-6);
+  border: var(--border-subtle);
+  border-radius: var(--radius-surface);
+  background: var(--color-surface);
+}
+
+.home-local-callout p {
+  margin: 0;
+  max-width: 68ch;
+  color: var(--color-ink-subtle);
+}
+
+@media (max-width: 768px) {
+  .home-hero {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .home-hero-glyph {
+    max-width: 16rem;
+  }
+
+  .home-stage-discover {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .home-stage-chips {
+    grid-column: 1;
+    grid-row: auto;
+    grid-auto-flow: column;
+    grid-auto-columns: max-content;
+    overflow-x: auto;
+  }
+
+  .home-stage-design {
+    padding-left: 0;
+  }
+}

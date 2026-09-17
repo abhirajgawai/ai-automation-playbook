@@ -1,13 +1,13 @@
 import { Route, Routes } from "react-router-dom";
 import { StateProvider } from "./StateContext";
 import { Layout } from "./Layout";
+import { HomePage } from "../features/home/HomePage";
 import {
   Bookmarks,
   Compare,
   Explore,
   Glossary,
   GuidePage,
-  Home,
   NotFound,
   ProjectDetail,
   Projects,
@@ -22,7 +22,7 @@ export function App() {
     <StateProvider>
       <Routes>
         <Route element={<Layout />}>
-          <Route index element={<Home />} />
+          <Route index element={<HomePage />} />
           <Route path="start" element={<StartProblem />} />
           <Route path="explore" element={<Explore />} />
           <Route path="guides/:id" element={<GuidePage />} />
