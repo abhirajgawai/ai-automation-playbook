@@ -16,8 +16,8 @@ Plan: ../plan.md. Base: `6039925`. Started 2026-09-15 UTC. Last updated 2026-09-
 3. Frontend journeys / persistence / tests: complete.
 4. Framework primary-source research: complete.
 5. Integration / semantic review / local browser verification: complete.
-6. Docker / HTTPS deployment / restart / external verification: in progress.
-7. Final documentation and push: in progress.
+6. Docker / HTTPS deployment / restart / external verification: complete.
+7. Final review and documentation: complete.
 
 ## Interface review
 | Producer / consumer | Shared interface | Resolution |
