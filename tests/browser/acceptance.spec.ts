@@ -231,6 +231,11 @@ test("mobile navigation, guide and graph fit the viewport", async ({
         () => document.documentElement.scrollWidth <= window.innerWidth + 1,
       ),
     ).toBe(true);
+    expect(
+      await page
+        .locator("body")
+        .evaluate((el) => parseFloat(getComputedStyle(el).fontSize)),
+    ).toBeGreaterThanOrEqual(16);
   }
   await page.screenshot({
     path: "test-results/mobile-guide.png",
