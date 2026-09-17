@@ -5,6 +5,7 @@ vite.config.js
 vite.config.d.ts
 .DS_Store
 .superpowers/
+.worktrees/
 .playwright-cli/
 test-results/
 playwright-report/
