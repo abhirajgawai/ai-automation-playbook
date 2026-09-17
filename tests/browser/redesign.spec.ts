@@ -1318,14 +1318,36 @@ for (const viewport of viewports) {
   test(`deterministic screenshots at ${viewport.width}x${viewport.height}`, async ({
     page,
   }) => {
+    // 13 full-page screenshots per viewport (including a seeded project
+    // detail page) exceed the default 30s test timeout under the dev
+    // server's per-route chunk-fetch cost; see the equivalent note on the
+    // "every guide route renders..." test above.
+    test.setTimeout(60000);
+    await page.goto("/start");
+    await page
+      .getByLabel(/^Project name/)
+      .fill("Screenshot audit project");
+    await page.getByRole("button", { name: "Save as project" }).click();
+    const projectId = await page.evaluate(
+      () =>
+        JSON.parse(localStorage.getItem("ai-playbook-state")!).projects.at(-1)
+          .id,
+    );
     await page.setViewportSize(viewport);
     for (const route of [
       "/",
+      "/explore",
       "/guides/durable-execution",
       "/start",
       "/review",
       "/troubleshoot",
       "/compare",
+      "/projects",
+      `/projects/${projectId}`,
+      "/bookmarks",
+      "/glossary",
+      "/sources",
+      "/settings",
     ]) {
       await page.goto(route);
       await expect(page.locator("h1")).toBeVisible();

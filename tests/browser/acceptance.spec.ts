@@ -16,6 +16,7 @@ test("all primary routes render without runtime errors or external data requests
     "/",
     "/start",
     "/explore",
+    "/guides/durable-execution",
     "/review",
     "/troubleshoot",
     "/compare",
@@ -28,6 +29,11 @@ test("all primary routes render without runtime errors or external data requests
     await page.goto(route);
     await expect(page.locator("h1")).toBeVisible();
   }
+  await page.goto("/start");
+  await page.getByLabel(/^Project name/).fill("Route coverage project");
+  await page.getByRole("button", { name: "Save as project" }).click();
+  await expect(page).toHaveURL(/\/projects\//);
+  await expect(page.locator("h1")).toBeVisible();
   expect(errors).toEqual([]);
   expect(external).toEqual([]);
 });
@@ -258,10 +264,32 @@ test("page intros stack at the tablet shell breakpoint", async ({ page }) => {
 test("core screens have no serious or critical automated accessibility violations", async ({
   page,
 }) => {
+  // 13 full-page axe scans (one per primary route, plus a seeded project
+  // detail page) exceed the default 30s test timeout under the dev
+  // server's per-route chunk-fetch cost; see the equivalent note on the
+  // "every guide route renders..." test in redesign.spec.ts.
+  test.setTimeout(90000);
+  await page.goto("/start");
+  await page.getByLabel(/^Project name/).fill("Accessibility sweep project");
+  await page.getByRole("button", { name: "Save as project" }).click();
+  const projectId = await page.evaluate(
+    () =>
+      JSON.parse(localStorage.getItem("ai-playbook-state")!).projects.at(-1)
+        .id,
+  );
   for (const path of [
     "/",
     "/start",
+    "/explore",
     "/guides/durable-execution",
+    "/review",
+    "/troubleshoot",
+    "/compare",
+    "/projects",
+    `/projects/${projectId}`,
+    "/bookmarks",
+    "/glossary",
+    "/sources",
     "/settings",
   ]) {
     await page.goto(path);

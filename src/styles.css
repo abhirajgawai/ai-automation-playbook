@@ -440,27 +440,17 @@ thead th {
   padding-top: 15px;
   font-size: 1.2rem;
 }
-.facts > div,
-.glossary > div {
+.facts > div {
   display: grid;
   grid-template-columns: 220px 1fr;
   border-bottom: 1px solid var(--line);
   padding: 14px 0;
 }
-.facts dt,
-.glossary dt {
+.facts dt {
   font-weight: 700;
 }
-.facts dd,
-.glossary dd {
+.facts dd {
   margin: 0;
-}
-.glossary dd span {
-  display: block;
-}
-.glossary a {
-  font-size: 0.8rem;
-  margin-right: 10px;
 }
 .source-list article {
   position: relative;
@@ -562,8 +552,7 @@ thead th {
   .review-fields {
     grid-template-columns: 1fr;
   }
-  .facts > div,
-  .glossary > div {
+  .facts > div {
     grid-template-columns: 1fr;
   }
   .project-select {
