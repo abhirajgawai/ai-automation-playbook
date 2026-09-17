@@ -521,6 +521,152 @@ test("guide sources are scoped to that guide", async ({ page }) => {
   await expect(sourcesSection.getByRole("link")).not.toHaveCount(0);
 });
 
+const ALL_GUIDE_IDS = [
+  "business-discovery",
+  "architecture",
+  "workflow-patterns",
+  "framework-selection",
+  "context-engineering",
+  "retrieval",
+  "memory",
+  "tool-design",
+  "durable-execution",
+  "security",
+  "evaluations",
+  "cost-capacity",
+  "release-operations",
+  "leadership",
+  "harness-engineering",
+];
+
+const GUIDE_ONLY_DIAGRAMS: Record<string, string> = {
+  "context-engineering": "Context assembly and compaction model",
+  retrieval: "Retrieval pipeline and evidence trace",
+  "harness-engineering": "Agent harness execution loop",
+  "durable-execution": "Durable execution state model",
+};
+
+test("Learn/Explore landing page offers topic and stage filters with substantive previews", async ({
+  page,
+}) => {
+  await page.goto("/explore");
+  await expect(
+    page.getByRole("search", { name: "Filter guides" }),
+  ).toBeVisible();
+  await expect(page.getByLabel("Filter by category")).toBeVisible();
+  await expect(page.getByLabel("Filter by stage")).toBeVisible();
+
+  // A preview must show more than the bare title: the guide's own summary
+  // and decision rule ("Use it when: ...") both come from real content.
+  const firstCard = page.locator(".guide-index-item").first();
+  await expect(firstCard.locator(".guide-index-summary")).not.toBeEmpty();
+  await expect(firstCard.getByText(/Use it when:/)).toBeVisible();
+
+  await page.getByLabel("Filter by stage").selectOption("operations");
+  await expect(page.locator(".guide-index-item")).not.toHaveCount(0);
+  const stageBadges = await page
+    .locator(".guide-index-item")
+    .first()
+    .locator(".badge")
+    .allInnerTexts();
+  expect(stageBadges.join(" ")).toContain("operations");
+});
+
+const KNOWN_TOP_LEVEL_ROUTES = [
+  "/",
+  "/start",
+  "/explore",
+  "/review",
+  "/troubleshoot",
+  "/compare",
+  "/projects",
+  "/bookmarks",
+  "/glossary",
+  "/sources",
+  "/settings",
+];
+
+test("every guide route renders through the guide shell with core fields present, with no console errors or broken internal links", async ({
+  page,
+}) => {
+  expect(ALL_GUIDE_IDS.length).toBe(15);
+  const errors: string[] = [];
+  page.on("pageerror", (e) => errors.push(e.message));
+  page.on("console", (msg) => {
+    if (msg.type() === "error") errors.push(msg.text());
+  });
+  for (const id of ALL_GUIDE_IDS) {
+    await page.goto(`/guides/${id}`);
+    await expect(page.locator("h1")).not.toBeEmpty();
+    await expect(page.locator("#orientation")).toContainText(/min read/i);
+    await expect(page.locator("#decision-rule")).toBeVisible();
+    await expect(page.locator("#applicability")).toBeVisible();
+    await expect(page.locator("#implementation")).toBeVisible();
+    await expect(page.locator("#verification")).toBeVisible();
+    await expect(page.locator("#safe-actions")).toBeVisible();
+    await expect(page.locator("#sources")).toContainText("Sources");
+
+    // Every internal link this guide renders must resolve to a real route:
+    // either another known guide, a top-level route, or a same-page anchor.
+    const hrefs = await page
+      .locator("a[href^='/'], a[href^='#']")
+      .evaluateAll((els) => els.map((el) => el.getAttribute("href") || ""));
+    for (const href of hrefs) {
+      if (href.startsWith("#")) continue;
+      const [path] = href.split("#");
+      const isGuideLink =
+        path.startsWith("/guides/") &&
+        ALL_GUIDE_IDS.includes(path.replace("/guides/", ""));
+      const isTopLevel = KNOWN_TOP_LEVEL_ROUTES.includes(path);
+      expect(isGuideLink || isTopLevel, `broken internal link: ${href}`).toBe(
+        true,
+      );
+    }
+  }
+  expect(errors).toEqual([]);
+});
+
+test("the three new system diagrams render only on their relevant guides, not on every guide", async ({
+  page,
+}) => {
+  for (const [id, title] of Object.entries(GUIDE_ONLY_DIAGRAMS)) {
+    await page.goto(`/guides/${id}`);
+    await expect(page.locator("#mechanism")).toBeVisible();
+    await expect(
+      page.getByRole("group", { name: new RegExp(title, "i") }),
+    ).toBeVisible();
+  }
+  const otherGuideIds = ALL_GUIDE_IDS.filter(
+    (id) => !(id in GUIDE_ONLY_DIAGRAMS),
+  );
+  for (const id of otherGuideIds) {
+    await page.goto(`/guides/${id}`);
+    await expect(page.locator("#mechanism")).toHaveCount(0);
+  }
+});
+
+test("guide continue-reading section presents sources, related guides, glossary and bookmark status together", async ({
+  page,
+}) => {
+  await page.goto("/guides/durable-execution");
+  const section = page.locator("#sources");
+  await expect(
+    section.getByRole("heading", { name: "Continue reading" }),
+  ).toBeVisible();
+  await expect(
+    section.getByRole("heading", { name: "Related guides" }),
+  ).toBeVisible();
+  await expect(
+    section.getByRole("link", { name: /Design tools/i }),
+  ).toBeVisible();
+  await expect(
+    section.getByRole("heading", { name: "Glossary", exact: true }),
+  ).toBeVisible();
+  await expect(section.getByText(/Idempotency/)).toBeVisible();
+  await expect(section.getByText(/bookmarked/i)).toBeVisible();
+  await expect(section.getByRole("link", { name: "Bookmarks" })).toBeVisible();
+});
+
 for (const viewport of viewports) {
   test(`deterministic screenshots at ${viewport.width}x${viewport.height}`, async ({
     page,

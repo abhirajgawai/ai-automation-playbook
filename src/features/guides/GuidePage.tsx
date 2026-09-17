@@ -1,6 +1,6 @@
 import { Suspense, lazy, useEffect } from "react";
 import { Link, useLocation, useParams } from "react-router-dom";
-import { categories, guides, sources } from "../../content";
+import { categories, glossary, guides, sources } from "../../content";
 import type { Guide } from "../../content/types";
 import { Badge, Empty, ExternalLink, Field, Page } from "../../components/UI";
 import { Callout, ReadingMeta } from "../../components/Primitives";
@@ -9,6 +9,9 @@ import { GuideNavigation, type GuideNavItem } from "./GuideNavigation";
 import { GuideSection } from "./GuideSection";
 import type { DiagramDefinition } from "../diagrams/types";
 import { durableExecutionDiagram } from "../diagrams/definitions/durableExecution";
+import { contextAssemblyDiagram } from "../diagrams/definitions/contextAssembly";
+import { agentHarnessDiagram } from "../diagrams/definitions/agentHarness";
+import { retrievalPipelineDiagram } from "../diagrams/definitions/retrievalPipeline";
 import "./guide.css";
 
 const DiagramFrame = lazy(() =>
@@ -16,12 +19,17 @@ const DiagramFrame = lazy(() =>
 );
 
 /**
- * Optional guide-diagram lookup by guide ID. Task 6 seeds the
- * durable-execution exemplar; Task 7 extends this map as it applies the
- * guide system to the remaining guides.
+ * Optional guide-diagram lookup by guide ID: zero or one primary diagram per
+ * guide. Task 6 seeded the durable-execution exemplar; Task 7 adds the three
+ * remaining high-value system diagrams named in the plan (context assembly,
+ * agent harness, retrieval pipeline) — deliberately not one per guide, since
+ * most relationships are clearer as structured prose than as a diagram.
  */
 const guideDiagrams: Record<string, DiagramDefinition> = {
   "durable-execution": durableExecutionDiagram,
+  "context-engineering": contextAssemblyDiagram,
+  "harness-engineering": agentHarnessDiagram,
+  retrieval: retrievalPipelineDiagram,
 };
 
 function estimateReadingMinutes(g: Guide): number {
@@ -48,7 +56,7 @@ const NAV_ITEMS: GuideNavItem[] = [
   { id: "implementation", label: "Implementation guidance" },
   { id: "verification", label: "Verification" },
   { id: "safe-actions", label: "Safe vs. dangerous actions" },
-  { id: "sources", label: "Sources & related" },
+  { id: "sources", label: "Continue reading" },
 ];
 
 export function GuidePage() {
@@ -98,6 +106,10 @@ export function GuidePage() {
   const note = state.notes[g.id] || "";
   const readingMinutes = estimateReadingMinutes(g);
   const diagram = guideDiagrams[g.id];
+  const relatedGuides = g.relatedGuideIds
+    .map((rid) => guides.find((y) => y.id === rid))
+    .filter((x): x is Guide => Boolean(x));
+  const relatedTerms = glossary.filter((t) => t.guideIds.includes(g.id));
 
   return (
     <Page
@@ -311,7 +323,11 @@ export function GuidePage() {
             </ul>
           </GuideSection>
 
-          <GuideSection id="sources" title="Sources & related">
+          <GuideSection
+            id="sources"
+            title="Continue reading"
+            description="Where this guide's evidence came from, where to go next, the terms it introduced and whether you have already marked it for later."
+          >
             <h3>Sources</h3>
             {g.sourceIds.map((sid) => {
               const s = sources.find((x) => x.id === sid);
@@ -328,15 +344,46 @@ export function GuidePage() {
                 </p>
               ) : null;
             })}
-            <h3>Related</h3>
-            {g.relatedGuideIds.map((rid) => {
-              const x = guides.find((y) => y.id === rid);
-              return x ? (
-                <Link key={rid} to={`/guides/${rid}`}>
-                  {x.title}
-                </Link>
-              ) : null;
-            })}
+            <p className="guide-freshness">
+              <strong>Guide content version:</strong> {g.contentVersion} ·
+              last reviewed {g.reviewedAt}.
+            </p>
+
+            {relatedGuides.length > 0 && (
+              <>
+                <h3>Related guides</h3>
+                <ul className="guide-related-list">
+                  {relatedGuides.map((x) => (
+                    <li key={x.id}>
+                      <Link to={`/guides/${x.id}`}>{x.title}</Link>
+                      <p>{x.summary}</p>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
+
+            {relatedTerms.length > 0 && (
+              <>
+                <h3>Glossary</h3>
+                <dl className="guide-glossary-list">
+                  {relatedTerms.map((t) => (
+                    <div key={t.id}>
+                      <dt>{t.term}</dt>
+                      <dd>{t.definition}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </>
+            )}
+
+            <h3>Your bookmark</h3>
+            <p className="guide-bookmark-status">
+              {marked
+                ? "This guide is bookmarked. Manage it, alongside every other saved guide, from "
+                : "This guide is not bookmarked yet. Use the bookmark action above, or review every saved guide from "}
+              <Link to="/bookmarks">Bookmarks</Link>.
+            </p>
           </GuideSection>
         </article>
 

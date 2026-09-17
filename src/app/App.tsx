@@ -3,10 +3,10 @@ import { StateProvider } from "./StateContext";
 import { Layout } from "./Layout";
 import { HomePage } from "../features/home/HomePage";
 import { GuidePage } from "../features/guides/GuidePage";
+import { ExplorePage } from "../features/explore/ExplorePage";
 import {
   Bookmarks,
   Compare,
-  Explore,
   Glossary,
   NotFound,
   ProjectDetail,
@@ -24,7 +24,7 @@ export function App() {
         <Route element={<Layout />}>
           <Route index element={<HomePage />} />
           <Route path="start" element={<StartProblem />} />
-          <Route path="explore" element={<Explore />} />
+          <Route path="explore" element={<ExplorePage />} />
           <Route path="guides/:id" element={<GuidePage />} />
           <Route path="review" element={<Review />} />
           <Route path="troubleshoot" element={<Troubleshoot />} />

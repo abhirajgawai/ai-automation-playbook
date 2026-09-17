@@ -1,0 +1,90 @@
+/* Learn/Explore landing page: a filter bar (search, topic, stage) above
+   guides grouped by category, each rendered as a substantive preview card
+   rather than a bare title list. Token-only styling, reused across light
+   and dark themes. */
+
+.explore-filters {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--space-4);
+  margin-bottom: var(--space-10);
+}
+
+.explore-filters .field input,
+.explore-filters .field select {
+  width: 100%;
+}
+
+.explore-groups {
+  display: grid;
+  gap: var(--space-10);
+}
+
+.explore-group-header {
+  margin-bottom: var(--space-4);
+}
+
+.explore-group-header h2 {
+  font-family: var(--font-serif);
+  margin: 0 0 var(--space-1);
+}
+
+.explore-group-header p {
+  color: var(--color-ink-subtle);
+  max-width: 68ch;
+  margin: 0;
+}
+
+.guide-index {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-4);
+}
+
+.guide-index-item {
+  display: block;
+  background: var(--color-surface);
+  border: var(--border-subtle);
+  border-radius: var(--radius-surface);
+  padding: var(--space-5);
+  color: var(--color-ink);
+  text-decoration: none;
+}
+
+.guide-index-item:hover,
+.guide-index-item:focus-visible {
+  border-color: var(--color-action-strong);
+}
+
+.guide-index-category {
+  font-size: var(--type-sm);
+  color: var(--color-ink-subtle);
+}
+
+.guide-index-item h2 {
+  font-family: var(--font-serif);
+  font-size: var(--type-xl);
+  margin: var(--space-1) 0;
+}
+
+.guide-index-summary {
+  color: var(--color-ink-subtle);
+  margin: 0 0 var(--space-2);
+}
+
+.guide-index-rule {
+  margin: 0 0 var(--space-3);
+  font-size: var(--type-sm);
+}
+
+.guide-index-stages {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+}
+
+@media (max-width: 850px) {
+  .explore-filters {
+    grid-template-columns: 1fr;
+  }
+}

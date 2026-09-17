@@ -5,7 +5,7 @@
 /* Compatibility selectors for pages that have not migrated to primitives. */
 .quiet {
   background: var(--blue-soft);
-  color: var(--blue);
+  color: var(--color-action-strong);
 }
 .danger {
   background: #a63131;
