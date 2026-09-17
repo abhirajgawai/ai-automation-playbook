@@ -448,6 +448,113 @@ test("review evidence stays isolated between two projects", async ({
   await expect(page.getByLabel(/^Saved to/)).toHaveValue("Alpha project note");
 });
 
+test("a review item requires and preserves not-applicable rationale as project-specific evidence", async ({
+  page,
+}) => {
+  await page.goto("/review");
+  await page.getByRole("button", { name: "New project" }).click();
+  const first = page.locator(".review-item").first();
+  await first.locator("summary").click();
+  const status = first.getByLabel("Status");
+  expect(
+    await status
+      .locator('option[value="not-applicable"]')
+      .evaluate((option: HTMLOptionElement) => option.disabled),
+  ).toBe(true);
+  await first
+    .getByLabel("Why not applicable")
+    .fill("No retrieval path in this design.");
+  expect(
+    await status
+      .locator('option[value="not-applicable"]')
+      .evaluate((option: HTMLOptionElement) => option.disabled),
+  ).toBe(false);
+  await status.selectOption("not-applicable");
+  await expect(first.locator("summary")).toContainText("not applicable");
+});
+
+test("a review item flags for reassessment when guidance content has changed since it was recorded", async ({
+  page,
+}) => {
+  await page.goto("/review");
+  await page.getByRole("button", { name: "New project" }).click();
+  const projectId = await page.evaluate(
+    () => JSON.parse(localStorage.getItem("ai-playbook-state")!).projects[0].id,
+  );
+  const first = page.locator(".review-item").first();
+  await first.locator("summary").click();
+  await first.getByLabel("Evidence or URL").fill("Verified against ADR-3");
+  await first.getByLabel("Status").selectOption("satisfied");
+  await page.evaluate((id) => {
+    const state = JSON.parse(localStorage.getItem("ai-playbook-state")!);
+    const project = state.projects.find((p: { id: string }) => p.id === id);
+    const key = Object.keys(project.reviews)[0];
+    project.reviews[key].reviewedContentVersion = "2000.01.01.0";
+    localStorage.setItem("ai-playbook-state", JSON.stringify(state));
+  }, projectId);
+  await page.reload();
+  const stale = page.locator(".review-item").first();
+  await stale.locator("summary").click();
+  await expect(
+    stale.getByText(/guidance changed since this item was reviewed/i),
+  ).toBeVisible();
+  await stale.getByRole("button", { name: /mark reassessed/i }).click();
+  await expect(
+    stale.getByText(/guidance changed since this item was reviewed/i),
+  ).toHaveCount(0);
+  await expect(stale.getByLabel("Status")).toHaveValue("satisfied");
+  const updatedVersion = await page.evaluate((id) => {
+    const state = JSON.parse(localStorage.getItem("ai-playbook-state")!);
+    const project = state.projects.find((p: { id: string }) => p.id === id);
+    const key = Object.keys(project.reviews)[0];
+    return project.reviews[key].reviewedContentVersion;
+  }, projectId);
+  expect(updatedVersion).not.toBe("2000.01.01.0");
+});
+
+test("review stage navigation shows a live unresolved count per stage without persisting a derived score", async ({
+  page,
+}) => {
+  await page.goto("/review");
+  await page.getByRole("button", { name: "New project" }).click();
+  const first = page.locator(".review-item").first();
+  await first.locator("summary").click();
+  await first.getByLabel("Status").selectOption("unresolved");
+  const stageNav = page.getByRole("navigation", { name: /review stages/i });
+  await expect(stageNav.getByText(/1 unresolved/i)).toBeVisible();
+  await first.getByLabel("Status").selectOption("satisfied");
+  await expect(stageNav.getByText(/1 unresolved/i)).toHaveCount(0);
+  const projectKeys = await page.evaluate(
+    () =>
+      Object.keys(
+        JSON.parse(localStorage.getItem("ai-playbook-state")!).projects[0],
+      ),
+  );
+  expect(projectKeys.sort()).toEqual(
+    ["id", "name", "createdAt", "updatedAt", "answers", "reviews", "notes"].sort(),
+  );
+});
+
+test("projects list and detail surface decisions, evidence gaps and next actions without a fabricated readiness score", async ({
+  page,
+}) => {
+  await page.goto("/start");
+  await page.getByLabel(/^Project name/).fill("Workspace project");
+  await page.getByRole("button", { name: "Save as project" }).click();
+  await expect(page).toHaveURL(/\/projects\//);
+  await page.goto("/projects");
+  await expect(page.getByText("Workspace project")).toBeVisible();
+  await expect(page.getByText(/readiness/i)).toHaveCount(0);
+  await page.getByRole("link", { name: /Workspace project/ }).first().click();
+  await expect(
+    page.getByRole("heading", { name: "Workspace project", level: 1 }),
+  ).toBeVisible();
+  await expect(page.getByText(/readiness/i)).toHaveCount(0);
+  await expect(
+    page.getByRole("link", { name: /design review/i }),
+  ).toBeVisible();
+});
+
 test("export reset and import preserves a project and bookmark", async ({
   page,
 }) => {

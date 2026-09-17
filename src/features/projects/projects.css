@@ -1,0 +1,119 @@
+/* Reviews and project workspaces (Task 9): stage navigation with a live,
+   non-persisted unresolved count, a stale-review reassessment affordance,
+   and project list/detail summaries built only from real derived state.
+   Token-only styling, reused across light and dark themes. The `.review-item`,
+   `.review-fields`, `.project-select`, `.project-grid`, `.action-list` and
+   `.facts` classes are inherited from the pre-redesign `src/styles.css` and
+   are intentionally kept for continuity; only the additions below are new. */
+
+.review-stage-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-6);
+}
+
+.review-stage-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-1);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: var(--space-3) var(--space-4);
+  color: var(--color-ink);
+  font-weight: 600;
+  font-size: var(--type-sm);
+}
+
+.review-stage-tab[aria-current="true"] {
+  border-color: var(--color-action);
+  border-width: 2px;
+}
+
+.review-stage-count {
+  font-weight: 500;
+  font-size: var(--type-xs);
+  color: var(--color-warning);
+}
+
+.review-stale-banner {
+  background: var(--color-warning-surface);
+  color: var(--color-warning);
+  border-radius: 8px;
+  padding: var(--space-3) var(--space-4);
+  margin-bottom: var(--space-6);
+  font-size: var(--type-sm);
+  font-weight: 600;
+}
+
+.review-stale {
+  background: var(--color-warning-surface);
+  border-radius: 6px;
+  padding: var(--space-3) var(--space-4);
+  margin: var(--space-3) 0;
+}
+
+.review-stale p {
+  color: var(--color-warning);
+  margin: 0 0 var(--space-2);
+}
+
+.review-item-tags {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.project-card-flag {
+  color: var(--color-warning);
+  font-weight: 600;
+  font-size: var(--type-sm);
+}
+
+.project-stage-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: var(--space-4);
+  margin: var(--space-4) 0 var(--space-8);
+}
+
+.project-stage-summary dt {
+  font-weight: 600;
+  font-size: var(--type-sm);
+}
+
+.project-stage-summary dd {
+  margin: 0;
+  color: var(--color-ink-subtle);
+}
+
+.project-gap-list {
+  display: grid;
+  gap: var(--space-2);
+  margin: 0 0 var(--space-8);
+  padding: 0;
+  list-style: none;
+}
+
+.project-gap-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-warning-surface);
+  border-radius: 6px;
+}
+
+.project-gap-list span {
+  color: var(--color-ink-subtle);
+  font-size: var(--type-sm);
+  text-transform: capitalize;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .review-stage-tab {
+    transition: border-color 0.15s ease;
+  }
+}

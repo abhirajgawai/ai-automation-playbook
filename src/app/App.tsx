@@ -5,14 +5,14 @@ import { HomePage } from "../features/home/HomePage";
 import { GuidePage } from "../features/guides/GuidePage";
 import { ExplorePage } from "../features/explore/ExplorePage";
 import { StartProblemPage } from "../features/discovery/StartProblemPage";
+import { ReviewPage } from "../features/reviews/ReviewPage";
+import { ProjectsPage } from "../features/projects/ProjectsPage";
+import { ProjectPage } from "../features/projects/ProjectPage";
 import {
   Bookmarks,
   Compare,
   Glossary,
   NotFound,
-  ProjectDetail,
-  Projects,
-  Review,
   Settings,
   Sources,
   Troubleshoot,
@@ -26,11 +26,11 @@ export function App() {
           <Route path="start" element={<StartProblemPage />} />
           <Route path="explore" element={<ExplorePage />} />
           <Route path="guides/:id" element={<GuidePage />} />
-          <Route path="review" element={<Review />} />
+          <Route path="review" element={<ReviewPage />} />
           <Route path="troubleshoot" element={<Troubleshoot />} />
           <Route path="compare" element={<Compare />} />
-          <Route path="projects" element={<Projects />} />
-          <Route path="projects/:id" element={<ProjectDetail />} />
+          <Route path="projects" element={<ProjectsPage />} />
+          <Route path="projects/:id" element={<ProjectPage />} />
           <Route path="bookmarks" element={<Bookmarks />} />
           <Route path="glossary" element={<Glossary />} />
           <Route path="sources" element={<Sources />} />
