@@ -51,3 +51,22 @@ Commands and exact results:
 Fix commit: `a6e9c095651c2931af2c7d793c5474137de077fd` — `test: strengthen redesign acceptance contract`.
 
 Self-review: assertions now cover every requested state field and journey detail without modifying production code. Remaining browser failures are intentional until the redesign implementation lands.
+
+## Fix Round 2
+
+Review findings addressed:
+
+- Mobile comparison now requires every card and every descendant's computed font size to be at least 16px, requires equal-width one-column cards, strictly increasing top positions, and verifies each card is vertically separated from the prior card with no horizontal overflow.
+- The linear alternative disclosure is opened before inspection; ordered assertions normalize the content to lowercase and verify representative steps occur sequentially.
+- Project isolation now writes a direct project-scoped troubleshooting note in Alpha, verifies Beta is blank, and switches back to verify Alpha retains its note, in addition to all ReviewRecord fields.
+
+Commands and exact results:
+
+- `npx prettier --write tests/browser/redesign.spec.ts` — passed; file unchanged after formatting.
+- `npm run typecheck` — passed (`tsc -b --pretty false`).
+- `npx playwright test tests/browser/redesign.spec.ts --grep 'home has|comparison presents|review evidence' --reporter=line` — baseline old UI result: 3 failed (landmarks/linear contract, comparison cards, and project isolation), as expected while the redesign is not implemented.
+- `npx playwright test tests/browser/redesign.spec.ts --grep 'review evidence stays isolated' --reporter=line` — baseline old UI result: 1 failed at the direct Beta project-note blank assertion, confirming the new isolation contract catches the current leakage.
+
+Fix Round 2 commit: `1bc864db5aa3426e274bcc31c9c182a4d2125094` — `test: close redesign contract review findings`.
+
+Self-review: all three review findings are represented as executable assertions; no production files were changed. Screenshot capture remains deterministic and intentionally has no committed visual baseline.
